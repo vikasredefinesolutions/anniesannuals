@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="56" height="56" viewBox="0 0 56 56">
+  <defs>
+    <clipPath id="clip-path">
+      <circle id="Ellipse_57" data-name="Ellipse 57" cx="28" cy="28" r="28" transform="translate(1613 500)" fill="#fff" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+  </defs>
+  <g id="Mask_Group_13" data-name="Mask Group 13" transform="translate(-1613 -500)" clip-path="url(#clip-path)">
+    <path id="Icon_material-remove-red-eye" data-name="Icon material-remove-red-eye" d="M13.233,6.75a12.615,12.615,0,0,0-11.733,8,12.6,12.6,0,0,0,23.467,0A12.615,12.615,0,0,0,13.233,6.75Zm0,13.333a5.333,5.333,0,1,1,5.333-5.333A5.335,5.335,0,0,1,13.233,20.083Zm0-8.533a3.2,3.2,0,1,0,3.2,3.2A3.2,3.2,0,0,0,13.233,11.55Z" transform="translate(1627.5 512.25)" fill="#344d65" opacity="0.5"/>
+  </g>
+</svg>

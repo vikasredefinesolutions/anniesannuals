@@ -1,0 +1,268 @@
+.main-banner-skeleton {
+  width: 100%;
+  height: 795px;
+  background: linear-gradient(90deg, #fff3e0 25%, #fff9ef 50%, #fff3e0 75%);
+  animation: shimmer 1.5s infinite;
+  background-size: 200% 100%;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.section1-skeleton {
+  width: 100%;
+  height: 280px;
+  background: linear-gradient(90deg, #fff9ef 25%, #fff3e0 50%, #fff9ef 75%);
+  animation: shimmer 1.5s infinite;
+  background-size: 200% 100%;
+}
+
+.plant-skeleton {
+  width: 100%;
+  height: 207px;
+  background: linear-gradient(90deg, #fff3e0 25%, #fff9ef 50%, #fff3e0 75%);
+  animation: shimmer 1.5s infinite;
+  background-size: 200% 100%;
+}
+
+.garden-bg {
+  width: 100%;
+  height: 636px;
+  background: linear-gradient(90deg, #fff3e0 25%, #fff9ef 50%, #fff3e0 75%);
+  animation: shimmer 1.5s infinite;
+  background-size: 200% 100%;
+}
+
+.garden-title-skeleton {
+  width: 250px;
+  height: 50px;
+  background: linear-gradient(90deg, #fff9ef 25%, #fff3e0 50%, #fff9ef 75%);
+  animation: shimmer 1.5s infinite;
+  background-size: 200% 100%;
+}
+
+.garden-link-skeleton {
+  width: 100px;
+  height: 30px;
+  background: linear-gradient(90deg, #fff9ef 25%, #fff3e0 50%, #fff9ef 75%);
+  animation: shimmer 1.5s infinite;
+  background-size: 200% 100%;
+}
+
+.garden-pro-skeleton {
+  width: 533px;
+  height: 510px;
+  border-top-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  background: linear-gradient(90deg, #fff9ef 25%, #fff3e0 50%, #fff9ef 75%);
+  animation: shimmer 1.5s infinite;
+  background-size: 200% 100%;
+}
+
+.cat-pro-skeleton {
+  width: 370px;
+  height: 385px;
+  border-top-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  background: linear-gradient(90deg, #fff3e0 25%, #fff9ef 50%, #fff3e0 75%);
+  animation: shimmer 1.5s infinite;
+  background-size: 200% 100%;
+}
+
+.features-skeleton {
+  width: 100%;
+  height: 515px;
+  background: linear-gradient(90deg, #fff3e0 25%, #fff9ef 50%, #fff3e0 75%);
+  animation: shimmer 1.5s infinite;
+  background-size: 200% 100%;
+}
+
+.features-pro-skeleton {
+  width: 370px;
+  height: 385px;
+  border-top-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  background: linear-gradient(90deg, #fff9ef 25%, #fff3e0 50%, #fff9ef 75%);
+  animation: shimmer 1.5s infinite;
+  background-size: 200% 100%;
+}
+
+.education-skeleton {
+  width: 100%;
+  height: 435px;
+  background: linear-gradient(90deg, #fff9ef 25%, #fff3e0 50%, #fff9ef 75%);
+  animation: shimmer 1.5s infinite;
+  background-size: 200% 100%;
+}
+
+.breadcrumbs-skeleton {
+  height: 1rem;
+  width: 9rem;
+  border-radius: 1rem;
+  margin: 0.5rem 0;
+  background: linear-gradient(90deg, #fff3e0 25%, #fff3e0 50%, #fff3e0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.more-img-skeleton {
+  width: 100%;
+  height: 138px;
+  border-top-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  background: linear-gradient(90deg, #fff3e0 25%, #fff9ef 50%, #fff3e0 75%);
+  animation: shimmer 1.5s infinite;
+  background-size: 200% 100%;
+}
+
+.img-skeleton {
+  width: 100%;
+  height: 748px;
+  border-top-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  background: linear-gradient(90deg, #fff3e0 25%, #fff9ef 50%, #fff3e0 75%);
+  animation: shimmer 1.5s infinite;
+  background-size: 200% 100%;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.title-skeleton {
+  height: 2rem;
+  width: 15rem;
+  border-radius: 1rem;
+  margin: 0.5rem 0;
+  background: linear-gradient(90deg, #fff3e0 25%, #fff3e0 50%, #fff3e0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.sub-title-skeleton {
+  height: 1rem;
+  width: 8rem;
+  border-radius: 1rem;
+  margin: 0.5rem 0;
+  background: linear-gradient(90deg, #fff3e0 25%, #fff3e0 50%, #fff3e0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.zon-box-skeleton {
+  height: 141px;
+  width: full;
+  border-radius: 1rem;
+  margin: 0.5rem 0;
+  background: linear-gradient(90deg, #fff3e0 25%, #fff3e0 50%, #fff3e0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.qty-box-skeleton {
+  height: 141px;
+  width: full;
+  border-radius: 1rem;
+  margin: 0.5rem 0;
+  background: linear-gradient(90deg, #fff3e0 25%, #fff3e0 50%, #fff3e0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.price-skeleton {
+  height: 2rem;
+  width: 15rem;
+  border-radius: 1rem;
+  margin: 0.5rem 0;
+  background: linear-gradient(90deg, #fff3e0 25%, #fff3e0 50%, #fff3e0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.button-skeleton {
+  height: 65px;
+  width: 15rem;
+  border-radius: 1rem;
+  margin: 0.5rem 0;
+  background: linear-gradient(90deg, #fff3e0 25%, #fff3e0 50%, #fff3e0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.garden-pro-skeleton {
+  width: 533px;
+  height: 510px;
+  border-top-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  background: linear-gradient(90deg, #fff9ef 25%, #fff3e0 50%, #fff9ef 75%);
+  animation: shimmer 1.5s infinite;
+  background-size: 200% 100%;
+}
+
+.cat-pro-skeleton {
+  width: 370px;
+  height: 385px;
+  border-top-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  background: linear-gradient(90deg, #fff3e0 25%, #fff9ef 50%, #fff3e0 75%);
+  animation: shimmer 1.5s infinite;
+  background-size: 200% 100%;
+}
+
+.features-skeleton {
+  width: 100%;
+  height: 515px;
+  background: linear-gradient(90deg, #fff3e0 25%, #fff9ef 50%, #fff3e0 75%);
+  animation: shimmer 1.5s infinite;
+  background-size: 200% 100%;
+}
+
+.features-pro-skeleton {
+  width: 370px;
+  height: 385px;
+  border-top-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  background: linear-gradient(90deg, #fff9ef 25%, #fff3e0 50%, #fff9ef 75%);
+  animation: shimmer 1.5s infinite;
+  background-size: 200% 100%;
+}
+
+.education-skeleton {
+  width: 100%;
+  height: 435px;
+  border-radius: 1rem;
+  background: linear-gradient(90deg, #fff9ef 25%, #fff3e0 50%, #fff9ef 75%);
+  animation: shimmer 1.5s infinite;
+  background-size: 200% 100%;
+}
+
+.shipping-skeleton {
+  width: 100%;
+  height: 77px;
+  border-radius: 1rem;
+  background: linear-gradient(90deg, #fff9ef 25%, #fff3e0 50%, #fff9ef 75%);
+  animation: shimmer 1.5s infinite;
+  background-size: 200% 100%;
+}
+
+.description-skeleton {
+  width: 100%;
+  height: 77px;
+  border-radius: 1rem;
+  background: linear-gradient(90deg, #fff9ef 25%, #fff3e0 50%, #fff9ef 75%);
+  animation: shimmer 1.5s infinite;
+  background-size: 200% 100%;
+}

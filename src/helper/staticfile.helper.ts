@@ -1,8 +1,8 @@
 import { readFile } from 'fs/promises';
-import storeDetails from '../staticData/storeDetails.json';
-import adminConfigs from '../staticData/adminConfigs.json';
-import homePageMetaData from '../staticData/homePage/pageMetaData.json';
-import headerSubMenu from '../staticData/headerSubMenu.json';
+import storeDetails from '@/staticData/storeDetails.json';
+import adminConfigs from '@/staticData/adminConfigs.json';
+import homePageMetaData from '@/staticData/homePage/pageMetaData.json';
+import headerSubMenu from '@/staticData/headerSubMenu.json';
 import { updateStoreDetails } from '@/api/jsonServices/updateStoreDetails';
 import { updateHeaderSubmenu } from '@/api/jsonServices/updateHeaderSubmenu';
 import { getAdminConfig } from '@/shared/apis/common/getAdminConfig';

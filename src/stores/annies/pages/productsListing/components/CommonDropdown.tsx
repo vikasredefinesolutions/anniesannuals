@@ -117,7 +117,10 @@ const CommonDropdown: React.FC<iProps> = ({
                       </label>
                     </div>
                     <div className='font-sub text-small-text font-semibold'>
-                      <span className='text-[#7D826C]'>
+                      <span
+                        className='text-[#7D826C]'
+                        style={{ display: 'none' }}
+                      >
                         ({Number(option.productCount)})
                       </span>
                     </div>

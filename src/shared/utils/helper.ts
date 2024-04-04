@@ -68,3 +68,14 @@ export function getPriceWithMsrpAndSalePrice(
   if (!msrp) return undefined;
   return salePrice && salePrice < msrp ? salePrice.toFixed(2) : msrp.toFixed(2);
 }
+
+export const MEDIA_BASE_URL =
+  process.env.NEXT_PUBLIC_MEDIA_URL ||
+  process.env.NEXT_PUBLIC_EXTRA_MEDIA_URL_DETAIL_MAIN ||
+  process.env.NEXT_PUBLIC_REDEFINE_MEDIA ||
+  '';
+
+export const MEDIA_BASE_URL_CDN = process.env.NEXT_PUBLIC_CDN_IMAGE != undefined &&
+  process.env.NEXT_PUBLIC_CDN_IMAGE != '' ? process.env.NEXT_PUBLIC_CDN_IMAGE + MEDIA_BASE_URL : MEDIA_BASE_URL;
+
+export const STATIC_URLS = new Set(['beebash24'])

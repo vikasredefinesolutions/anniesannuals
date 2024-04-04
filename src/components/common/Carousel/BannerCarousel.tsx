@@ -246,7 +246,7 @@ const BannerCarousel = ({
     if (!stopOnHover && sliderSettings.autoPlay && carousel && images) {
       handleAutoPlay = setTimeout(() => {
         next();
-      }, 3000);
+      }, 7000);
     }
     return () => {
       if (handleAutoPlay) {
@@ -392,319 +392,264 @@ const BannerCarousel = ({
             return (
               <li key={backgroundIndex} className='carousel-slide'>
                 <div
-                  // style={
-                  //   image.image_or_video == 'Image'
-                  //     ? getSlideStyle(
-                  //         image.image_height_width,
-                  //         image.image_video_bg_color,
-                  //       )
-                  //     : {}
-                  // }
                   key={backgroundIndex}
-                  className={`relative presentation-mode ${
+                  className={`relative w-full presentation-mode ${
                     image.image_or_video !== 'Image'
                       ? 'cgslide-' + (backgroundIndex + 1)
                       : ''
                   }`}
                 >
-                  <div
-                  // className={
-                  //   image.image_or_video == 'Image' && !isLoaded
-                  //     ? 'hidden'
-                  //     : 'overflow-hidden'
-                  // }
-                  //   style={getSlideStyle(image.image_height_width)}
-                  >
-                    <div className='w-full'>
-                      {image.image_or_video == 'Image' ? (
-                        image.image_link && image.image_link != '' ? (
-                          <a
-                            className={`block${
-                              isCentered ? ' text-center' : ''
-                            }`}
-                            href={`${image.image_link}`}
-                          >
-                            <img
-                              src={`${image.image_url}`}
-                              alt={`${image.image_alt}`}
-                              onLoad={() => {
-                                setLoading(false);
-                              }}
-                              className={`${
-                                isCentered ? 'inline-block' : ''
-                              }mx-auto `}
-                            />
-                          </a>
-                        ) : (
-                          <img
-                            src={`${image.image_url}`}
-                            onLoad={() => {
-                              setLoading(false);
-                            }}
-                            alt={`${image.image_alt}`}
-                            className='mx-auto h-[350px] lg:h-auto object-cover object-center'
-                          />
-                        )
-                      ) : (
-                        <>
-                          {image.video_type == 'Youtube' ? (
-                            <iframe
-                              name='Youtube'
-                              className='w-full aspect-video'
-                              src={`https://www.youtube.com/embed/${image.video_url}?rel=0`}
-                              allow='autoplay; encrypted-media'
-                            ></iframe>
-                          ) : (
-                            <iframe
-                              name='Vimeo'
-                              className='p-0 w-full aspect-[7/3]'
-                              src={`https://player.vimeo.com/video/${image.video_url}?autoplay=1&loop=1&background=1&muted=1`}
-                              allow='autoplay'
-                            ></iframe>
-                          )}
-                        </>
-                      )}
-                      {image?.image_video_bg_color_rgb && (
-                        <div
-                          className='w-full absolute inset-0'
-                          style={{
-                            background: `rgba(${image.image_video_bg_color_rgb},${image.image_video_bg_opacity})`,
+                  {image.image_or_video == 'Image' ? (
+                    image.image_link && image.image_link != '' ? (
+                      <a
+                        className={`block${isCentered ? ' text-center' : ''}`}
+                        href={`${image.image_link}`}
+                      >
+                        <img
+                          src={`${image.image_url}`}
+                          alt={`${image.image_alt}`}
+                          onLoad={() => {
+                            setLoading(false);
                           }}
-                        ></div>
-                      )}
+                          className={`${
+                            isCentered ? 'inline-block' : ''
+                          } mx-auto h-[350px] lg:h-auto object-cover object-center`}
+                        />
+                      </a>
+                    ) : (
+                      <img
+                        src={`${image.image_url}`}
+                        onLoad={() => {
+                          setLoading(false);
+                        }}
+                        alt={`${image.image_alt}`}
+                        className='mx-auto h-[350px] lg:h-auto object-cover object-center'
+                      />
+                    )
+                  ) : image.video_type == 'Youtube' ? (
+                    <iframe
+                      name='Youtube'
+                      className='w-full aspect-video'
+                      src={`https://www.youtube.com/embed/${image.video_url}?rel=0`}
+                      allow='autoplay; encrypted-media'
+                    ></iframe>
+                  ) : (
+                    <iframe
+                      name='Vimeo'
+                      className='p-0 w-full aspect-[7/3]'
+                      src={`https://player.vimeo.com/video/${image.video_url}?autoplay=1&loop=1&background=1&muted=1`}
+                      allow='autoplay'
+                    ></iframe>
+                  )}
+                  {image?.image_video_bg_color_rgb && (
+                    <div
+                      className='w-full absolute inset-0'
+                      style={{
+                        background: `rgba(${image.image_video_bg_color_rgb},${image.image_video_bg_opacity})`,
+                      }}
+                    ></div>
+                  )}
 
-                      {(image.icon_image_url ||
-                        image.headline ||
-                        image.headline1 ||
-                        image.description ||
-                        image.button_text ||
-                        image.button_text1) && (
-                        <div className={newClass}>
-                          <div className={insideClass}>
-                            <div
-                              className={`${
-                                image.headline_width ? image.headline_width : ''
-                              }`}
-                              style={{
-                                background: `rgb(${image.text_bg_color}, ${image.bg_opacity})`,
-                                padding: '20px',
-                              }}
-                            >
-                              {image.icon_image_url && (
-                                <div className='text-center'>
-                                  <img src={image.icon_image_url} />
-                                </div>
-                              )}
-                              {image.headline1_display && (
-                                <div
-                                  className={image.headline1_class ?? ''}
-                                  data-aos={image?.headline_aos_effect ?? ''}
-                                  style={{
-                                    color: image.font_color ?? '',
-                                    textShadow:
-                                      image.headline1_box_shadow ?? '',
-                                  }}
-                                  dangerouslySetInnerHTML={{
-                                    __html:
-                                      headlineStartTag +
-                                      image.headline +
-                                      headlineEndTag,
-                                  }}
-                                ></div>
-                              )}
-                              {image.headline2_display && (
-                                <div
-                                  className={image.headline2_class ?? ''}
-                                  data-aos={image?.headline1_aos_effect ?? ''}
-                                  style={{
-                                    color: image.font_color1 ?? '',
-                                    textShadow:
-                                      image.headline2_box_shadow ?? '',
-                                  }}
-                                  dangerouslySetInnerHTML={{
-                                    __html:
-                                      headline1StartTag +
-                                      image.headline1 +
-                                      headline1EndTag,
-                                  }}
-                                ></div>
-                              )}
-                              {image.description_display && (
-                                <div
-                                  className={image.description_class ?? ''}
-                                  style={{ color: image.font_color2 ?? '' }}
-                                  dangerouslySetInnerHTML={{
-                                    __html: image.description,
-                                  }}
-                                ></div>
-                              )}
-                              {image.button_display1 === undefined ? (
-                                image.button_display == 'Yes' && (
-                                  <>
-                                    <div
-                                      className={image?.button_text_alignment}
-                                      title={image.button_text}
-                                    >
-                                      <a
-                                        href={image.button_link}
-                                        data-aos={
-                                          image?.button_aos_effect ?? ''
-                                        }
-                                        title={
-                                          tmpArr[0].button_alt ??
-                                          tmpArr[0].button_text
-                                        }
-                                        target={
-                                          image.button_link_window == '_self'
-                                            ? ''
-                                            : '_blank'
-                                        }
-                                        className={`${image.button_class}`}
-                                        style={{
-                                          boxShadow: image?.button_box_shadow,
-                                        }}
-                                        rel='noreferrer'
-                                      >
-                                        {image.button_text}
-                                      </a>
-                                    </div>
-                                  </>
-                                )
-                              ) : (
-                                <>
-                                  {image.button_display1 === 'Yes' &&
-                                  image.button_display === 'Yes' ? (
-                                    <>
-                                      <div className='pt-3 lg:pt-5 text-center'>
-                                        <a
-                                          href={image.button_link}
-                                          data-aos={
-                                            image?.button_aos_effect ?? ''
-                                          }
-                                          title={
-                                            tmpArr[0].button_alt ??
-                                            tmpArr[0].button_text
-                                          }
-                                          target={
-                                            image.button_link_window == '_self'
-                                              ? ''
-                                              : '_blank'
-                                          }
-                                          className={`${image.button_class}`}
-                                          style={{
-                                            boxShadow: image?.button_box_shadow,
-                                          }}
-                                          rel='noreferrer'
-                                        >
-                                          {image.button_text}
-                                        </a>
-                                        <a
-                                          href={image.button_link1}
-                                          data-aos={
-                                            image?.button1_aos_effect ?? ''
-                                          }
-                                          title={
-                                            tmpArr[0].button_alt1 ??
-                                            tmpArr[0].button_text1
-                                          }
-                                          target={
-                                            image.button_link_window1 == '_self'
-                                              ? ''
-                                              : '_blank'
-                                          }
-                                          className={`${image.button_class1}`}
-                                          style={{
-                                            boxShadow:
-                                              image?.button_box_shadow1,
-                                          }}
-                                          rel='noreferrer'
-                                        >
-                                          {image.button_text1}
-                                        </a>
-                                      </div>
-                                    </>
-                                  ) : (
-                                    <>
-                                      {image.button_display == 'Yes' && (
-                                        <>
-                                          <div
-                                            className={
-                                              image?.button_text_alignment
-                                            }
-                                            title={image.button_text}
-                                          >
-                                            <a
-                                              href={image.button_link}
-                                              data-aos={
-                                                image?.button_aos_effect ?? ''
-                                              }
-                                              title={
-                                                tmpArr[0].button_alt ??
-                                                tmpArr[0].button_text
-                                              }
-                                              target={
-                                                image.button_link_window ==
-                                                '_self'
-                                                  ? ''
-                                                  : '_blank'
-                                              }
-                                              className={`${image.button_class}`}
-                                              style={{
-                                                boxShadow:
-                                                  image?.button_box_shadow,
-                                              }}
-                                              rel='noreferrer'
-                                            >
-                                              {image.button_text}
-                                            </a>
-                                          </div>
-                                        </>
-                                      )}
-                                      {image.button_display1 == 'Yes' && (
-                                        <>
-                                          <div
-                                            className={
-                                              image?.button_text_alignment1
-                                            }
-                                            title={image.button_text1}
-                                          >
-                                            <a
-                                              href={image.button_link1}
-                                              data-aos={
-                                                image?.button1_aos_effect ?? ''
-                                              }
-                                              title={
-                                                tmpArr[0].button_alt1 ??
-                                                tmpArr[0].button_text1
-                                              }
-                                              target={
-                                                image.button_link_window1 ==
-                                                '_self'
-                                                  ? ''
-                                                  : '_blank'
-                                              }
-                                              className={`${image.button_class1}`}
-                                              style={{
-                                                boxShadow:
-                                                  image?.button_box_shadow1,
-                                              }}
-                                              rel='noreferrer'
-                                            >
-                                              {image.button_text1}
-                                            </a>
-                                          </div>
-                                        </>
-                                      )}
-                                    </>
-                                  )}
-                                </>
-                              )}
-                            </div>
+                  {(image.icon_image_url ||
+                    image.headline ||
+                    image.headline1 ||
+                    image.description ||
+                    image.button_text ||
+                    image.button_text1) && (
+                    <div className={newClass}>
+                      <div
+                        className={`${
+                          image.headline_width ? image.headline_width : ''
+                        } ${insideClass}`}
+                        style={{
+                          background: image?.text_bg_color
+                            ? `rgb(${image.text_bg_color}, ${image.bg_opacity})`
+                            : 'none',
+                          padding: '20px',
+                        }}
+                      >
+                        {image.icon_image_url && (
+                          <div className='text-center'>
+                            <img src={image.icon_image_url} />
                           </div>
-                        </div>
-                      )}
+                        )}
+                        {image.headline1_display && (
+                          <div
+                            className={image.headline1_class ?? ''}
+                            data-aos={image?.headline_aos_effect ?? ''}
+                            style={{
+                              color: image.font_color ?? '',
+                              textShadow: image.headline1_box_shadow ?? '',
+                            }}
+                            dangerouslySetInnerHTML={{
+                              __html:
+                                headlineStartTag +
+                                image.headline +
+                                headlineEndTag,
+                            }}
+                          ></div>
+                        )}
+                        {image.headline2_display && (
+                          <div
+                            className={image.headline2_class ?? ''}
+                            data-aos={image?.headline1_aos_effect ?? ''}
+                            style={{
+                              color: image.font_color1 ?? '',
+                              textShadow: image.headline2_box_shadow ?? '',
+                            }}
+                            dangerouslySetInnerHTML={{
+                              __html:
+                                headline1StartTag +
+                                image.headline1 +
+                                headline1EndTag,
+                            }}
+                          ></div>
+                        )}
+                        {image.description_display && (
+                          <div
+                            className={image.description_class ?? ''}
+                            style={{ color: image.font_color2 ?? '' }}
+                            dangerouslySetInnerHTML={{
+                              __html: image.description,
+                            }}
+                          ></div>
+                        )}
+                        {image.button_display1 === undefined ? (
+                          image.button_display == 'Yes' && (
+                            <div
+                              className={image?.button_text_alignment}
+                              title={image.button_text}
+                            >
+                              <a
+                                href={image.button_link}
+                                data-aos={image?.button_aos_effect ?? ''}
+                                title={
+                                  tmpArr[0].button_alt ?? tmpArr[0].button_text
+                                }
+                                target={
+                                  image.button_link_window == '_self'
+                                    ? ''
+                                    : '_blank'
+                                }
+                                className={`${image.button_class}`}
+                                style={{
+                                  boxShadow: image?.button_box_shadow,
+                                }}
+                                rel='noreferrer'
+                              >
+                                {image.button_text}
+                              </a>
+                            </div>
+                          )
+                        ) : (
+                          <>
+                            {image.button_display1 === 'Yes' &&
+                            image.button_display === 'Yes' ? (
+                              <div className='pt-3 lg:pt-5 text-center'>
+                                <a
+                                  href={image.button_link}
+                                  data-aos={image?.button_aos_effect ?? ''}
+                                  title={
+                                    tmpArr[0].button_alt ??
+                                    tmpArr[0].button_text
+                                  }
+                                  target={
+                                    image.button_link_window == '_self'
+                                      ? ''
+                                      : '_blank'
+                                  }
+                                  className={`${image.button_class}`}
+                                  style={{
+                                    boxShadow: image?.button_box_shadow,
+                                  }}
+                                  rel='noreferrer'
+                                >
+                                  {image.button_text}
+                                </a>
+                                <a
+                                  href={image.button_link1}
+                                  data-aos={image?.button1_aos_effect ?? ''}
+                                  title={
+                                    tmpArr[0].button_alt1 ??
+                                    tmpArr[0].button_text1
+                                  }
+                                  target={
+                                    image.button_link_window1 == '_self'
+                                      ? ''
+                                      : '_blank'
+                                  }
+                                  className={`${image.button_class1}`}
+                                  style={{
+                                    boxShadow: image?.button_box_shadow1,
+                                  }}
+                                  rel='noreferrer'
+                                >
+                                  {image.button_text1}
+                                </a>
+                              </div>
+                            ) : (
+                              <>
+                                {image.button_display == 'Yes' && (
+                                  <div
+                                    className={image?.button_text_alignment}
+                                    title={image.button_text}
+                                  >
+                                    <a
+                                      href={image.button_link}
+                                      data-aos={image?.button_aos_effect ?? ''}
+                                      title={
+                                        tmpArr[0].button_alt ??
+                                        tmpArr[0].button_text
+                                      }
+                                      target={
+                                        image.button_link_window == '_self'
+                                          ? ''
+                                          : '_blank'
+                                      }
+                                      className={`${image.button_class}`}
+                                      style={{
+                                        boxShadow: image?.button_box_shadow,
+                                      }}
+                                      rel='noreferrer'
+                                    >
+                                      {image.button_text}
+                                    </a>
+                                  </div>
+                                )}
+                                {image.button_display1 == 'Yes' && (
+                                  <div
+                                    className={image?.button_text_alignment1}
+                                    title={image.button_text1}
+                                  >
+                                    <a
+                                      href={image.button_link1}
+                                      data-aos={image?.button1_aos_effect ?? ''}
+                                      title={
+                                        tmpArr[0].button_alt1 ??
+                                        tmpArr[0].button_text1
+                                      }
+                                      target={
+                                        image.button_link_window1 == '_self'
+                                          ? ''
+                                          : '_blank'
+                                      }
+                                      className={`${image.button_class1}`}
+                                      style={{
+                                        boxShadow: image?.button_box_shadow1,
+                                      }}
+                                      rel='noreferrer'
+                                    >
+                                      {image.button_text1}
+                                    </a>
+                                  </div>
+                                )}
+                              </>
+                            )}
+                          </>
+                        )}
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
               </li>
             );

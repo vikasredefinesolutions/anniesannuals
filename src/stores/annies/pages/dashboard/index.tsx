@@ -4,16 +4,19 @@ import CustomLink from '@/shared/Components/CustomLink';
 import { getUserId } from '@/shared/utils/cookie.helper';
 import { paths } from '@/utils/paths.constant';
 import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 import SideLayout from '../../shared/components/myAccountLayout';
 
 const Dasboard: React.FC = () => {
   const userId = getUserId();
   const router = useRouter();
 
-  if (!userId) {
-    router.push('sign-in.html');
-    return;
-  }
+  useEffect(() => {
+    if (!userId) {
+      router.push(paths.login);
+    }
+  }, [userId]);
+
   return (
     <SideLayout>
       <div>

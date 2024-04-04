@@ -5,14 +5,11 @@ import { useAppSelector } from '@/app/redux/hooks';
 import HomeComponents from '@/components/HomeComponents';
 import Card from '@/shared/Components/Card';
 import { getBackGroundColor } from '@/shared/Components/Card/CardColors';
-import Image from '@/shared/Components/Image';
-import { SORT } from '@/shared/apis/product/productList';
-import { IListingProduct } from '@/shared/types/product';
 import { GoogleAnalyticsTracker } from '@/shared/utils/googleAnalytics';
 import { getPriceWithMsrpAndSalePrice } from '@/shared/utils/helper';
 import { SubCategoryList } from '@/types/header';
-import { useRouter, useSearchParams } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
+import React, { useEffect } from 'react';
 import BreadCrumbs from '../../shared/components/BreadCrumbs';
 import useModel from '../../shared/hooks/use-model';
 import Banner from '../../widgets/header/components/Banner';
@@ -26,21 +23,26 @@ import SortFilter from './components/SortFilter';
 import { useFilterOptions } from './filter.helper';
 
 const ProductListing: React.FC<IProductListProps> = ({
-  filterOptions,
+  filterOptions: rawFilterOptions,
   isSubcategory,
   selectedFilters,
   cmsData,
   bannerData,
   seName,
+  pageId,
   childCategoryViewModels,
   cmsStoreThemeConfigsViewModel,
   headerSubMenu,
   googleTagManagerResponseCommonData,
   breadCrumbs,
-  facetsFoundInURl,
   list,
+  predefinedFacetFilterUrl,
+  facetsFoundInURl,
 }) => {
   const {
+    products,
+    currentPage,
+    goToPageHandler,
     openfilterFacetName,
     checkedFilters,
     toggleDropdown,
@@ -51,55 +53,28 @@ const ProductListing: React.FC<IProductListProps> = ({
     setLoading,
     removeFilters,
     loading,
+    updateSort,
+    filterOptions,
   } = useFilterOptions({
     selectedFilters,
     seName,
+    sortBy: list.sortBy,
+    list,
+    pageId,
     facetsFoundInURl,
-    sortBy: list.sortBy,
+    isSubcategory,
+    predefinedFacetFilterUrl,
+    rawFilterOptions,
   });
 
-  const ignoreZoneFromQueryParams =
-    useSearchParams().get('ignorezone') === 'true';
   const { openModel, isOpen, onRequestClose } = useModel();
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const [products, setProducts] = useState<{
-    jumpBy: number;
-    totalAvailable: number;
-    totalPages: number;
-    sortBy: SORT;
-    visible: IListingProduct[];
-  }>({
-    jumpBy: list.jumpBy,
-    totalAvailable: list.totalAvailable,
-    totalPages: Math.ceil(list.totalAvailable / list.jumpBy),
-    sortBy: list.sortBy,
-    visible: list.products,
-  });
-  const userWishList = useAppSelector((state) => state.user.wishlistData);
-  const router = useRouter();
 
-  const goToPageHandler = (pageNo: number) => {
-    setLoading(true);
-    setCurrentPage(pageNo);
-    const sortQuery = `?sort=${products.sortBy}&page=${pageNo}&ignorezone=${ignoreZoneFromQueryParams}`;
-    router.push(sortQuery, { scroll: false });
-  };
+  const userWishList = useAppSelector((state) => state.user.wishlistData);
 
   useEffect(() => {
     GoogleAnalyticsTracker('', googleTagManagerResponseCommonData);
   }, []);
 
-  useEffect(() => {
-    setCurrentPage(list.currentPage);
-    setProducts({
-      jumpBy: list.jumpBy,
-      totalAvailable: list.totalAvailable,
-      sortBy: list.sortBy,
-      totalPages: Math.ceil(list.totalAvailable / list.jumpBy),
-      visible: list.products,
-    });
-    setLoading(false);
-  }, [list.currentPage, list.sortBy]);
   const isFilter = filterOptions.length > 0;
 
   return (
@@ -119,11 +94,15 @@ const ProductListing: React.FC<IProductListProps> = ({
               <Image
                 src='/assets/images/butterfly-1.png'
                 alt={'butterfly'}
-                isStatic
+                height={191}
+                width={153}
               />
             </div>
             <div className='md:flex flex-wrap justify-between items-center w-full pt-[20px] pb-[30px] hidden'>
-              <div className='font-sub font-bold text-2xl-text py-2 sm:py-0'>
+              <div
+                id={'results_count'}
+                className='font-sub font-bold text-2xl-text py-2 sm:py-0'
+              >
                 {`${products.totalAvailable} Results`}
               </div>
               {!isSubcategory && (
@@ -184,9 +163,9 @@ const ProductListing: React.FC<IProductListProps> = ({
                 </div>
                 {!isSubcategory && (
                   <FilterCapsules
-                    isMobile={false}
                     seName={seName}
                     facetsFoundInURl={facetsFoundInURl}
+                    isMobile={false}
                     removeFilters={(data) => {
                       removeFilters(data);
                       setLoading(true);
@@ -201,7 +180,6 @@ const ProductListing: React.FC<IProductListProps> = ({
 
                       return (
                         <Card
-                          scrollToTopFor='listing'
                           product={product}
                           key={product?.id}
                           id={product?.id}
@@ -213,6 +191,7 @@ const ProductListing: React.FC<IProductListProps> = ({
                             +product?.salePrice,
                             +product?.msrp,
                           )}
+                          scrollToTopFor={'listing'}
                           openModel={openModel}
                           // image={
                           //   isSubcategory
@@ -275,12 +254,12 @@ const ProductListing: React.FC<IProductListProps> = ({
 
       {mobileDropDown === 'filter' && (
         <MobileFiltersDropdown
-          seName={seName}
-          facetsFoundInURl={facetsFoundInURl}
           filterOptions={filterOptions}
           openfilterFacetName={openfilterFacetName}
           applyAllFiltersAtOnce={applyAllFiltersAtOnce}
           removeFilters={removeFilters}
+          seName={seName}
+          facetsFoundInURl={facetsFoundInURl}
           toggleDropdown={toggleDropdown}
           handleFilterCheckbox={handleFilterCheckbox}
           checkedFilters={checkedFilters.filters}

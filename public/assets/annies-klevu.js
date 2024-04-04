@@ -1,7 +1,7 @@
 klevu.interactive(function () {
   var options = {
     url: {
-      landing: 'https://anniesannuals.com/search/result',
+      landing: process.env.NEXT_PUBLIC_MAIN_DOMAIN + '/search/result',
       protocol: 'https:',
       search: 'https://uscs33v2.ksearchnet.com/cs/v2/search', // your Klevu APIv2 Search URL + endpoint path
     },

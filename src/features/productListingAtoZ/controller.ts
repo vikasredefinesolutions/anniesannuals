@@ -117,7 +117,7 @@ const ProductListingAtoZController: React.FC<_Props> = ({
   }, [productListData]);
 
   const getProductListData = async (change: number) => {
-    const page = searchParams.get('page');
+    const page = `${currentPage}` || searchParams.get('page');
     const { startIndex, endIndex, itemsPerPage } = pagination(3, page || '1');
 
     const payload = {

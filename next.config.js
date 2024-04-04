@@ -19,6 +19,14 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'redefinecommerce.blob.core.windows.net',
       },
+      {
+        protocol: 'https',
+        hostname: 'www.anniesannuals.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'storage.anniesannuals.com',
+      },
     ],
   },
 };

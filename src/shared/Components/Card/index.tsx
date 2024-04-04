@@ -1,31 +1,21 @@
-import { addCartData } from '@/app/redux/slices/cartSlice';
-import { openAlertModal } from '@/app/redux/slices/modalSlice';
 import { setWishlistData } from '@/app/redux/slices/userSlice';
 import { tStoreDetailsFile } from '@/helper/staticfile.helper';
-import { addToCart } from '@/shared/apis/cart/addToCart';
-import { getCartDetails } from '@/shared/apis/cart/fetchCartProducts';
 import { getWishlist } from '@/shared/apis/cart/getWishlistItems';
 import { moveToWishlist } from '@/shared/apis/cart/moveToWishlist';
 import {
   WishlistType,
   removeWishlist,
 } from '@/shared/apis/cart/removeFromWishlist';
-import {
-  TEMPUSER_ID,
-  getTempUserId,
-  getUserId,
-} from '@/shared/utils/cookie.helper';
+import { getTempUserId, getUserId } from '@/shared/utils/cookie.helper';
 import { PixelTracker } from '@/shared/utils/facebookPixel';
-import { GoogleAnalyticsTracker } from '@/shared/utils/googleAnalytics';
-import storeDetails from '@/staticData/storeDetails.json';
+import { MEDIA_BASE_URL, MEDIA_BASE_URL_CDN } from '@/shared/utils/helper';
 import { getLocation } from '@/utils/helpers';
 import { paths } from '@/utils/paths.constant';
-import { setCookie } from 'cookies-next';
+import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import CustomLink from '../CustomLink';
-import Image from '../Image';
 import PriceLabel from '../PriceLabel';
 import { Ratings } from './Ratings';
 
@@ -36,7 +26,6 @@ interface Props {
   image: string;
   product: any;
   imageAltTag?: string;
-  scrollToTopFor?: 'listing' | 'all'
   containerBg?: string;
   getProductImageOptionList: [];
   productCustomField?: Array<{ label: string; value: string }>;
@@ -55,6 +44,7 @@ interface Props {
   isSubcategory: boolean;
   openModel: () => void;
   isAtoZ: boolean;
+  scrollToTopFor?: 'listing' | 'all';
   userWishList: WishlistType[];
 }
 
@@ -67,7 +57,6 @@ const Card = ({
   product,
   containerBg,
   brandName,
-  scrollToTopFor = 'all',
   productCustomField,
   cmsStoreThemeConfigsViewModel,
   productTagViewModel,
@@ -77,6 +66,7 @@ const Card = ({
   isFilter,
   isSubcategory,
   isAtoZ,
+  scrollToTopFor = 'all',
   openModel,
   userWishList,
 }: Props) => {
@@ -92,6 +82,7 @@ const Card = ({
   const updateWishlistLocally = async () => {
     try {
       const updatedWishlist = await getWishlist(+userId);
+
       if (!updatedWishlist) throw `Can't udpate the wishlist.`;
       dispatch(setWishlistData(updatedWishlist));
     } catch (error) {}
@@ -119,7 +110,9 @@ const Card = ({
         },
       };
       const response = await moveToWishlist(payload);
+
       setWishListedId(response.id);
+
       const pixelPaylod = {
         value: product!.msrp,
         currency: 'USD',
@@ -176,7 +169,7 @@ const Card = ({
   useEffect(() => {
     return () => {
       if (scrollToTopFor === 'listing') {
-        const breadCrumbsDiv = document.getElementById('breadcrumbs_');
+        const breadCrumbsDiv = document.getElementById('breadcrumbs');
         if (!breadCrumbsDiv) return;
         breadCrumbsDiv.scrollIntoView();
         return;
@@ -214,125 +207,6 @@ const Card = ({
     setShowPopup(false);
   };
 
-  const handleAddToCart = async () => {
-    if (!quantity) return alert('Quantity must be greater than 0');
-    try {
-      const payload = {
-        addToCartModel: {
-          customerId: userId || +tempId,
-          productId: product!.id,
-          storeId: storeDetails?.storeId,
-          ipAddress: getLocation().ip_address,
-
-          shoppingCartItemModel: {
-            price: product?.msrp,
-            quantity: 1,
-            // color image details don't get confused with name
-            logoTitle: '',
-            logogImagePath: image,
-            // not to touch
-            id: 0,
-            weight: 0,
-            productType: 0,
-            discountPrice: 0,
-            perQuantity: 0,
-            appQuantity: 0,
-            status: 0,
-            discountPercentage: 0,
-            productCustomizationId: 0,
-            itemNotes: '',
-            isEmployeeLoginPrice: false,
-          },
-          shoppingCartItemsDetailModels: !product.sizes
-            ? []
-            : [
-                {
-                  attributeOptionName: 'Color',
-                  attributeOptionValue: '0',
-                  attributeOptionId: 0,
-                },
-              ],
-          cartLogoPersonModel: !product.sizes
-            ? []
-            : [
-                {
-                  id: 0,
-                  attributeOptionId: 0,
-                  attributeOptionValue: '0',
-                  code: '',
-                  price: product?.msrp!,
-                  quantity: 1,
-                  estimateDate: new Date(),
-                  isEmployeeLoginPrice: 0,
-                },
-              ],
-          // Static
-
-          isempLogin: false,
-          isForm: false,
-        },
-      };
-
-      const data = await addToCart(payload);
-      setQuantity(1);
-      openModel();
-      const cartGaPayload = {
-        storeId: storeDetails?.storeId,
-        customerId: userId || 0,
-        value: quantity * product?.msrp,
-        coupon: '',
-        shoppingCartItemsModel: [
-          {
-            productId: product?.id,
-            productName: product?.name,
-            colorVariants: '',
-            price: quantity * product?.msrp,
-            quantity: quantity,
-          },
-        ],
-      };
-      const pixelPaylod = {
-        value: quantity * product?.msrp,
-        currency: 'USD',
-        content_name: product.name,
-        content_type: 'product', // Required for Dynamic Product Ads
-        content_ids: product.id, // Required for Dynamic Product Ads
-      };
-      PixelTracker('track', 'AddToCart', pixelPaylod);
-
-      GoogleAnalyticsTracker('GoogleAddToCartScript', cartGaPayload);
-      if (userId == 0) setCookie(TEMPUSER_ID, '' + data);
-      //TODO: need to add modal later
-      // alert('Added to cart successfully');
-      getCartDetails(+userId || +tempId, false)
-        .then((res) => {
-          if (res && res.length > 0) {
-            dispatch(addCartData(res));
-          }
-        })
-        .catch((err) => {
-          dispatch(
-            openAlertModal({
-              title: 'Error',
-              description: err,
-              isAlertModalOpen: true,
-            }),
-          );
-        });
-    } catch (error: any) {
-      //TODO: need to add modal later
-      dispatch(
-        openAlertModal({
-          title: 'Error',
-          description: error[Object.keys(error)[0]],
-          isAlertModalOpen: true,
-        }),
-      );
-    } finally {
-      openModel();
-    }
-  };
-
   return (
     <div
       key={productId}
@@ -348,11 +222,16 @@ const Card = ({
         <div className=''>
           <CustomLink href={`/${sename}.html`}>
             <Image
-              src={image ? `${image}` : '/annies/1/category/81/category_12.jpg'}
+              src={
+                image
+                  ? `${MEDIA_BASE_URL_CDN}${image}`
+                  : '/assets/images/No_productImg.png'
+              }
               className='group-hover:scale-125 transition-all duration-700 w-full'
               alt={imageAltTag || sename}
-              width={+'370'}
-              height={+'426'}
+              width={370}
+              height={426}
+              // isCdnUrlAdded={true}
               // style={{ width: '100%' }}
             />
           </CustomLink>
@@ -362,12 +241,14 @@ const Card = ({
           onClick={() => handleWishlistIcon(productId, wishedListedId)}
         >
           <Image
-            isStatic
+            // isStatic
             src={
               wishedListedId
                 ? '/assets/images/wishlist-selected.png'
                 : '/assets/images/wishlist.png'
             }
+            height={36}
+            width={36}
             alt={wishedListedId ? 'Wishlist Selected' : 'Wishlist'}
             title='Wishlist'
           />
@@ -382,9 +263,11 @@ const Card = ({
               } top-4 cursor-pointer`}
             >
               <Image
-                src={`${imagename}`}
+                src={`${MEDIA_BASE_URL}${imagename}`}
                 alt='New Product'
                 title='New Product'
+                height={30}
+                width={67}
               />
             </div>
           ),
@@ -481,10 +364,11 @@ const Card = ({
                     </div>
                   </div>
                 )}
-                <div className='flex flex-wrap justify-between items-center w-full'>
+                <div className='flex flex-wrap justify-between items-end w-full '>
                   <PriceLabel
                     price={price}
                     className='text-default-text text-white font-bold'
+                    style={{ paddingRight: '20px' }}
                   />
                   {!product.isDiscontinue &&
                     !product.isOutOfStock &&

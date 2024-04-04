@@ -72,6 +72,7 @@ export const cartSlice = createSlice({
         state.couponDetails.percentage = action.payload.percentage;
         state.couponDetails.amount = action.payload.amount;
         let total = state.orderSubTotal + state.shippingCharge;
+
         if (parseInt(action.payload.amount) !== 0) {
           state.orderTotal = total - parseInt(action.payload.amount);
         } else if (parseInt(action.payload.percentage) !== 0) {
@@ -95,7 +96,10 @@ export const cartSlice = createSlice({
       state,
       action: PayloadAction<{ name: string; price: number }[]>,
     ) => {
-      const totalShippingCost = action.payload.reduce((acc, curr) => acc + curr.price, 0)
+      const totalShippingCost = action.payload.reduce(
+        (acc, curr) => acc + curr.price,
+        0,
+      );
       state.shippingList = action.payload;
       state.totalShippingCost = totalShippingCost;
       if (action.payload.length > 0) {
@@ -107,7 +111,8 @@ export const cartSlice = createSlice({
       action: PayloadAction<{ totalShippingPrice: number }>,
     ) => {
       state.totalShippingCost = action.payload?.totalShippingPrice;
-      state.orderTotal = state.orderSubTotal + state.tax + action.payload.totalShippingPrice;
+      state.orderTotal =
+        state.orderSubTotal + state.tax + action.payload.totalShippingPrice;
     },
     clearShippingInformation: (state) => {
       state.selectedShipping = { name: 'Free Shipping', price: 0 };

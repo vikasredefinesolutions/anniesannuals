@@ -27,8 +27,11 @@ import { getCookie } from 'cookies-next';
 import React, { ReactElement, useEffect, useState } from 'react';
 
 export interface _CartSummaryProps {
-  applyDiscountCouponHandler: (discountCoupon?: string) => void;
-  removeCouponCodeHandler: () => void;
+  applyDiscountCouponHandler: (
+    avilableInLocalStorage: boolean,
+    discountCoupon?: string,
+  ) => void;
+  removeCouponCodeHandler: (avilableInLocalStorage: boolean) => void;
   couponChangeHandler: (couponName: string) => void;
   coupon: string;
   couponCode: string;
@@ -212,11 +215,14 @@ const CartController: React.FC<_Props> = ({
     );
     const discountCoupon = localStorage.getItem('discountCoupon');
     if (discountCoupon) {
-      applyDiscountCouponHandler(discountCoupon);
+      applyDiscountCouponHandler(true, discountCoupon);
     }
   };
 
-  const applyDiscountCouponHandler = async (discountCoupon?: string) => {
+  const applyDiscountCouponHandler = async (
+    avilableInLocalStorage: boolean,
+    discountCoupon?: string,
+  ) => {
     dispatch(showLoader(true));
     const couponObject = {
       promotionsModel: {
@@ -233,23 +239,28 @@ const CartController: React.FC<_Props> = ({
         if ('discountAmount' in res) {
           setCouponInLocalStorage(res.couponCode);
 
-          handleIfCouponIsValid(res);
+          handleIfCouponIsValid(res, avilableInLocalStorage);
           return;
         }
-        handleIfCouponIsNotValid(res);
+        handleIfCouponIsNotValid(res, avilableInLocalStorage);
       })
-      .catch((errors) => handleIfCouponIsNotValid(errors))
+      .catch((errors) =>
+        handleIfCouponIsNotValid(errors, avilableInLocalStorage),
+      )
       .finally(() => dispatch(showLoader(false)));
   };
 
-  const handleIfCouponIsValid = (details: {
-    couponCode: string;
-    percentage: string;
-    discountAmount: string;
-    isFreeShipping: boolean;
-    taxCost: string;
-    shiipingCost: string;
-  }) => {
+  const handleIfCouponIsValid = (
+    details: {
+      couponCode: string;
+      percentage: string;
+      discountAmount: string;
+      isFreeShipping: boolean;
+      taxCost: string;
+      shiipingCost: string;
+    },
+    avilableInLocalStorage: boolean,
+  ) => {
     dispatch(
       updateCouponDetails({
         coupon: details.couponCode,
@@ -258,52 +269,66 @@ const CartController: React.FC<_Props> = ({
         todo: 'ADD',
       }),
     );
-    dispatch(
-      openAlertModal({
-        title: 'Success',
-        description: 'Coupon Applied Successfully',
-        isAlertModalOpen: true,
-      }),
-    );
+    if (!avilableInLocalStorage) {
+      dispatch(
+        openAlertModal({
+          title: 'Success',
+          description: 'Coupon Applied Successfully',
+          isAlertModalOpen: true,
+        }),
+      );
+    }
+
     setCouponCode('');
   };
 
-  const handleIfCouponIsNotValid = (errors: { [key: string]: string }) => {
+  const handleIfCouponIsNotValid = (
+    errors: { [key: string]: string },
+    avilableInLocalStorage: boolean,
+  ) => {
     if (errors) {
       const objToArr = Object?.values(errors);
       if (objToArr.length === 0) return;
       // cart_promoCode('REMOVE_PROMO_CODE');
 
       if ('promotionsModel.CustomerId' in errors) {
-        dispatch(
-          openAlertModal({
-            title: 'Error',
-            description: objToArr[0],
-            isAlertModalOpen: true,
-          }),
-        );
+        if (!avilableInLocalStorage) {
+          dispatch(
+            openAlertModal({
+              title: 'Error',
+              description: objToArr[0],
+              isAlertModalOpen: true,
+            }),
+          );
+        }
+
         setTimeout(() => {
           setCouponCode('');
         }, 1500);
         return;
       }
       // if No errors matched
-      setTimeout(() => {
-        dispatch(
-          openAlertModal({
-            title: 'Error',
-            description: objToArr[0],
-            isAlertModalOpen: true,
-          }),
-        );
-      }, 1500);
+      if (!avilableInLocalStorage) {
+        setTimeout(() => {
+          dispatch(
+            openAlertModal({
+              title: 'Error',
+              description: objToArr[0],
+              isAlertModalOpen: true,
+            }),
+          );
+        }, 1500);
+      }
       setTimeout(() => {
         setCouponCode('');
       }, 2500);
+      if (avilableInLocalStorage) {
+        removeCouponCodeHandler(avilableInLocalStorage);
+      }
     }
   };
 
-  const removeCouponCodeHandler = () => {
+  const removeCouponCodeHandler = (avilableInLocalStorage: boolean) => {
     localStorage.removeItem('discountCoupon');
     dispatch(
       updateCouponDetails({
@@ -313,13 +338,16 @@ const CartController: React.FC<_Props> = ({
         todo: 'REMOVE',
       }),
     );
-    dispatch(
-      openAlertModal({
-        title: 'Success',
-        description: 'Removed Coupon Successfully',
-        isAlertModalOpen: true,
-      }),
-    );
+
+    if (!avilableInLocalStorage) {
+      dispatch(
+        openAlertModal({
+          title: 'Success',
+          description: 'Removed Coupon Successfully',
+          isAlertModalOpen: true,
+        }),
+      );
+    }
   };
   const setCouponInLocalStorage = (couponCode: string) => {
     localStorage.setItem('discountCoupon', couponCode);

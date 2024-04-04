@@ -8,8 +8,6 @@ import CommonDropdown from './CommonDropdown';
 import FilterCapsules from './FilterCapsules';
 
 interface iProps {
-  facetsFoundInURl: boolean;
-  seName: string;
   checkedFilters: iSelectedFilter[];
   removeFilters: ({
     type,
@@ -24,6 +22,8 @@ interface iProps {
   applyAllFiltersAtOnce: () => void;
   //
   openfilterFacetName: string | null;
+  seName: string;
+  facetsFoundInURl: boolean;
   //
   toggleDropdown: (facetToOpen: string | null) => void;
   handleFilterCheckbox: (
@@ -38,8 +38,6 @@ interface iProps {
 
 const FIlterDropdownMobile: React.FC<iProps> = ({
   checkedFilters,
-  facetsFoundInURl,
-  seName,
   removeFilters,
   filterOptions,
   applyAllFiltersAtOnce,
@@ -48,6 +46,8 @@ const FIlterDropdownMobile: React.FC<iProps> = ({
   //
   toggleDropdown,
   handleFilterCheckbox,
+  seName,
+  facetsFoundInURl,
   //
   setDropDownValue,
 }) => {
@@ -70,11 +70,11 @@ const FIlterDropdownMobile: React.FC<iProps> = ({
         </div>
         <div className='mb-[40px]'>
           <FilterCapsules
-            seName={seName}
-            facetsFoundInURl={facetsFoundInURl}
             removeFilters={removeFilters}
             checkedFilters={checkedFilters}
             isMobile={true}
+            seName={seName}
+            facetsFoundInURl={facetsFoundInURl}
           />
         </div>
         <div className='w-full'>

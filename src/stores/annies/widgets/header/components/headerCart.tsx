@@ -64,7 +64,9 @@ const HeaderCart: React.FC<Props> = ({
   closeCart,
   cmsStoreThemeConfigsViewModel,
 }) => {
-  const { orderSubTotal } = useAppSelector((state) => state.cart);
+  const { orderSubTotal, orderTotal, couponDetails } = useAppSelector(
+    (state) => state.cart,
+  );
 
   const router = useRouter();
 
@@ -277,6 +279,15 @@ const HeaderCart: React.FC<Props> = ({
                     price={shippingCharge}
                   />
                 </div> */}
+                <div className='py-[15px] border-b border-b-gray-border flex flex-wrap justify-between items-center'>
+                  <div className='font-semibold text-default-text'>
+                    Discount:
+                  </div>
+                  <PriceLabel
+                    className='font-bold text-default-text'
+                    price={couponDetails.amount}
+                  />
+                </div>
                 <div className='py-[15px] flex flex-wrap justify-between items-center'>
                   <div className='font-semibold text-default-text'>
                     Estimated Shipping
@@ -295,13 +306,14 @@ const HeaderCart: React.FC<Props> = ({
                   </div>
                   <div className='font-bold text-default-text'>--</div>
                 </div>
+
                 <div className='py-[15px] flex flex-wrap justify-between items-center'>
                   <div className='font-bold text-medium-text'>
                     Estimated Order Total:
                   </div>
                   <PriceLabel
                     className='font-bold text-medium-text'
-                    price={orderSubTotal}
+                    price={orderTotal}
                   />
                 </div>
                 <div className='py-[15px] flex flex-wrap justify-between items-center mx-[-15px]'>
@@ -329,21 +341,23 @@ const HeaderCart: React.FC<Props> = ({
                     </button>
                   </div>
                 </div>
-                <div className='py-[15px]'>
-                  <div className='text-center'>
-                    <button
-                      onClick={closeCart}
-                      className='text-[14px] font-semibold text-[#273721] uppercase underline'
-                    >
-                      continue shopping
-                    </button>
-                  </div>
+              </div>
+              <div className='py-[15px]'>
+                <div className='text-center'>
+                  <button
+                    onClick={closeCart}
+                    className='text-[14px] font-semibold text-[#273721] uppercase underline'
+                  >
+                    continue shopping
+                  </button>
                 </div>
-                {suggestedItems.length > 0 && (
-                  <div className='font-sub font-bold text-normal-text py-[15px]'>
-                    You Might Also Like
-                  </div>
-                )}
+              </div>
+              {suggestedItems.length > 0 && (
+                <div className='font-sub font-bold text-normal-text py-[15px]'>
+                  You Might Also Like
+                </div>
+              )}
+              <div className='cart-carousel'>
                 {suggestedItems.length > 0 && (
                   <Slider
                     {...settings}
@@ -357,12 +371,6 @@ const HeaderCart: React.FC<Props> = ({
                       //     dots: true
                       //   }
                       // },
-                      {
-                        breakpoint: 600,
-                        settings: {
-                          slidesToShow: 2,
-                        },
-                      },
                       {
                         breakpoint: 480,
                         settings: {

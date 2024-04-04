@@ -102,7 +102,7 @@ const UpperHeader: React.FC<Props> = (Props) => {
       setSearchData([]);
     }
 
-    if ((searchQuery || '').length >= 2) {
+    if ((searchQuery || '').length >= 3) {
       getSearchData();
     }
   }, [debouncedValue]);
@@ -193,7 +193,7 @@ const UpperHeader: React.FC<Props> = (Props) => {
                   <CustomLink href={paths.orderFreeCatalog}>
                     <Image
                       isStatic={true}
-                      src={'/assets/images/annies-digital-catalog-top.svg'}
+                      src={'/assets/images/annies-header-digital-catalog.png'}
                       alt={'catalog_logo'}
                     />
                   </CustomLink>

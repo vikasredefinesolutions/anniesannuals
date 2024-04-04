@@ -45,8 +45,9 @@ const MultiSliderComponent = ({
   }`;
 
   let shopAllRedirectionLink;
-  if (
-    name === DynamicCategories.SHOP_BY_CATEGORY ||
+  if (name === DynamicCategories.SHOP_BY_CATEGORY) {
+    shopAllRedirectionLink = paths.productListingAtoZ;
+  } else if (
     name === DynamicCategories.SHOP_BY_FEATURES ||
     name === DynamicCategories.SHOP_BY_USES
   ) {

@@ -139,6 +139,11 @@ const CartItem: React.FC<_Props> = ({
                               )}
                             </div>
                           ))}
+                        {item.sku && (
+                          <div className='text-defult-text font-bold font-sub opacity-80'>
+                            {item.sku}
+                          </div>
+                        )}
                         {checkCommonName(item?.customFields) ? (
                           <CustomLink
                             href={`/${item.seName}.html`}
@@ -397,9 +402,9 @@ const CartItem: React.FC<_Props> = ({
                                             item.shoppingCartItemsId,
                                           )
                                         }
-                                        className='text-primary hover:text-primary-hover ml-[5px]'
+                                        className='text-primary hover:text-primary-hover'
                                       >
-                                        <span className='material-symbols-outlined mr-[5px] align-middle'>
+                                        <span className='material-icons-outlined mr-[5px] align-middle'>
                                           delete
                                         </span>
                                       </button>
@@ -444,7 +449,12 @@ const CartItem: React.FC<_Props> = ({
                         <div className='text-small-text mb-[12px]'>
                           {!item.isGiftcardProduct && (
                             <span className='text-[#9F2D3C]'>
-                              {`${preOrderText} ${date[1]}, ${date[3]}`}
+                              {`${preOrderText} ${date[1]}${
+                                item?.isPreOrder &&
+                                item?.futureInventoryShipDate != ''
+                                  ? ''
+                                  : ' ' + date?.[2]
+                              }, ${date[3]}`}
                             </span>
                           )}
                           {!isheadercart && (

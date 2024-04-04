@@ -40,7 +40,7 @@ const CartSummarry: React.FC<_CartSummaryProps> = ({
       <div className='flex justify-between items-center  pt-[15px]'>
         <span>{coupon}</span>
         <button
-          onClick={() => removeCouponCodeHandler()}
+          onClick={() => removeCouponCodeHandler(false)}
           className='btn btn-primary  uppercase !font-body !rounded-xs !py-[10px] md:py-0'
         >
           remove
@@ -165,7 +165,7 @@ const CartSummarry: React.FC<_CartSummaryProps> = ({
                   className='form-input mr-[10px]'
                 />
                 <button
-                  onClick={() => applyDiscountCouponHandler()}
+                  onClick={() => applyDiscountCouponHandler(false)}
                   className='btn btn-primary  uppercase !font-body !rounded-xs !py-[10px] md:py-0'
                 >
                   apply

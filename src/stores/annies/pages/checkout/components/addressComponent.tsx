@@ -57,6 +57,7 @@ const AddressComponent = () => {
             addAddressErrors,
             addAddressTouchedFields,
             addAddressRequestHandler,
+            errorMessage,
           }) => {
             return (
               <>
@@ -201,27 +202,35 @@ const AddressComponent = () => {
                             if (useBillingAddressForShipping) {
                               addressOnSubmit();
                             } else {
-                              shippingSubmitHandle(addressOnSubmit, () =>
-                                dispatch(
-                                  openAlertModal({
-                                    title: 'Error',
-                                    description:
-                                      'Something Went wrong in Shipping Form',
-                                    isAlertModalOpen: true,
-                                  }),
-                                ),
+                              shippingSubmitHandle(
+                                addressOnSubmit,
+                                (errors) => {
+                                  const errorMsg = errorMessage(errors, true);
+                                  if (errorMsg) {
+                                    dispatch(
+                                      openAlertModal({
+                                        title: 'Error',
+                                        description: errorMsg,
+                                        isAlertModalOpen: true,
+                                      }),
+                                    );
+                                  }
+                                },
                               )(e);
                             }
                           },
-                          () =>
-                            dispatch(
-                              openAlertModal({
-                                title: 'Error',
-                                description:
-                                  'Something Went Wrong in Billing Form',
-                                isAlertModalOpen: true,
-                              }),
-                            ),
+                          (errors) => {
+                            const errorMsg = errorMessage(errors, false);
+                            if (errorMsg) {
+                              dispatch(
+                                openAlertModal({
+                                  title: 'Error',
+                                  description: errorMsg,
+                                  isAlertModalOpen: true,
+                                }),
+                              );
+                            }
+                          },
                         )(e);
                       }}
                     >
@@ -897,7 +906,7 @@ const AddressComponent = () => {
                                             required={true}
                                             value={value}
                                             onChange={(e) => {
-                                              countryHandler(e, 'BILL');
+                                              countryHandler(e, 'SHIP');
                                             }}
                                             onBlur={onBlur}
                                             disabled={false}
@@ -1101,6 +1110,7 @@ const AddressComponent = () => {
                     countries={countries}
                     postalCodeHandler={postalCodeHandler}
                     countryHandler={countryHandler}
+                    errorMessage={errorMessage}
                     addAddressRequestHandler={addAddressRequestHandler}
                   />
                 )}

@@ -27,7 +27,7 @@ import {
   getTempUserId,
   getUserId,
 } from '@/shared/utils/cookie.helper';
-import { getLocation } from '@/utils/helpers';
+import { getLocation, updatedKeyName } from '@/utils/helpers';
 import { paths } from '@/utils/paths.constant';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useRouter } from 'next/navigation';
@@ -121,6 +121,7 @@ interface _CheckoutAddressReadyProps extends _AddAddressType {
   showRemoveModal: boolean;
   removeItems: () => void;
   removeMessage: string;
+  errorMessage: (errors: any, isShipping: boolean) => string;
 }
 
 export interface _AddAddressType {
@@ -365,7 +366,9 @@ const CheckoutAddressController: React.FC<_Props> = ({ cases }) => {
         id: 0,
         recStatus: 'A',
         rowVersion: '',
-        isDefault: Object.keys(existingShippingAddress || {})?.length ? false : true,
+        isDefault: Object.keys(existingShippingAddress || {})?.length
+          ? false
+          : true,
         addressType: UserAddressType.SHIPPINGADDRESS,
       },
     };
@@ -599,6 +602,10 @@ const CheckoutAddressController: React.FC<_Props> = ({ cases }) => {
           formik('city', res.cityName);
         }
 
+        if (res.countryName !== watch('countryName')) {
+          callStatesAPI(res.countryId, false, formik);
+        }
+
         // Country
         if (res.countryId && res.countryName) {
           formik('countryName', res.countryName);
@@ -610,9 +617,6 @@ const CheckoutAddressController: React.FC<_Props> = ({ cases }) => {
         if (res.stateName) {
           formik('state', res.stateName);
           //   formik.setFieldTouched('state', true);
-        }
-        if (res.countryName !== watch('countryName')) {
-          callStatesAPI(res.countryId, false, formik);
         }
       })
       .finally(() => dispatch(showLoader(false)));
@@ -722,19 +726,19 @@ const CheckoutAddressController: React.FC<_Props> = ({ cases }) => {
     const isExist =
       obj?.storeCustomerAddressModel?.addressType === 'S'
         ? shippingAddress?.find(
-          (e: any) =>
-            e.address1 === obj?.storeCustomerAddressModel?.address1 &&
-            e.city === obj?.storeCustomerAddressModel?.city &&
-            e.state === obj?.storeCustomerAddressModel?.state &&
-            e.postalCode === obj?.storeCustomerAddressModel?.postalCode,
-        )
+            (e: any) =>
+              e.address1 === obj?.storeCustomerAddressModel?.address1 &&
+              e.city === obj?.storeCustomerAddressModel?.city &&
+              e.state === obj?.storeCustomerAddressModel?.state &&
+              e.postalCode === obj?.storeCustomerAddressModel?.postalCode,
+          )
         : billingAddress?.find(
-          (e: any) =>
-            e.address1 === obj?.storeCustomerAddressModel?.address1 &&
-            e.city === obj?.storeCustomerAddressModel?.city &&
-            e.state === obj?.storeCustomerAddressModel?.state &&
-            e.postalCode === obj?.storeCustomerAddressModel?.postalCode,
-        );
+            (e: any) =>
+              e.address1 === obj?.storeCustomerAddressModel?.address1 &&
+              e.city === obj?.storeCustomerAddressModel?.city &&
+              e.state === obj?.storeCustomerAddressModel?.state &&
+              e.postalCode === obj?.storeCustomerAddressModel?.postalCode,
+          );
 
     if (isExist?.firstname) {
       dispatch(
@@ -828,20 +832,25 @@ const CheckoutAddressController: React.FC<_Props> = ({ cases }) => {
   ) => {
     let country = countries.find((item) => item.name === e.target.value);
     let formik: any;
+    let value: any;
     if (addressType === 'SHIP') {
       formik = setShippingValue;
+      value = shippingValues();
     } else if (addressType === 'BILL') {
       formik = setBillingValue;
+      value = billingValues();
     } else {
       formik = setAddAddressValue;
+      value = addAddressValues();
     }
     if (country) {
       formik('countryName', country.name);
       formik('countryCode', country.id);
 
-      if (country.name !== formik.values.countryName) {
-        callStatesAPI(country.id, true, formik);
+      if (country.name !== value.countryName) {
         formik('state', '');
+        callStatesAPI(country.id, true, formik);
+
         // formik.setFieldTouched('state', true);
       }
     } else {
@@ -871,7 +880,8 @@ const CheckoutAddressController: React.FC<_Props> = ({ cases }) => {
           `${response.length > 1 && index !== response.length - 1 ? ', ' : ''}`;
       });
       setRemoveMessage(
-        ` ${productNames} ${count > 1 ? 'are' : 'is'
+        ` ${productNames} ${
+          count > 1 ? 'are' : 'is'
         }  not available in your shipping State.\n Click Okay to remove from cart.\n Click Cancel to Change State.`,
       );
       setShowRemoveModal(true);
@@ -926,7 +936,7 @@ const CheckoutAddressController: React.FC<_Props> = ({ cases }) => {
       existingShippingAddress &&
       orderSubTotal &&
       isShippingChargeFetched.current !==
-      existingShippingAddress?.postalCode?.toString()
+        existingShippingAddress?.postalCode?.toString()
     ) {
       isShippingChargeFetched.current =
         existingShippingAddress?.postalCode?.toString() || '';
@@ -963,6 +973,20 @@ const CheckoutAddressController: React.FC<_Props> = ({ cases }) => {
     }
   }, [existingShippingAddress, orderSubTotal]);
 
+  const errorMessage = (formErrors: any, isShipping: boolean) => {
+    let errors: string[] = [];
+    for (const items in formErrors) {
+      errors.push(updatedKeyName(items));
+    }
+
+    let errorMessage = '';
+    if (errors?.length) {
+      errorMessage = `Please Add ${errors.join(', ')} in ${
+        isShipping ? 'Shipping' : 'Billing'
+      } Address`;
+    }
+    return errorMessage;
+  };
   return cases.ready({
     Controller,
     shippingErrors,
@@ -997,6 +1021,7 @@ const CheckoutAddressController: React.FC<_Props> = ({ cases }) => {
     addAddressErrors,
     addAddressTouchedFields,
     addAddressRequestHandler,
+    errorMessage,
   });
 };
 

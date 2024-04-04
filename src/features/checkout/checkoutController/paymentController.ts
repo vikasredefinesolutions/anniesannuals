@@ -121,8 +121,7 @@ const CheckoutPaymentController: React.FC<_Props> = ({ cases }) => {
     storeCredits,
     usedStoreCredits,
     giftCardAmount,
-    giftCardBalance
-
+    giftCardBalance,
   } = useAppSelector((state) => state.checkout.payment);
 
   const userId = getUserId();
@@ -433,7 +432,7 @@ const CheckoutPaymentController: React.FC<_Props> = ({ cases }) => {
           value: {
             usedGiftAmount:
               orderTotal - giftCardAmount - usedStoreCredits >
-                giftCardWalletBalance
+              giftCardWalletBalance
                 ? giftCardWalletBalance
                 : orderTotal - giftCardAmount - usedStoreCredits,
             useGiftWallet: value,
@@ -460,12 +459,11 @@ const CheckoutPaymentController: React.FC<_Props> = ({ cases }) => {
           method: 'USE_STORE_CREDITS',
           value: {
             usedStoreCreditAmount:
-              orderTotal + tax - giftCardAmount >
-                storeCredits
+              orderTotal + tax - giftCardAmount > storeCredits
                 ? storeCredits
-                : orderTotal + tax - giftCardAmount,
+                : +(orderTotal + tax - giftCardAmount).toFixed(2),
             useStoreCredit: value,
-            orderTotal: orderTotal + tax
+            orderTotal: orderTotal + tax,
           },
         }),
       );
@@ -476,7 +474,7 @@ const CheckoutPaymentController: React.FC<_Props> = ({ cases }) => {
           value: {
             usedStoreCreditAmount: 0,
             useStoreCredit: value,
-            orderTotal: orderTotal + tax
+            orderTotal: orderTotal + tax,
           },
         }),
       );
@@ -505,9 +503,8 @@ const CheckoutPaymentController: React.FC<_Props> = ({ cases }) => {
   };
 
   useEffect(() => {
-    setBalance(giftCardBalance)
-  }, [giftCardBalance])
-
+    setBalance(giftCardBalance);
+  }, [giftCardBalance]);
 
   const applyGiftCardDiscount = async () => {
     dispatch(showLoader(true));
@@ -523,9 +520,7 @@ const CheckoutPaymentController: React.FC<_Props> = ({ cases }) => {
       };
 
       const response = await applyGiftCard(payload);
-      const subTotal = orderTotal -
-        usedStoreCredits +
-        tax
+      const subTotal = orderTotal - usedStoreCredits + tax;
 
       if (response.giftCardAmount > subTotal) {
         setBalance(response.giftCardAmount - subTotal);
@@ -540,9 +535,12 @@ const CheckoutPaymentController: React.FC<_Props> = ({ cases }) => {
             totalAmount: response.giftCardAmount,
             giftCardAmount:
               response.giftCardAmount > subTotal
-                ? subTotal
-                : response.giftCardAmount,
-            giftCardBalance: response.giftCardAmount > subTotal ? response.giftCardAmount - subTotal : 0,
+                ? +subTotal.toFixed(2)
+                : +response.giftCardAmount.toFixed(2),
+            giftCardBalance:
+              response.giftCardAmount > subTotal
+                ? +(response.giftCardAmount - subTotal).toFixed(2)
+                : 0,
             giftCardNumber: giftCardValue,
           },
         }),

@@ -110,7 +110,7 @@ const ContactUs: React.FC = () => {
                                   (888) 266-4370
                                 </span>{' '}
                                 <span className='text-small-text text-[#ffffff]'>
-                                  Customer Service &amp; Phone orders: 8am - 4pm
+                                   Customer Service &amp; Phone orders: 8am - 4pm
                                   PST, MON-FRI
                                 </span>
                               </div>

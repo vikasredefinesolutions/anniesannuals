@@ -7,6 +7,7 @@ import WishlistIcon from '@/stores/annies/shared/components/wishListIcon';
 import React from 'react';
 import InnerImageZoom from 'react-inner-image-zoom';
 import 'react-inner-image-zoom/lib/InnerImageZoom/styles.min.css';
+import ShareIcons from '../../Home/components/SocialShare/index';
 
 interface IProps {
   selectedColor: IProductColor | null;
@@ -235,6 +236,9 @@ const ProductImg: React.FC<IProps> = ({ selectedColor, product }) => {
                             {PhotoCredit}
                           </div>
                         )}
+                      </div>
+                      <div className='mt-2'>
+                        <ShareIcons mediaURL={selectedImage.imageUrl} />
                       </div>
                     </div>
                   </>

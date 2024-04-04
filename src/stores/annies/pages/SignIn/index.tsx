@@ -1,10 +1,10 @@
 'use client';
+import CheckBox from '@/components/common/checkbox';
+import Input from '@/components/common/input';
 import CustomLink from '@/shared/Components/CustomLink';
+import { paths } from '@/utils/paths.constant';
 import React from 'react';
 import LoginModelController from '../../../../features/user/userLogin/controller';
-import Input from '@/components/common/input';
-import CheckBox from '@/components/common/checkbox';
-import { paths } from '@/utils/paths.constant';
 
 const SignInPage: React.FC = () => {
   return (
@@ -23,6 +23,8 @@ const SignInPage: React.FC = () => {
             onSubmit,
             Controller,
             control,
+            showPassword,
+            setShowPassword,
           }) => {
             return (
               <>
@@ -68,7 +70,7 @@ const SignInPage: React.FC = () => {
                                 </div>
                                 <div className='relative mb-[10px]'>
                                   <Input
-                                    type='password'
+                                    type={showPassword ? 'text' : 'password'}
                                     name='password'
                                     rootClassName='mb-4'
                                     label='Password'
@@ -76,6 +78,17 @@ const SignInPage: React.FC = () => {
                                     placeholder='Enter your Password'
                                     error={errors?.password?.message}
                                   />
+                                  <div className='absolute top-1/2 translate-y-1/2 mt-[0] right-2'>
+                                    <button
+                                      className='border-b border-b-primary hover:border-0 text-small-text cursor-pointer'
+                                      onClick={(e) => {
+                                        e.preventDefault();
+                                        setShowPassword(!showPassword);
+                                      }}
+                                    >
+                                      Show
+                                    </button>
+                                  </div>
                                 </div>
                                 <div className='flex justify-between items-center pb-[20px]'>
                                   <div className='mb-[10px] flex items-center gap-1 test-default-text !font-[600]'>

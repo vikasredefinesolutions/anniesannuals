@@ -33,8 +33,11 @@ import {
   shippingFields,
 } from './config';
 export interface _CartSummaryProps {
-  applyDiscountCouponHandler: (discountCoupon?: string) => void;
-  removeCouponCodeHandler: () => void;
+  applyDiscountCouponHandler: (
+    avilableInLocalStorage: boolean,
+    discountCoupon?: string,
+  ) => void;
+  removeCouponCodeHandler: (avilableInLocalStorage: boolean) => void;
   couponChangeHandler: (couponName: string) => void;
   coupon: string;
   couponCode: string;
@@ -84,7 +87,8 @@ const CheckoutSummaryController: React.FC<_Props> = ({ cases }) => {
     (state) => state.employee,
   );
 
-  const { clear_Checkout, updateAppliedGiftCardAmount } = checkoutActions;
+  const { clear_Checkout, updateAppliedGiftCardAmount, update_PaymentDetails } =
+    checkoutActions;
 
   const discount = {
     coupon: coupon,
@@ -98,15 +102,23 @@ const CheckoutSummaryController: React.FC<_Props> = ({ cases }) => {
     (state) => state.checkout.address,
   );
 
-  const { usedStoreCredits, usedGiftCardWalletBalance, } = useAppSelector(
-    (state) => state.checkout.payment,
-  );
+  const {
+    usedStoreCredits,
+    usedGiftCardWalletBalance,
+    useStoreCredit,
+    giftCardAmount,
+    giftCardBalance,
+    storeCredits,
+    totalGiftAmount,
+    checkoutPaymentSaved,
+  } = useAppSelector((state) => state.checkout.payment);
 
   const { giftMessage, sendAsGift } = useAppSelector(
     (state) => state.checkout.shippingMethod,
   );
 
-  const { selectedShipping, couponDetails, totalShippingCost, shippingList } = useAppSelector((state) => state.cart);
+  const { selectedShipping, couponDetails, totalShippingCost, shippingList } =
+    useAppSelector((state) => state.cart);
   const { orderSubTotal, orderTotal, tax, cartData } = useAppSelector(
     (state) => state.cart,
   );
@@ -241,10 +253,12 @@ const CheckoutSummaryController: React.FC<_Props> = ({ cases }) => {
     orderType: OrderType,
     payPalResponse?: any,
   ) => {
-    const calculatedOrderTotal = orderTotal -
+    const calculatedOrderTotal =
+      orderTotal -
       payment.giftCardAmount -
       usedStoreCredits -
-      usedGiftCardWalletBalance + tax
+      usedGiftCardWalletBalance +
+      tax;
 
     const payload = {
       id: 0,
@@ -258,7 +272,9 @@ const CheckoutSummaryController: React.FC<_Props> = ({ cases }) => {
 
       // Shipping
       shippingEmail: shipping?.email || '',
-      shippingMethod: getConcatinatedValue(shippingList?.map(item => item.name)),
+      shippingMethod: getConcatinatedValue(
+        shippingList?.map((item) => item.name),
+      ),
       ...shippingFields(shipping, useBillingAddressForShipping),
 
       // Billing
@@ -280,7 +296,8 @@ const CheckoutSummaryController: React.FC<_Props> = ({ cases }) => {
       orderSubtotal: +orderSubTotal.toFixed(2),
       orderShippingCosts: +totalShippingCost.toFixed(2),
       orderTax: +tax.toFixed(2),
-      orderTotal: calculatedOrderTotal > 0 ? +calculatedOrderTotal.toFixed(2) : 0,
+      orderTotal:
+        calculatedOrderTotal > 0 ? +calculatedOrderTotal.toFixed(2) : 0,
 
       // credit
       storeCredit: usedStoreCredits,
@@ -338,8 +355,8 @@ const CheckoutSummaryController: React.FC<_Props> = ({ cases }) => {
       authorizationCode: '',
       authorizationResult: '',
       transactionCommand: payPalResponse
-        ? payPalResponse?.purchase_units?.[0]?.payments?.captures?.[0]?.status ===
-          'PENDING'
+        ? payPalResponse?.purchase_units?.[0]?.payments?.captures?.[0]
+            ?.status === 'PENDING'
           ? payPalResponse?.links?.[0]?.href
           : payPalResponse?.links?.[0]?.href
         : '',
@@ -441,7 +458,7 @@ const CheckoutSummaryController: React.FC<_Props> = ({ cases }) => {
       );
       const discountCoupon = localStorage.getItem('discountCoupon');
       if (discountCoupon) {
-        applyDiscountCouponHandler(discountCoupon);
+        applyDiscountCouponHandler(true, discountCoupon);
       }
     } catch (error) {
       dispatch(
@@ -454,15 +471,18 @@ const CheckoutSummaryController: React.FC<_Props> = ({ cases }) => {
     }
   };
 
-  const applyDiscountCouponHandler = async (discountCoupon?: string) => {
+  const applyDiscountCouponHandler = async (
+    avilableInLocalStorage: boolean,
+    discountCoupon?: string,
+  ) => {
     dispatch(showLoader(true));
     const couponObject = {
       promotionsModel: {
         customerId: +userId || +tempId,
         couponCode: discountCoupon || couponCode,
         storeId: storeId, // need to make it dynamic
-        taxCost: 0,
-        shippingCost: 0,
+        taxCost: tax,
+        shippingCost: totalShippingCost,
       },
     };
 
@@ -471,30 +491,27 @@ const CheckoutSummaryController: React.FC<_Props> = ({ cases }) => {
         if ('discountAmount' in res) {
           setCouponInLocalStorage(res.couponCode);
 
-          handleIfCouponIsValid(res);
+          handleIfCouponIsValid(res, avilableInLocalStorage);
           return;
         }
-        handleIfCouponIsNotValid(res);
+        handleIfCouponIsNotValid(res, avilableInLocalStorage);
       })
-      .catch((errors) => handleIfCouponIsNotValid(errors))
+      .catch((errors) =>
+        handleIfCouponIsNotValid(errors, avilableInLocalStorage),
+      )
       .finally(() => dispatch(showLoader(false)));
   };
-
-  const handleIfCouponIsValid = (details: {
-    couponCode: string;
-    percentage: string;
-    discountAmount: string;
-    isFreeShipping: boolean;
-    taxCost: string;
-    shiipingCost: string;
-  }) => {
-    dispatch(
-      openAlertModal({
-        title: 'Success',
-        description: 'PromoCode applied successfully',
-        isAlertModalOpen: true,
-      }),
-    );
+  const handleIfCouponIsValid = (
+    details: {
+      couponCode: string;
+      percentage: string;
+      discountAmount: string;
+      isFreeShipping: boolean;
+      taxCost: string;
+      shiipingCost: string;
+    },
+    avilableInLocalStorage: boolean,
+  ) => {
     dispatch(
       updateCouponDetails({
         coupon: details.couponCode,
@@ -503,35 +520,133 @@ const CheckoutSummaryController: React.FC<_Props> = ({ cases }) => {
         todo: 'ADD',
       }),
     );
+    if (!avilableInLocalStorage) {
+      dispatch(
+        openAlertModal({
+          title: 'Success',
+          description: 'Coupon Applied Successfully',
+          isAlertModalOpen: true,
+        }),
+      );
+    }
+
+    let total =
+      orderTotal -
+      payment.giftCardAmount -
+      usedStoreCredits -
+      usedGiftCardWalletBalance +
+      tax;
+
+    if (+details.discountAmount > total && usedStoreCredits) {
+      dispatch(
+        update_PaymentDetails({
+          method: 'UPDATE_STORE_CREDIT_BALANCE',
+          value: {
+            usedStoreCredits:
+              usedStoreCredits > +details.discountAmount
+                ? usedStoreCredits - (parseInt(details.discountAmount) - total)
+                : 0,
+          },
+        }),
+      );
+    }
+
     setCouponCode('');
   };
 
-  const handleIfCouponIsNotValid = (errors: { [key: string]: string }) => {
+  const handleIfCouponIsNotValid = (
+    errors: { [key: string]: string },
+    avilableInLocalStorage: boolean,
+  ) => {
     if (errors) {
       const objToArr = Object?.values(errors);
       if (objToArr.length === 0) return;
       // cart_promoCode('REMOVE_PROMO_CODE');
 
       if ('promotionsModel.CustomerId' in errors) {
-        setCouponCode(objToArr[0]);
+        if (!avilableInLocalStorage) {
+          dispatch(
+            openAlertModal({
+              title: 'Error',
+              description: objToArr[0],
+              isAlertModalOpen: true,
+            }),
+          );
+        }
+
         setTimeout(() => {
           setCouponCode('');
         }, 1500);
         return;
       }
       // if No errors matched
-      setTimeout(() => {
-        setCouponCode(objToArr[0]);
-      }, 1500);
+      if (!avilableInLocalStorage) {
+        setTimeout(() => {
+          dispatch(
+            openAlertModal({
+              title: 'Error',
+              description: objToArr[0],
+              isAlertModalOpen: true,
+            }),
+          );
+        }, 1500);
+      }
       setTimeout(() => {
         setCouponCode('');
       }, 2500);
+      if (avilableInLocalStorage) {
+        removeCouponCodeHandler(avilableInLocalStorage);
+      }
     }
   };
 
-  const removeCouponCodeHandler = () => {
+  const removeCouponCodeHandler = (avilableInLocalStorage: boolean) => {
+    let remainingBalance = +couponDetails.amount;
+    if (giftCardAmount && giftCardBalance > 0) {
+      remainingBalance =
+        giftCardBalance > +couponDetails.amount
+          ? 0
+          : +couponDetails.amount - giftCardBalance;
+
+      dispatch(
+        update_PaymentDetails({
+          method: 'UPDATE_GIFT_CARD_BALANCE',
+          value: {
+            giftCardAmount:
+              remainingBalance > 0 ? totalGiftAmount : giftCardBalance,
+            giftCardBalance:
+              remainingBalance > 0
+                ? 0
+                : giftCardBalance - +couponDetails.amount,
+          },
+        }),
+      );
+    }
+
+    if (
+      useStoreCredit &&
+      remainingBalance > 0 &&
+      storeCredits - usedStoreCredits > 0
+    ) {
+      let remainingCredits = storeCredits - usedStoreCredits;
+      remainingBalance =
+        remainingCredits > +couponDetails.amount
+          ? 0
+          : +couponDetails.amount - remainingCredits;
+      dispatch(
+        update_PaymentDetails({
+          method: 'UPDATE_STORE_CREDIT_BALANCE',
+          value: {
+            usedStoreCredits:
+              remainingBalance > 0
+                ? storeCredits
+                : usedStoreCredits + +couponDetails.amount,
+          },
+        }),
+      );
+    }
+
     localStorage.removeItem('discountCoupon');
-    dispatch(updateAppliedGiftCardAmount(+couponDetails?.amount))
     dispatch(
       updateCouponDetails({
         coupon: '',
@@ -540,6 +655,16 @@ const CheckoutSummaryController: React.FC<_Props> = ({ cases }) => {
         todo: 'REMOVE',
       }),
     );
+
+    if (!avilableInLocalStorage) {
+      dispatch(
+        openAlertModal({
+          title: 'Success',
+          description: 'Removed Coupon Successfully',
+          isAlertModalOpen: true,
+        }),
+      );
+    }
   };
   const setCouponInLocalStorage = (couponCode: string) => {
     localStorage.setItem('discountCoupon', couponCode);
@@ -551,7 +676,25 @@ const CheckoutSummaryController: React.FC<_Props> = ({ cases }) => {
 
   useEffect(() => {
     calculateSummary(cartData);
-  }, [selectedShipping.price, totalShippingCost]);
+  }, [selectedShipping.price, totalShippingCost, shipping?.postalCode]);
+
+  useEffect(() => {
+    let total =
+      orderTotal -
+      payment.giftCardAmount -
+      usedStoreCredits -
+      usedGiftCardWalletBalance +
+      tax;
+
+    if (total > 0 && checkoutPaymentSaved) {
+      dispatch(
+        update_PaymentDetails({
+          method: 'CHECKOUT_PAYMENT_SAVED',
+          value: false,
+        }),
+      );
+    }
+  }, [orderTotal]);
 
   return cases.ready({
     cartData,

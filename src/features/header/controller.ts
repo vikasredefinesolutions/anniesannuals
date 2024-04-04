@@ -26,7 +26,6 @@ import {
 } from 'cookies-next';
 import { usePathname, useRouter } from 'next/navigation';
 import { ReactElement, useEffect } from 'react';
-import EmployeeController from '../employeeController/controller';
 
 interface _FooterHelper {
   orderTotal: number;
@@ -42,7 +41,6 @@ type _Props = {
 };
 
 const HeaderController: React.FC<_Props> = ({ cases }) => {
-  EmployeeController();
   const urlPathName = usePathname();
   let userId = getCookie(USER_ID);
   const dispatch = useAppDispatch();

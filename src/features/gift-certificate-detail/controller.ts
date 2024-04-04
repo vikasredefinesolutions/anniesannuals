@@ -191,19 +191,19 @@ const GiftCertificateDetailsController: React.FC<_GiftCardDetailsProps> = ({
       },
     };
     try {
-      // if (userId) {
-      await addGiftCardToCart(payload);
-      openModel();
-      // } else {
-      //   dispatch(
-      //     openAlertModal({
-      //       title: 'Error',
-      //       description: ' Please login to Purchase gift card',
-      //       isAlertModalOpen: true,
-      //     }),
-      //   );
-      // }
-      // reset();
+      if (userId) {
+        await addGiftCardToCart(payload);
+        openModel();
+      } else {
+        dispatch(
+          openAlertModal({
+            title: 'Error',
+            description: ' Please login to Purchase gift card',
+            isAlertModalOpen: true,
+          }),
+        );
+      }
+      reset();
     } catch (error: any) {
       dispatch(
         openAlertModal({

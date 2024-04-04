@@ -54,7 +54,7 @@ const GardenProductInfo: React.FC<IProps> = ({
 
   useEffect(() => {
     const data12 = product?.storeProductDetailsViewModels.map((product) => {
-      if (product.quantity == 0) {
+      if (product.quantity == 0 || product?.inventory == 0) {
         setIsShopGardenDisable(true);
       }
       return {
@@ -241,18 +241,26 @@ const GardenProductInfo: React.FC<IProps> = ({
                         },
                       }}
                     />
-
                     <div className='col-span-12 lg:col-span-6'>
                       <div className='pl-0 lg:pl-[70px]'>
                         <div className='font-sub font-bold text-2xl-text'>
                           {product?.categoryModels[0].categoryName}
                         </div>
                         <div className='text-small-text font-semibold   mt-[15px]'>
-                          {!isShopGardenDisable && (
+                          {
                             <button
-                              disabled={!qunatityHandler}
+                              disabled={
+                                isShopGardenDisable == false
+                                  ? !qunatityHandler
+                                  : isShopGardenDisable
+                              }
                               className='w-full bg-primary text-white font-extrabold uppercase rounded-xs px-[30px] py-[15px] cursor-pointer'
-                              style={{ opacity: !qunatityHandler ? 0.8 : 1 }}
+                              style={{
+                                opacity:
+                                  !qunatityHandler || isShopGardenDisable
+                                    ? 0.8
+                                    : 1,
+                              }}
                               onClick={() => {
                                 addGardenToCart(
                                   product?.categoryModels[0],
@@ -266,7 +274,7 @@ const GardenProductInfo: React.FC<IProps> = ({
                                 product?.msrp || 0,
                               )}`}
                             </button>
-                          )}
+                          }
                         </div>
                         <div className='mainsection'>
                           {product?.storeProductDetailsViewModels.map(

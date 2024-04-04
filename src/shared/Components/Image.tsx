@@ -34,6 +34,7 @@ interface IProps {
   alt: string;
   title?: string;
   mediaType?: MediaUrlType;
+  isCdnUrlAdded?: boolean;
 }
 const Image: React.FC<IProps> = ({
   isStatic = false,
@@ -44,6 +45,7 @@ const Image: React.FC<IProps> = ({
   width,
   title,
   mediaType,
+  isCdnUrlAdded = false,
 }) => {
   if (isStatic) {
     return (
@@ -57,13 +59,20 @@ const Image: React.FC<IProps> = ({
       />
     );
   }
-
+  const updatedMediaUrl = isCdnUrlAdded
+    ? process.env.NEXT_PUBLIC_CDN_IMAGE != undefined &&
+      process.env.NEXT_PUBLIC_CDN_IMAGE != ''
+      ? process.env.NEXT_PUBLIC_CDN_IMAGE + mediaBaseUrl
+      : mediaBaseUrl
+    : mediaBaseUrl;
   if (!mediaType)
     return (
       <img
-        src={`${mediaBaseUrl}${src}`}
+        src={`${updatedMediaUrl}${src}`}
         alt={alt}
         title={title}
+        height={height}
+        width={width}
         className={className}
       />
     );

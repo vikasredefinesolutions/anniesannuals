@@ -42,6 +42,10 @@ const ProductDetail: React.FC<IProps> = ({
   cmsStoreThemeConfigsViewModel,
 }) => {
   useEffect(() => {
+    const itemListName =
+      breadCrumbs?.length > 0
+        ? breadCrumbs?.[breadCrumbs?.length - 1]?.name
+        : '';
     const userId = getUserId();
     const gtmPayload = {
       storeId: storeId,
@@ -57,7 +61,7 @@ const ProductDetail: React.FC<IProps> = ({
       sku: product?.sku,
       brandName: product?.brandName || 'Annies',
       quantity: product?.quantity,
-      itemListName: breadCrumbs?.length > 1 ? breadCrumbs?.pop()?.name : '',
+      itemListName: itemListName,
       itemListId: '',
       ...generateGA4ProductCategories(product?.filterFacetFields || []),
     };

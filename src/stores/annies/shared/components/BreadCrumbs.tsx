@@ -14,8 +14,10 @@ const BreadCrumbs: React.FC<IBreadCrumbProps> = ({
   useEffect(() => {
     if (breadCrumbsData.length == 0) {
       getStaticbreadCrumbs();
+    } else {
+      setBreadCrumbs(breadCrumbsData);
     }
-  }, []);
+  }, [breadCrumbsData?.length]);
 
   const getStaticbreadCrumbs = () => {
     __SpecialBreadCrumbsPaths.forEach((item) => {
@@ -33,7 +35,10 @@ const BreadCrumbs: React.FC<IBreadCrumbProps> = ({
   return (
     <>
       {breadCrumbs && breadCrumbs.length > 0 && (
-        <section className={bgColor ? bgColor : 'bg-tertiary'} id={'breadcrumbs_'}>
+        <section
+          className={bgColor ? bgColor : 'bg-tertiary'}
+          id={'breadcrumbs'}
+        >
           <div className="bg-[url('./images/results-section-bottom-floral.png')] bg-bottom bg-contain bg-no-repeat">
             <div className='container mx-auto relative'>
               <div className='pt-[30px] pb-[10px]'>

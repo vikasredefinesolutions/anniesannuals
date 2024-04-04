@@ -39,8 +39,15 @@ import {
 } from '@/helper/staticfile.helper';
 import { serverLocalState } from '@/serverLocalState';
 import { getUserId } from '@/shared/utils/cookie.helper';
+import { STATIC_URLS } from '@/shared/utils/helper';
 import storeDetails from '@/staticData/storeDetails.json';
 import Home2 from '@/stores/annies/pages/Home';
+import {
+  extractFacetsAndFilters,
+  formatFilter,
+  pagination,
+  productListForMozarchy,
+} from '@/stores/annies/pages/productsListing/client';
 import { IBreadCrumbsData } from '@/stores/annies/shared/components/breadCrumbstype';
 import { SubCategoryList } from '@/types/header';
 import { getLocation } from '@/utils/helpers';
@@ -50,12 +57,9 @@ import { cookies } from 'next/headers';
 import {
   FilterFacetField,
   breadCrumbsData,
-  extractFacetsAndFilters,
   extractSlugName,
-  formatFilter,
+  getZone,
   iSelectedFilter,
-  pagination,
-  productListForMozarchy,
   productListingPromise,
 } from './slug.helper';
 export interface IProductListProps {
@@ -66,12 +70,13 @@ export interface IProductListProps {
     jumpBy: number;
     sortBy: SORT;
   };
-  facetsFoundInURl: boolean;
+  predefinedFacetFilterUrl: string | null;
   selectedFilters: iSelectedFilter[];
   cmsData: any;
   filterOptions: FilterFacetField[] | [];
   isSubcategory: boolean;
   seName: string;
+  facetsFoundInURl: boolean;
   cmsStoreThemeConfigsViewModel: tStoreDetailsFile['cmsStoreThemeConfigsViewModel'];
   childCategoryViewModels: {
     id: number;
@@ -80,6 +85,7 @@ export interface IProductListProps {
     categoryImageList: [];
     categoryCustomFields: [];
   }[];
+  pageId: number;
   headerSubMenu: SubCategoryList;
   googleTagManagerResponseCommonData: Record<string, any>;
   bannerData: any;
@@ -173,6 +179,8 @@ export default async function DynamicPages({
     page = '',
     ignorezone = 'false',
     igff = 'off',
+    facets: queryFacets = '',
+    filters: queryFilters = '',
   },
 }: {
   params: { slug: string[] };
@@ -181,6 +189,8 @@ export default async function DynamicPages({
     page: string;
     ignorezone?: 'true' | 'false';
     igff: 'on' | 'off';
+    facets: string;
+    filters: string;
   };
 }): Promise<JSX.Element> {
   const { storeId, cmsStoreThemeConfigsViewModel } =
@@ -199,7 +209,9 @@ export default async function DynamicPages({
   //Getting dynamic page-meta-data from slug
   const pageMetaData = await fetchPageType({
     storeId: storeId,
-    slug: mainSlug,
+    slug: STATIC_URLS.has(mainSlug)
+      ? `${mainSlug}.html`
+      : decodeURIComponent(mainSlug),
   });
 
   if (pageMetaData.type == '301') {
@@ -276,10 +288,11 @@ export default async function DynamicPages({
     let isSubcategory = pageMetaData.id == adminConfigs?.gardenID; // for plant-finder & searchPage isSubcategory will always stay false;
     //
     const { filterFacets, filtersChips } = extractFacetsAndFilters({
-      encodedFacets: otherParams && otherParams[0],
-      encodedFilters: otherParams && otherParams[1],
+      encodedFacets: queryFacets,
+      encodedFilters: queryFilters,
       ignoreZone: ignorezone === 'true',
       filterFacetUrl: pageMetaData?.facetFilterUrl || null,
+      zoneFromCookie: getZone(),
     });
 
     const { startIndex, endIndex, sortBy, currentPage, itemsPerPage } =
@@ -319,11 +332,13 @@ export default async function DynamicPages({
           currentPage: currentPage,
           sortBy: sortBy,
         }}
+        facetsFoundInURl={!!(queryFacets.length > 0)}
+        predefinedFacetFilterUrl={pageMetaData?.facetFilterUrl || null}
+        pageId={pageMetaData.id}
         selectedFilters={selectedFilters}
         filterOptions={products.storeFilterFacetFieldsViewModel}
         childCategoryViewModels={products.childCategoryViewModels}
         isSubcategory={isSubcategory}
-        facetsFoundInURl={!!(otherParams && otherParams[0].length > 0)}
         seName={sename}
         headerSubMenu={headerSubMenu}
         googleTagManagerResponseCommonData={

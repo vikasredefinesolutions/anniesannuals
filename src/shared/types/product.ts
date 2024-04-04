@@ -327,7 +327,7 @@ export interface IShopBGardenProductDetailPayload {
 }
 
 export interface IShopBGardenProductDetail {
-  storeProductDetailsViewModels: Array<IProductDetails>;
+  storeProductDetailsViewModels: Array<IProductDetails & { inventory: number }>;
   msrp: number;
   salePrice: number;
   categoryModels: Array<ICategoryModels>;

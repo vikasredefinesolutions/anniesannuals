@@ -47,25 +47,20 @@ function FilterCapsules({
 
   const extractFiltersFromLocalStorage = () => {
     const string = localStorage.getItem(LISTING_APPLIED_FILTERS);
-
     if (!string) return;
     const filtersWithSeName = JSON.parse(string) as {
       filters: iSelectedFilter[];
       seName: string;
     };
-
     if (filtersWithSeName.seName !== seName) return;
-
     setLocallyStoredFilters(filtersWithSeName.filters);
   };
-
   useEffect(() => {
     if (!checkedFilters || checkedFilters.length === 0) {
       if (!facetsFoundInURl) return;
       extractFiltersFromLocalStorage();
       return;
     }
-
     setLocallyStoredFilters(checkedFilters);
   }, [checkedFilters]);
 

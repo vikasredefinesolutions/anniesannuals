@@ -5,17 +5,20 @@ import Image from '@/shared/Components/Image';
 import Loader from '@/shared/Components/Loader';
 import PriceLabel from '@/shared/Components/PriceLabel';
 import { getUserId } from '@/shared/utils/cookie.helper';
+import { paths } from '@/utils/paths.constant';
 import dayjs from 'dayjs';
 import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 import SideLayout from '../../shared/components/myAccountLayout';
 const OrderHistory = () => {
   const userId = getUserId();
   const router = useRouter();
 
-  if (!userId) {
-    router.push('sign-in.html');
-    return;
-  }
+  useEffect(() => {
+    if (!userId) {
+      router.push(paths.login);
+    }
+  }, [userId]);
 
   return (
     <>

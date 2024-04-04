@@ -46,7 +46,12 @@ const SortFilter: React.FC<iProps> = ({
 }) => {
   const ignoreZoneFromQueryParams =
     useSearchParams().get('ignorezone') === 'true';
+  const searchParams = useSearchParams();
+  const facetsFromQuery = useSearchParams().get('facets');
+  const filtersFromQuery = useSearchParams().get('filters');
+
   const [open, setOpen] = useState(false);
+
   const [selected, setSelected] = useState(
     SortingMethod.find((e) => Number(sortedBy) === e.type) || SortingMethod[0],
   );
@@ -60,12 +65,22 @@ const SortFilter: React.FC<iProps> = ({
 
   const handleItemClick = (option: { name: string; type: number }) => {
     setLoading(true);
-    const query = `?sort=${option.type}&page=${Number(
-      currentPage,
-    )}&ignorezone=${ignoreZoneFromQueryParams}`;
     setSelected(option);
     setOpen(false);
-    router.push(query);
+    // updateSort(option.type);
+
+    const facets = facetsFromQuery ? `&facets=${facetsFromQuery}` : '';
+    const filters = filtersFromQuery ? `&filters=${filtersFromQuery}` : '';
+
+    /*  to undo route based filtering */
+    const query =
+      `?sort=${option.type}&page=${Number(
+        currentPage,
+      )}&ignorezone=${ignoreZoneFromQueryParams}` +
+      facets +
+      filters;
+
+    router.push(query, { scroll: false });
   };
 
   useEffect(() => {

@@ -19,7 +19,7 @@ const ShareIcons: React.FC<_Props> = ({ mediaURL }) => {
   // WORK TODO: add image and URL
   const pinterestImagePath = '';
 
-  const url = `https://${process.env.NEXT_PUBLIC_API_URL}`;
+  const url = process.env.NEXT_PUBLIC_API_URL || '';
   const text = 'Spordle Page BETA';
   return (
     <div

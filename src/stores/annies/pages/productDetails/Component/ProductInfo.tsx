@@ -51,6 +51,7 @@ const ProductInfo: React.FC<IProps> = ({
   // const genusSpeciesName = product?.customFields.filter(
   //   (el) => el.label == 'GENUS SPECIES NAME',
   // )[0]?.value;
+
   let CommonName: string;
   let CultivarName: string;
   let prefferedCommonName: string;
@@ -64,7 +65,6 @@ const ProductInfo: React.FC<IProps> = ({
   });
   const isGiftProduct =
     plantType != '' && plantType.toLocaleLowerCase().includes('gifts');
-
   product?.customFields?.map((el) => {
     if (el.label.toUpperCase() == 'COMMON NAME') {
       CommonName = el.value;
@@ -82,8 +82,10 @@ const ProductInfo: React.FC<IProps> = ({
       RestrictState = el.value;
     }
   });
+
   const router = useRouter();
   const userId = getUserId();
+
   const shippingDate = new Date(product?.shippingDate!)
     .toDateString()
     .split(' ');
@@ -152,6 +154,85 @@ const ProductInfo: React.FC<IProps> = ({
               <BreadCrumbs breadCrumbs={breadCrumbs} />
               <section className='bg-tertiary'>
                 <div className='container mx-auto'>
+                  <h1 className='text-2xl-text font-bold font-sub block lg:hidden pb-[10px]'>
+                    {product?.name}
+                  </h1>
+                  {(CultivarName || CommonName) && (
+                    <div className='text-sub-text font-sub opacity-80 pb-[10px]  lg:hidden font-bold'>
+                      {CultivarName && (
+                        <h2>{`${CultivarName}${CommonName ? ', ' : ''} `}</h2>
+                      )}
+                      {CommonName && <h2>{`${CommonName}`}</h2>}
+                    </div>
+                  )}
+                  {(prefferedCommonName || secondaryCommonName) && (
+                    <div className='text-sub-text font-sub opacity-80 pb-[10px]  lg:hidden mb-[10px] flex flex-wrap'>
+                      {prefferedCommonName && (
+                        <h2>
+                          {`${prefferedCommonName}${
+                            secondaryCommonName ? `, ` : ''
+                          } `}
+                        </h2>
+                      )}
+                      {secondaryCommonName && (
+                        <h2>{`${secondaryCommonName}`}</h2>
+                      )}
+                    </div>
+                  )}
+                  {config.showRatings && (
+                    <div className='text-extra-small-text mb-[15px] flex flex-wrap items-center gap-[8px] blobk lg:hidden'>
+                      <div
+                        className='flex flex-wrap items-center gap-[8px]'
+                        onClick={scrollToReview}
+                      >
+                        <div className=''>
+                          <StarRatings
+                            rating={avgReviewrating}
+                            textsize={'text-sm'}
+                          />
+                        </div>
+                        <div>{avgReviewrating} </div>
+                        <div
+                          className=''
+                          itemProp='aggregateRating'
+                          itemType='https://schema.org/AggregateRating'
+                          itemScope
+                        >
+                          <meta
+                            itemProp='reviewCount'
+                            content={`${totalReviewCount}`}
+                          />
+                          <meta
+                            itemProp='ratingValue'
+                            content={productRatings?.ratingAverage}
+                          />
+                          <div className='underline'>
+                            {totalReviewCount} Reviews
+                          </div>
+                        </div>
+                      </div>
+                      <div className=''>
+                        <CustomLink
+                          href={
+                            userId
+                              ? `${paths.writeReview}?productId=${
+                                  product?.id
+                                }&&attributeId=${
+                                  selectedColor?.attributeOptionId || 0
+                                }&&reviewId=0`
+                              : `${paths.login}?redirect=${
+                                  paths.writeReview
+                                }?productId=${product?.id}&&attributeId=${
+                                  selectedColor?.attributeOptionId || 0
+                                }`
+                          }
+                          className='underline'
+                        >
+                          Write a review
+                        </CustomLink>
+                      </div>
+                    </div>
+                  )}
                   <div
                     className='pt-[10px] pb-[30px]'
                     itemType='https://schema.org/Product'
@@ -167,38 +248,37 @@ const ProductInfo: React.FC<IProps> = ({
                       <div className='col-span-12 lg:col-span-6'>
                         <div className='pl-0 lg:pl-[70px]'>
                           <meta itemProp='name' content={product?.name} />
-                          <h1 className='text-2xl-text font-bold font-sub'>
+                          <h1 className='text-2xl-text font-bold font-sub hidden lg:block'>
                             {' '}
                             {product?.name}
                           </h1>
                           {(CultivarName || CommonName) && (
-                            <div className='text-sub-text font-sub opacity-80 pt-[10px] font-bold'>
+                            <div className='text-sub-text font-sub opacity-80 pt-[10px] font-bold hidden lg:block'>
                               {CultivarName && (
                                 <h2>
-                                  {`${CultivarName}${CommonName ? ',' : ''} `}
+                                  {`${CultivarName}${CommonName ? ', ' : ''} `}
                                 </h2>
                               )}
                               {CommonName && <h2>{`${CommonName}`}</h2>}
                             </div>
                           )}
-                          {prefferedCommonName ||
-                            (secondaryCommonName && (
-                              <div className='text-sub-text font-sub opacity-80 pt-[10px] mb-[10px] flex flex-wrap'>
-                                {prefferedCommonName && (
-                                  <h2>
-                                    {`${prefferedCommonName}${
-                                      secondaryCommonName ? ',' : ''
-                                    } `}
-                                  </h2>
-                                )}
-                                {secondaryCommonName && (
-                                  <h2>{`${secondaryCommonName}`}</h2>
-                                )}
-                              </div>
-                            ))}
+                          {(prefferedCommonName || secondaryCommonName) && (
+                            <div className='text-sub-text font-sub opacity-80 pt-[10px] mb-[10px]  flex-wrap hidden lg:block'>
+                              {prefferedCommonName && (
+                                <h2>
+                                  {`${prefferedCommonName}${
+                                    secondaryCommonName ? `, ` : ''
+                                  } `}
+                                </h2>
+                              )}
+                              {secondaryCommonName && (
+                                <h2>{`${secondaryCommonName}`}</h2>
+                              )}
+                            </div>
+                          )}
 
                           {config.showRatings && (
-                            <div className='text-extra-small-text mb-[15px] flex flex-wrap items-center gap-[8px]'>
+                            <div className='text-extra-small-text mb-[15px]  flex-wrap items-center gap-[8px] hidden lg:flex'>
                               <div
                                 className='flex flex-wrap items-center gap-[8px]'
                                 onClick={scrollToReview}
@@ -311,7 +391,10 @@ const ProductInfo: React.FC<IProps> = ({
                                   <div className='text-small-text font-sub'>
                                     {product?.quantity !== 0 &&
                                       !product?.isDiscontinue && (
-                                        <div className='text-[#9C331C] py-[5px] px-[10px]'>
+                                        <div
+                                          className='text-[#9C331C] px-[10px]'
+                                          style={{ paddingTop: '10px' }}
+                                        >
                                           {`Shipping Begins The Week Of ${shippingDate[1]} ${shippingDate[2]}, ${shippingDate[3]}`}
                                         </div>
                                       )}
@@ -326,13 +409,13 @@ const ProductInfo: React.FC<IProps> = ({
                                       </div>
                                     )}
                                     {RestrictState && (
-                                      <div className='py-[5px] px-[10px] whitespace-'>
+                                      <div className='py-[10px] px-[10px] whitespace-'>
                                         Cannot ship to:{' '}
                                         {RestrictState.replaceAll(',', ', ')}
                                       </div>
                                     )}
 
-                                    <div className='py-[5px] px-[10px] font-semibold'>
+                                    <div className='py-[10px] px-[10px] font-semibold'>
                                       For your convenience, we ship in boxes of
                                       4, 6, 8 or 12
                                     </div>

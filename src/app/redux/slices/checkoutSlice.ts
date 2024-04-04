@@ -9,65 +9,65 @@ type _update_CheckoutAddress_Actions =
   | 'CLEAN_ALL'
   | { type: 'UPDATE_NOTE'; value: string }
   | {
-    type: 'EDITING...';
-    address: CustomerAddress | 'CLEANUP';
-  }
+      type: 'EDITING...';
+      address: CustomerAddress | 'CLEANUP';
+    }
   | {
-    type: 'BILLING_ADDRESS';
-    address: CustomerAddress | 'CLEANUP';
-  }
+      type: 'BILLING_ADDRESS';
+      address: CustomerAddress | 'CLEANUP';
+    }
   | {
-    type: 'USE_SHIPPING_ADDRESS_FOR_BILLING';
-    value: boolean | 'CLEANUP';
-  }
+      type: 'USE_SHIPPING_ADDRESS_FOR_BILLING';
+      value: boolean | 'CLEANUP';
+    }
   | {
-    type: 'SHIP_TO_SCHOOL';
-    value: boolean | 'CLEANUP';
-  }
+      type: 'SHIP_TO_SCHOOL';
+      value: boolean | 'CLEANUP';
+    }
   | {
-    type: 'SHIPPING_ADDRESS';
-    address: CustomerAddress | 'CLEANUP';
-  }
+      type: 'SHIPPING_ADDRESS';
+      address: CustomerAddress | 'CLEANUP';
+    }
   | {
-    type: 'ZIP_CODE';
-    value: string | 'CLEANUP';
-  }
+      type: 'ZIP_CODE';
+      value: string | 'CLEANUP';
+    }
   | {
-    type: 'SEND_SPECIAL_OFFER_EMAIL';
-    value: boolean | 'CLEANUP';
-  }
+      type: 'SEND_SPECIAL_OFFER_EMAIL';
+      value: boolean | 'CLEANUP';
+    }
   | {
-    type: 'CHECKOUT_ADDRESS_IS_SAVED';
-    value: boolean;
-  };
+      type: 'CHECKOUT_ADDRESS_IS_SAVED';
+      value: boolean;
+    };
 
 type _Update_CO_ShippinMethod =
   | 'CLEAN_ALL'
   | {
-    type: 'destination';
-    value: 'residential' | 'commercial';
-  }
-  | {
-    type: 'method';
-    value:
-    | {
-      name: string;
-      price: number;
+      type: 'destination';
+      value: 'residential' | 'commercial';
     }
-    | 'CLEAN_UP';
-  }
   | {
-    type: 'SEND_AS_GIFT';
-    value: boolean;
-  }
+      type: 'method';
+      value:
+        | {
+            name: string;
+            price: number;
+          }
+        | 'CLEAN_UP';
+    }
   | {
-    type: 'CHECKOUT_SHIPPING_SAVED';
-    value: boolean;
-  }
+      type: 'SEND_AS_GIFT';
+      value: boolean;
+    }
   | {
-    type: 'SAVE_GIFT_MESSAGE';
-    value: string;
-  };
+      type: 'CHECKOUT_SHIPPING_SAVED';
+      value: boolean;
+    }
+  | {
+      type: 'SAVE_GIFT_MESSAGE';
+      value: string;
+    };
 
 interface _CCPaymentMethod {
   method: 'individual_cards';
@@ -242,9 +242,9 @@ export const checkoutSlice = createSlice({
         payload,
       }: {
         payload:
-        | { email: string }
-        | { creditBalanceAmount: number }
-        | { allowCreditBalance: boolean };
+          | { email: string }
+          | { creditBalanceAmount: number }
+          | { allowCreditBalance: boolean };
       },
     ) => {
       if ('email' in payload) {
@@ -269,10 +269,10 @@ export const checkoutSlice = createSlice({
         payload,
       }: {
         payload:
-        | { type: 'GuestUserCheckout'; value: boolean }
-        | { type: 'GuestUserPasswordScreen'; value: boolean }
-        | { type: 'GuestUserCreateAccountScreen'; value: boolean }
-        | 'CLEAN_UP';
+          | { type: 'GuestUserCheckout'; value: boolean }
+          | { type: 'GuestUserPasswordScreen'; value: boolean }
+          | { type: 'GuestUserCreateAccountScreen'; value: boolean }
+          | 'CLEAN_UP';
       },
     ) => {
       if (payload === 'CLEAN_UP') {
@@ -404,64 +404,77 @@ export const checkoutSlice = createSlice({
       state,
       action: {
         payload:
-        | 'CLEANUP'
-        | {
-          type: 'PURCHASE_ORDER' | 'Credit Card' | 'Paypal';
-          method: 'CHANGED';
-        }
-        | {
-          value: boolean;
-          method: 'USE_CREDIT_BALANCE';
-        }
-        | {
-          value: boolean;
-          method: 'PAYMENT_REQUIRED';
-        }
-        | _POPaymentMethod
-        | _CCPaymentMethod
-        | {
-          value: boolean;
-          method: 'UPDATE_GIFTCARD_OPTION';
-        }
-        | {
-          method: 'CHECKOUT_PAYMENT_SAVED';
-          value: boolean;
-        }
-        | {
-          method: 'SKIP_PAYMENT_METHOD';
-          value: boolean;
-        }
-        | {
-          method: 'USE_STORE_CREDITS';
-          value: {
-            useStoreCredit: boolean;
-            usedStoreCreditAmount: number;
-            orderTotal: number
-          };
-        }
-        | {
-          method: 'USE_GIFT_WALLET_BALANCE';
-          value: {
-            useGiftWallet: boolean;
-            usedGiftAmount: number;
-          };
-        }
-        | {
-          method: 'SAVE_CREDITS';
-          value: {
-            storeCredits: number;
-            giftCardWalletBalance: number;
-          };
-        }
-        | {
-          method: 'CHECKOUT_GIFT_CARD_DETAILS';
-          value: {
-            totalAmount: number;
-            giftCardNumber: string;
-            giftCardAmount: number;
-            giftCardBalance: number
-          };
-        };
+          | 'CLEANUP'
+          | {
+              type: 'PURCHASE_ORDER' | 'Credit Card' | 'Paypal';
+              method: 'CHANGED';
+            }
+          | {
+              value: boolean;
+              method: 'USE_CREDIT_BALANCE';
+            }
+          | {
+              value: boolean;
+              method: 'PAYMENT_REQUIRED';
+            }
+          | _POPaymentMethod
+          | _CCPaymentMethod
+          | {
+              value: boolean;
+              method: 'UPDATE_GIFTCARD_OPTION';
+            }
+          | {
+              method: 'CHECKOUT_PAYMENT_SAVED';
+              value: boolean;
+            }
+          | {
+              method: 'SKIP_PAYMENT_METHOD';
+              value: boolean;
+            }
+          | {
+              method: 'USE_STORE_CREDITS';
+              value: {
+                useStoreCredit: boolean;
+                usedStoreCreditAmount: number;
+                orderTotal: number;
+              };
+            }
+          | {
+              method: 'USE_GIFT_WALLET_BALANCE';
+              value: {
+                useGiftWallet: boolean;
+                usedGiftAmount: number;
+              };
+            }
+          | {
+              method: 'SAVE_CREDITS';
+              value: {
+                storeCredits: number;
+                giftCardWalletBalance: number;
+              };
+            }
+          | {
+              method: 'CHECKOUT_GIFT_CARD_DETAILS';
+              value: {
+                totalAmount: number;
+                giftCardNumber: string;
+                giftCardAmount: number;
+                giftCardBalance: number;
+              };
+            }
+          | {
+              method: 'UPDATE_GIFT_CARD_BALANCE';
+              value: {
+                giftCardAmount: number;
+                giftCardBalance: number;
+              };
+            }
+          | {
+              method: 'UPDATE_STORE_CREDIT_BALANCE';
+              value: {
+                usedStoreCredits: number;
+              };
+            };
       },
     ) => {
       if (action.payload === 'CLEANUP') {
@@ -471,6 +484,16 @@ export const checkoutSlice = createSlice({
       if (action.payload.method === 'USE_CREDIT_BALANCE') {
         state.payment.useCreditBalance = action.payload.value;
         return;
+      }
+
+      if (action.payload.method === 'UPDATE_GIFT_CARD_BALANCE') {
+        state.payment.giftCardBalance = action.payload.value.giftCardBalance;
+        state.payment.giftCardAmount = action.payload.value.giftCardAmount;
+        return;
+      }
+
+      if (action.payload.method === 'UPDATE_STORE_CREDIT_BALANCE') {
+        state.payment.usedStoreCredits = action.payload.value.usedStoreCredits;
       }
 
       if (action.payload.method === 'PAYMENT_REQUIRED') {
@@ -498,20 +521,52 @@ export const checkoutSlice = createSlice({
       }
       if (action.payload.method === 'USE_STORE_CREDITS') {
         state.payment.useStoreCredit = action.payload.value.useStoreCredit;
-        state.payment.usedStoreCredits = action.payload.value.usedStoreCreditAmount;
-        if (action.payload.value.useStoreCredit && state.payment.giftCardAmount) {
-          if (action.payload.value.orderTotal - action.payload.value.usedStoreCreditAmount > 0) {
-            let remianingTotal = action.payload.value.orderTotal - action.payload.value.usedStoreCreditAmount
-            state.payment.giftCardAmount = action.payload.value.orderTotal - action.payload.value.usedStoreCreditAmount > state.payment.totalGiftAmount ? state.payment.totalGiftAmount : action.payload.value.orderTotal - action.payload.value.usedStoreCreditAmount
-            state.payment.giftCardBalance = action.payload.value.orderTotal - action.payload.value.usedStoreCreditAmount >= state.payment.totalGiftAmount ? 0 : state.payment.totalGiftAmount - remianingTotal
+        state.payment.usedStoreCredits =
+          action.payload.value.usedStoreCreditAmount;
+        if (
+          action.payload.value.useStoreCredit &&
+          state.payment.giftCardAmount
+        ) {
+          if (
+            action.payload.value.orderTotal -
+              action.payload.value.usedStoreCreditAmount >
+            0
+          ) {
+            let remianingTotal =
+              action.payload.value.orderTotal -
+              action.payload.value.usedStoreCreditAmount;
+            state.payment.giftCardAmount =
+              action.payload.value.orderTotal -
+                action.payload.value.usedStoreCreditAmount >
+              state.payment.totalGiftAmount
+                ? state.payment.totalGiftAmount
+                : action.payload.value.orderTotal -
+                  action.payload.value.usedStoreCreditAmount;
+            state.payment.giftCardBalance =
+              action.payload.value.orderTotal -
+                action.payload.value.usedStoreCreditAmount >=
+              state.payment.totalGiftAmount
+                ? 0
+                : state.payment.totalGiftAmount - remianingTotal;
           } else {
-            state.payment.giftCardAmount = 0
-            state.payment.giftCardBalance = action.payload.value.orderTotal - action.payload.value.usedStoreCreditAmount - state.payment.totalGiftAmount
-
+            state.payment.giftCardAmount = 0;
+            state.payment.giftCardBalance =
+              action.payload.value.orderTotal -
+              action.payload.value.usedStoreCreditAmount -
+              state.payment.totalGiftAmount;
           }
-        } else if (!action.payload.value.useStoreCredit && state.payment.giftCardAmount) {
-          state.payment.giftCardAmount = state.payment.totalGiftAmount > action.payload.value.orderTotal ? action.payload.value.orderTotal : state.payment.totalGiftAmount
-          state.payment.giftCardBalance = state.payment.totalGiftAmount - action.payload.value.orderTotal >= 0 ? state.payment.totalGiftAmount - action.payload.value.orderTotal : 0
+        } else if (
+          !action.payload.value.useStoreCredit &&
+          state.payment.giftCardAmount
+        ) {
+          state.payment.giftCardAmount =
+            state.payment.totalGiftAmount > action.payload.value.orderTotal
+              ? action.payload.value.orderTotal
+              : state.payment.totalGiftAmount;
+          state.payment.giftCardBalance =
+            state.payment.totalGiftAmount - action.payload.value.orderTotal >= 0
+              ? state.payment.totalGiftAmount - action.payload.value.orderTotal
+              : 0;
         }
 
         return;
@@ -526,7 +581,7 @@ export const checkoutSlice = createSlice({
         state.payment.giftCardAmount = action.payload.value.giftCardAmount;
         state.payment.giftCardNumber = action.payload.value.giftCardNumber;
         state.payment.giftCardBalance = action.payload.value.giftCardBalance;
-        state.payment.totalGiftAmount = action.payload.value.totalAmount
+        state.payment.totalGiftAmount = action.payload.value.totalAmount;
         return;
       }
 
@@ -612,9 +667,14 @@ export const checkoutSlice = createSlice({
       if (state.payment.giftCardBalance >= payload) {
         const remainingGiftBal = state.payment.giftCardBalance - payload;
         state.payment.giftCardBalance = remainingGiftBal;
-        state.payment.giftCardAmount = state.payment.giftCardAmount + remainingGiftBal;
-      } else if (state.payment.giftCardBalance < payload && state.payment.giftCardBalance) {
-        state.payment.giftCardAmount = state.payment.giftCardAmount + state.payment.giftCardBalance;
+        state.payment.giftCardAmount =
+          state.payment.giftCardAmount + remainingGiftBal;
+      } else if (
+        state.payment.giftCardBalance < payload &&
+        state.payment.giftCardBalance
+      ) {
+        state.payment.giftCardAmount =
+          state.payment.giftCardAmount + state.payment.giftCardBalance;
         state.payment.giftCardBalance = 0;
       }
     },

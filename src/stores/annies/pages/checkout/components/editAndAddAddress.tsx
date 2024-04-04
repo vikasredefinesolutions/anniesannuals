@@ -30,6 +30,7 @@ interface props extends _AddAddressType {
     e: React.ChangeEvent<HTMLSelectElement>,
     addressType: string,
   ) => void;
+  errorMessage: (errors: any, isBillingAddress: boolean) => string;
 }
 const AddAddressModal = ({
   modal,
@@ -45,6 +46,7 @@ const AddAddressModal = ({
   postalCodeHandler,
   countryHandler,
   addAddressRequestHandler,
+  errorMessage,
 }: props) => {
   const { shipping, billing } = useAppSelector(
     (state) => state.checkout.address,
@@ -110,14 +112,19 @@ const AddAddressModal = ({
                         addAddressRequestHandler('UPDATE');
                       }
                     },
-                    () =>
+                    (errors) => {
+                      const errorMsg = errorMessage(
+                        errors,
+                        modal === 'ADDSHIPPING' || modal === 'EDITSHIPPING',
+                      );
                       dispatch(
                         openAlertModal({
                           title: 'Error',
-                          description: 'Something Went Wrong in Billing Form',
+                          description: errorMsg,
                           isAlertModalOpen: true,
                         }),
-                      ),
+                      );
+                    },
                   )(e);
                 }}
               >

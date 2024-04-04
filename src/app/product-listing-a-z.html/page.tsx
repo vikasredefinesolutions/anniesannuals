@@ -5,9 +5,9 @@ import {
 import { fetchProductListAtoZ } from '@/shared/apis/product/productListAtoZ';
 import { activeStoreName } from '@/shared/configs';
 import { productListData } from '@/shared/types/product';
+import { pagination } from '@/stores/annies/pages/productsListing/client';
 import dynamic from 'next/dynamic';
 import React from 'react';
-import { pagination } from '../[...slug]/slug.helper';
 
 interface IProductListProps {
   productList: productListData;

@@ -3,18 +3,20 @@ import OrderDetailsController from '@/features/myAccount/orderDetails/controller
 import Loader from '@/shared/Components/Loader';
 import { _Orders } from '@/shared/apis/orders/fetchOrderList';
 import { getUserId } from '@/shared/utils/cookie.helper';
+import { paths } from '@/utils/paths.constant';
 import { useRouter } from 'next/navigation';
-import { ChangeEvent } from 'react';
+import { ChangeEvent, useEffect } from 'react';
 import SideLayout from '../../shared/components/myAccountLayout';
 import OrderNumberSummary from './Component/OrderNumberSummary';
 const AccountSettings = () => {
   const userId = getUserId();
   const router = useRouter();
 
-  if (!userId) {
-    router.push('sign-in.html');
-    return;
-  }
+  useEffect(() => {
+    if (!userId) {
+      router.push(paths.login);
+    }
+  }, [userId]);
 
   return (
     <>
@@ -33,6 +35,7 @@ const AccountSettings = () => {
             isOpen: isCancelOrder,
             openModel,
             onRequestClose: onRequestCancelOrder,
+            selectedTenure,
             setSelectedTenure,
             searchOrders,
             setSearchText,
@@ -203,6 +206,7 @@ const AccountSettings = () => {
                                   onChange={(e) => {
                                     setSelectedTenure(+e.target.value);
                                   }}
+                                  value={selectedTenure}
                                 >
                                   <option value='0'>All</option>
                                   <option value='3'>Last 30 Days</option>

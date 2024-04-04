@@ -14,7 +14,7 @@ import React from 'react';
 import QuantityInput from '../../productDetails/Component/QuantityInput';
 
 interface IProps {
-  el: IProductDetails;
+  el: IProductDetails & { inventory: number };
   CommonName: string;
   CultivarName: string;
   prefferedCommonName: string;
@@ -153,6 +153,8 @@ const ProductCard: React.FC<IProps> = ({
                       showWishList={true}
                       wishlistClickHandler={wishlistClick}
                       wishListId={wishListId}
+                      productPage={false}
+                      gardenProducInventory={el.inventory}
                     />
 
                     {/* <div className=''>

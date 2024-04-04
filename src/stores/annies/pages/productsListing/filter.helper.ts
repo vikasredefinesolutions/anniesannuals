@@ -1,19 +1,43 @@
+import { IProductListProps } from '@/app/[...slug]/page';
 import {
+  FilterFacetField,
   FilterFacetFieldsValues,
   iSelectedFilter,
 } from '@/app/[...slug]/slug.helper';
-import { SORT } from '@/shared/apis/product/productList';
+import {
+  SORT,
+  fetchProductList,
+  fetchProductListForPlantFinder,
+} from '@/shared/apis/product/productList';
+import { IListingProduct } from '@/shared/types/product';
+import {
+  getGrowingZone,
+  getStoreId,
+  getUserId,
+} from '@/shared/utils/cookie.helper';
 import _debounce from 'lodash/debounce';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
+import {
+  extractFacetsAndFilters,
+  formatFilter,
+  pagination,
+  productListForMozarchy,
+} from './client';
 
 let initialLoad = true;
+export const LISTING_APPLIED_FILTERS = 'laf';
 
 interface iProps {
   selectedFilters: iSelectedFilter[];
   seName: string;
+  rawFilterOptions: [] | FilterFacetField[];
   sortBy: SORT;
   facetsFoundInURl: boolean;
+  isSubcategory: IProductListProps['isSubcategory'];
+  list: IProductListProps['list'];
+  pageId: IProductListProps['pageId'];
+  predefinedFacetFilterUrl: IProductListProps['predefinedFacetFilterUrl'];
 }
 
 function removeDuplicates(arr: string[]) {
@@ -43,18 +67,42 @@ const extractInitialFacetFieldId = (
   return 'open-first';
 };
 
-export const LISTING_APPLIED_FILTERS = 'laf';
-
 export const useFilterOptions = ({
   selectedFilters,
   seName,
   sortBy,
+  pageId,
+  list,
+  isSubcategory,
+  predefinedFacetFilterUrl,
+  rawFilterOptions,
   facetsFoundInURl,
 }: iProps) => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+
   const useIgnoreZoneFromQueryParams =
     useSearchParams().get('ignorezone') === 'true';
+
+  const facetsFromQuery = useSearchParams().get('facets');
+  const filtersFromQuery = useSearchParams().get('filters');
+
+  const [filterOptions, setFilterOptions] = useState(rawFilterOptions);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [latestSortBy, setLatestSortBy] = useState<SORT>(sortBy);
+  const [products, setProducts] = useState<{
+    jumpBy: number;
+    totalAvailable: number;
+    totalPages: number;
+    sortBy: SORT;
+    visible: IListingProduct[];
+  }>({
+    jumpBy: list.jumpBy,
+    totalAvailable: list.totalAvailable,
+    totalPages: Math.ceil(list.totalAvailable / list.jumpBy),
+    sortBy: list.sortBy,
+    visible: list.products,
+  });
 
   const [mobileDropDown, setMobileDropdown] = useState<
     'filter' | 'sort' | null
@@ -62,10 +110,24 @@ export const useFilterOptions = ({
   const [openfilterFacetName, setOpenFilterFacetName] = useState<
     'open-first' | string | null
   >(extractInitialFacetFieldId(selectedFilters));
+
   const [checkedFilters, setCheckedFilters] = useState<{
     filters: iSelectedFilter[];
     ignoreZone: boolean;
   }>({ filters: selectedFilters, ignoreZone: useIgnoreZoneFromQueryParams });
+
+  const storeFiltersLocally = ({
+    filters,
+    seName,
+  }: {
+    filters: iSelectedFilter[];
+    seName: string;
+  }) => {
+    localStorage.setItem(
+      LISTING_APPLIED_FILTERS,
+      JSON.stringify({ filters, seName }),
+    );
+  };
 
   const removeZoneFromFiltersIfValueIsAll = (
     filtersToApply: iSelectedFilter[],
@@ -95,35 +157,109 @@ export const useFilterOptions = ({
     return filters;
   };
 
-  const storeFiltersLocally = ({
-    filters,
-    seName,
+  const dontUpdateRoute = async ({
+    encodedFacets,
+    encodedFilters,
+    latestCurrentPage,
+    latestSortBy,
   }: {
-    filters: iSelectedFilter[];
-    seName: string;
+    encodedFilters: string | null;
+    encodedFacets: string | null;
+    latestCurrentPage: number;
+    latestSortBy: SORT;
   }) => {
-    localStorage.setItem(
-      LISTING_APPLIED_FILTERS,
-      JSON.stringify({ filters, seName }),
+    const { filterFacets, filtersChips } = extractFacetsAndFilters({
+      encodedFacets,
+      encodedFilters,
+      ignoreZone: useIgnoreZoneFromQueryParams,
+      filterFacetUrl: predefinedFacetFilterUrl,
+      zoneFromCookie: getGrowingZone()?.zoneName || null,
+    });
+
+    const rawProducts = await getProductsLocally({
+      filterFacets,
+      latestCurrentPage,
+      latestSortBy,
+    });
+    if (!rawProducts) throw new Error('Error fetching products list.');
+    const selectedFilters = formatFilter(filtersChips, rawProducts);
+    const products = productListForMozarchy(rawProducts, isSubcategory);
+
+    setCheckedFilters((prev) => ({
+      ignoreZone: prev.ignoreZone,
+      filters: selectedFilters,
+    }));
+    setProducts({
+      jumpBy: list.jumpBy,
+      totalAvailable: products.totalrecords,
+      sortBy: list.sortBy,
+      totalPages: Math.ceil(list.totalAvailable / list.jumpBy),
+      visible: products.list,
+    });
+    setFilterOptions(products.storeFilterFacetFieldsViewModel);
+    setLoading(false);
+  };
+
+  const getProductsLocally = async ({
+    filterFacets,
+    latestCurrentPage,
+    latestSortBy,
+  }: {
+    filterFacets: {
+      name: string;
+      value: string[];
+    }[];
+    latestCurrentPage: number;
+    latestSortBy: SORT;
+  }) => {
+    const plantFinder = seName === 'plant-finder';
+    const { startIndex, endIndex } = pagination(
+      latestSortBy,
+      latestCurrentPage.toString(),
     );
+
+    if (plantFinder) {
+      return await fetchProductListForPlantFinder({
+        storeID: getStoreId(),
+        categoryIds: [0],
+        customerId: getUserId(),
+        pageStartindex: startIndex,
+        pageEndindex: endIndex,
+        filterOptionforfaceteds: filterFacets,
+        sortby: latestSortBy,
+      });
+    }
+    return await fetchProductList({
+      storeID: getStoreId(),
+      categoryIds: [pageId],
+      customerId: getUserId(),
+      pageStartindex: startIndex,
+      pageEndindex: endIndex,
+      filterOptionforfaceteds: filterFacets,
+      sortby: latestSortBy,
+    });
   };
 
   const updateRoute = ({
     filtersToApply,
     ignoreZone,
+    latestCurrentPage,
+    latestSortBy,
   }: {
     filtersToApply: iSelectedFilter[];
     ignoreZone: boolean;
+    latestCurrentPage: number;
+    latestSortBy: SORT;
   }) => {
     const ignoreZoneReally = useIgnoreZoneFromQueryParams || ignoreZone;
 
     if (filtersToApply.length === 0) {
-      const query = `?sort=${sortBy}&page=1&ignorezone=true`;
       storeFiltersLocally({
         filters: [],
         seName,
       });
-      router.replace(`/${seName}.html${query}`);
+      const query = `?sort=${sortBy}&page=1&ignorezone=true`;
+      router.replace(`/${seName}.html${query}`, { scroll: false });
       return;
     }
 
@@ -156,12 +292,13 @@ export const useFilterOptions = ({
       const parametersValue = filters.join(',');
 
       setLoading(true);
-      const url = `/${parameters}/${parametersValue}/${seName}.html${query}`;
+
+      const url = `/${seName}.html${query}&facets=${parameters}&filters=${parametersValue}`;
       storeFiltersLocally({
         filters: filtersToApply,
         seName,
       });
-      router.replace(url);
+      router.replace(url, { scroll: false });
       return;
     }
 
@@ -169,7 +306,7 @@ export const useFilterOptions = ({
       filters: filtersToApply,
       seName,
     });
-    router.replace(`/${seName}.html${query}`);
+    router.replace(`/${seName}.html${query}`, { scroll: false });
   };
 
   const handleDelayRouteUpdation = useCallback(
@@ -184,6 +321,9 @@ export const useFilterOptions = ({
     allowToRemoveFromChip: boolean,
     delayRouteUpdation: boolean = false,
   ) => {
+    if (!isMobile) {
+      setLoading(true);
+    }
     const filtersToApply: iSelectedFilter[] = [];
     let filterAlreadyInTheList = false;
     const ignoreZone = dropdownName === 'zone';
@@ -224,12 +364,19 @@ export const useFilterOptions = ({
       handleDelayRouteUpdation({
         filtersToApply: filtersToApply,
         ignoreZone: ignoreZone,
+        latestSortBy,
+        latestCurrentPage: currentPage,
       });
       return;
     }
 
     if (!isMobile) {
-      updateRoute({ filtersToApply: filtersToApply, ignoreZone: ignoreZone });
+      updateRoute({
+        filtersToApply: filtersToApply,
+        ignoreZone: ignoreZone,
+        latestSortBy,
+        latestCurrentPage: currentPage,
+      });
     }
   };
 
@@ -244,15 +391,12 @@ export const useFilterOptions = ({
 
   const extractFiltersFromLocalStorage = () => {
     const string = localStorage.getItem(LISTING_APPLIED_FILTERS);
-
     if (!string) return null;
     const filtersWithSeName = JSON.parse(string) as {
       filters: iSelectedFilter[];
       seName: string;
     };
-
     if (filtersWithSeName.seName !== seName) return null;
-
     return filtersWithSeName.filters;
   };
 
@@ -266,12 +410,16 @@ export const useFilterOptions = ({
     ignoreZone: boolean;
   }) => {
     if (type === 'all') {
-      updateRoute({ ignoreZone: true, filtersToApply: [] });
+      updateRoute({
+        ignoreZone: useIgnoreZoneFromQueryParams,
+        filtersToApply: [],
+        latestSortBy,
+        latestCurrentPage: currentPage,
+      });
       return;
     }
 
     let filtersToUse: iSelectedFilter[] = selectedFilters;
-
     if (!selectedFilters || selectedFilters.length === 0) {
       if (facetsFoundInURl) {
         filtersToUse = extractFiltersFromLocalStorage() || [];
@@ -282,28 +430,76 @@ export const useFilterOptions = ({
       (filter) => filter.filterFacetFieldValueId !== filterFacetFieldValueId,
     );
 
-    updateRoute({ ignoreZone, filtersToApply: remainingFilters });
+    updateRoute({
+      ignoreZone,
+      filtersToApply: remainingFilters,
+      latestSortBy,
+      latestCurrentPage: currentPage,
+    });
   };
 
   const applyAllFiltersAtOnce = () => {
     updateRoute({
       filtersToApply: checkedFilters.filters,
       ignoreZone: checkedFilters.ignoreZone,
+      latestSortBy,
+      latestCurrentPage: currentPage,
     });
     setMobileDropdown(null);
   };
 
+  const goToPageHandler = (pageNo: number) => {
+    setLoading(true);
+    setCurrentPage(pageNo);
+    const facets = facetsFromQuery ? `&facets=${facetsFromQuery}` : '';
+    const filters = filtersFromQuery ? `&filters=${filtersFromQuery}` : '';
+    const query =
+      `?sort=${products.sortBy}&page=${pageNo}&ignorezone=${useIgnoreZoneFromQueryParams}` +
+      facets +
+      filters;
+
+    router.push(query, { scroll: false });
+  };
+
+  const updateSort = (sortBy: number) => {
+    updateRoute({
+      filtersToApply: checkedFilters.filters,
+      ignoreZone: useIgnoreZoneFromQueryParams,
+      latestSortBy: sortBy,
+      latestCurrentPage: currentPage,
+    });
+  };
+
   useEffect(() => {
-    setCheckedFilters({
+    setCheckedFilters((prev) => ({
       filters: selectedFilters,
       ignoreZone: useIgnoreZoneFromQueryParams,
+    }));
+  }, [useIgnoreZoneFromQueryParams, selectedFilters.length]);
+
+  useEffect(() => {
+    setCurrentPage(list.currentPage);
+    setProducts({
+      jumpBy: list.jumpBy,
+      totalAvailable: list.totalAvailable,
+      sortBy: list.sortBy,
+      totalPages: Math.ceil(list.totalAvailable / list.jumpBy),
+      visible: list.products,
     });
-  }, [useIgnoreZoneFromQueryParams]);
+    setLoading(false);
+  }, [list]);
 
   return {
+    products,
+    currentPage,
+    goToPageHandler,
+    //
+    updateSort,
+    //
     loading,
     setLoading,
     //
+    filterOptions,
     checkedFilters,
     //
     mobileDropDown,

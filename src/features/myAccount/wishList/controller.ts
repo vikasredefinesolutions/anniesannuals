@@ -34,13 +34,23 @@ const WishListController: React.FC<_Props> = (_Props) => {
   const fetchWishListDatas = async () => {
     try {
       const data = await getWishlist(userId);
+
+      data.sort((a, b) => {
+        if (a.productName < b.productName) {
+          return -1;
+        }
+        if (a.productName > b.productName) {
+          return 1;
+        }
+        return 0;
+      });
+
       setStatus('ready');
       setWishListDatas(data);
     } catch (error: any) {
       console.log(error?.message || 'Wishlist is not found');
     }
   };
-
   useEffect(() => {
     if (userId) {
       fetchWishListDatas();

@@ -29,8 +29,11 @@ const Invoice: React.FC<IOrderProps> = ({ orderNumber, orderDetails }) => {
           <>
             {isLoading && <Loader />}
 
-            <div className='flex flex-wrap mx-[-15px]'>
-              <div className='w-full px-[15px] bg-[#FFF3E0]'>
+            <div className='flex flex-wrap'>
+              <div
+                className='w-full bg-[#FFF3E0]'
+                style={{ padding: '80px 0' }}
+              >
                 <div className='p-[15px] lg:p-[30px] shadow-md rounded-sm mb-[40px] panel-01 tab-content max-w-lg mx-auto bg-[#ffffff] mt-[20px]'>
                   <div className='text-title-text mb-[20px] font-bold font-sub flex items-center justify-center'>
                     Manage Subscription
@@ -163,6 +166,18 @@ const Invoice: React.FC<IOrderProps> = ({ orderNumber, orderDetails }) => {
                               error={
                                 errors?.isEmailLocalEventsHappeningInNursey
                                   ?.message
+                              }
+                            />
+
+                            <KlaviyoCheckBox
+                              type='checkbox'
+                              name='isRemoveFromPhysicalMailing'
+                              className='text-default-test  !h-4 !w-4 !border-gray-300 !rounded'
+                              label='Remove from physical mailing'
+                              rootClassName='mb-2'
+                              register={register}
+                              error={
+                                errors?.isRemoveFromPhysicalMailing?.message
                               }
                             />
 

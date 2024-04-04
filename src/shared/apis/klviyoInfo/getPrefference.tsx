@@ -23,6 +23,7 @@ export interface IOrderDetailPreference {
   isUnSubscribeAllSms: boolean;
   isDoNotShareMyDetailsAnyOne: boolean;
   isEmailLocalEventsHappeningInNursey: boolean;
+  isRemoveFromPhysicalMailing: boolean;
   recStatus: string;
   createdDate: string;
   createdBy: number;

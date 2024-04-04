@@ -22,7 +22,7 @@ import { Metadata } from 'next';
 
 const inter = Inter({ subsets: ['latin'] });
 
-const GTM_CODE = 'GTM-PHKRKXQ';
+const GTM_CODE = 'GTM-5G8GCWZ';
 
 export const metadata: Metadata = {
   title: 'Annies Annuals',
@@ -96,7 +96,6 @@ export default async function RootLayout({
           }}
           strategy='lazyOnload'
         ></Script>
-
         {/*<------------- GTM END ------------->*/}
         {/* <link
           href='https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Icons+Sharp|Material+Icons+Two+Tone|Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200'
@@ -112,15 +111,28 @@ export default async function RootLayout({
         />
 
         <link
-          href={`${process.env.NEXT_PUBLIC_REDEFINE_MEDIA}/annies/1/store/tailwin-css.css`}
+          href={`${process.env.NEXT_PUBLIC_REDEFINE_MEDIA}/annies/1/store/${storeId}/css/${storeId}.css`}
           rel='preload stylesheet'
           as='style'
           type='text/css'
         />
-
+        <link
+          rel='stylesheet'
+          href='https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Icons+Sharp|Material+Icons+Two+Tone'
+        />
+        <link
+          rel='stylesheet'
+          href='https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200,24,400,0,0'
+        />
         <link
           href={`/assets/styles/main.css`}
           rel='stylesheet'
+          as='style'
+          type='text/css'
+        />
+        <link
+          href={`${process.env.NEXT_PUBLIC_REDEFINE_MEDIA}/annies/1/store/tailwin-css.css`}
+          rel='preload stylesheet'
           as='style'
           type='text/css'
         />
@@ -132,19 +144,7 @@ export default async function RootLayout({
           as='style'
           type='text/css'
         />
-        <link
-          href={`${process.env.NEXT_PUBLIC_REDEFINE_MEDIA}/annies/1/store/${storeId}/css/${storeId}.css`}
-          rel='preload stylesheet'
-          as='style'
-          type='text/css'
-          charSet='UTF-8'
-        />
-        {/*<link
-          rel='stylesheet'
-          href='https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0'
-        />
-
-         Script for Klevu
+        {/* Script for Klevu
          <Script src='https://js.klevu.com/core/v2/klevu.js' />
         <Script src='https://js.klevu.com/theme/default/v2/quick-search.js' />
         <Script src='https://js.klevu.com/theme/default/v2/search-results-page.js' />
@@ -156,12 +156,10 @@ export default async function RootLayout({
               'document.addEventListener("DOMContentLoaded", () => {const iconArr={keyboard_arrow_up:"keyboard_arrow_down",keyboard_arrow_down:"keyboard_arrow_up",remove_circle_outline:"add_circle_outline",add_circle_outline:"remove_circle_outline",add:"remove",remove:"add"},acc=document.querySelectorAll(".accordion-box");console.log(acc),acc.forEach((e,r)=>{e.querySelectorAll("li").forEach((e,r)=>{e.addEventListener("click",()=>{let r=e.querySelector(".pointer-class");if(r){r.innerHTML=iconArr[r.innerHTML];let o=e.querySelector(".ac-description");o&&(o.classList.contains("hidden")?o.classList.remove("hidden"):o.classList.add("hidden"))}})})}); const carousel=document.querySelectorAll(".carousel");carousel.forEach(t=>{let e=t.querySelector(".carousel-slider"),s=t.querySelector(".prev"),r=t.querySelector(".next"),l=t.querySelector(".carousel-status"),i=t.querySelector(".carousel-dots");if(e){let a=e.querySelectorAll(".carousel-slide"),n=t.clientWidth||1920,o=0,c=Object.keys(a).length,d,u=()=>{if(i){let t=i.querySelectorAll("li");t.forEach((t,e)=>{o===e?t.setAttribute("class","active"):t.removeAttribute("class")})}};if(i)for(let f=0;f<c;f++){let y=document.createElement("li");o===f&&y.setAttribute("class","active"),i.append(y),y.addEventListener("click",()=>{d=o,o=f,e.setAttribute("style",`transform: translateX(-${n}px)`),e.insertBefore(a[o],e.firstChild),setTimeout(()=>{l&&(l.innerHTML=`${o+1} of ${c}`),u(),e.setAttribute("style",`transform: translateX(-${n}px)`),e.style.transform="",e.classList.add("sliding-transition")},150),setTimeout(()=>{e.classList.remove("sliding-transition")},490)})}l&&(l.innerHTML=`${o+1} of ${c}`),s&&r&&(s.addEventListener("click",()=>{d=o,o=(o-1+c)%c,e.setAttribute("style",`transform: translateX(-${n}px)`),e.insertBefore(a[o],e.firstChild),setTimeout(()=>{l&&(l.innerHTML=`${o+1} of ${c}`),u(),e.setAttribute("style",`transform: translateX(-${n}px)`),e.style.transform="",e.classList.add("sliding-transition")},150),setTimeout(()=>{e.classList.remove("sliding-transition")},490)}),r.addEventListener("click",()=>{e.classList.add("sliding-transition"),d=o,o=(o+1)%c,e.style.transform=`translateX(-${n}px)`,l&&(l.innerHTML=`${o+1} of ${c}`),u(),setTimeout(()=>{e.appendChild(a[d]),e.classList.remove("sliding-transition"),e.style.transform=""},500)}))}});});',
           }}
         />
-
-        <script
-          async
+        <Script
+          async={true}
           src={`${process.env.NEXT_KLAVIYO_URL}?company_id=${process.env.NEXT_KLAVIYO_PUBLIC_KEY}`}
-        ></script>
-
+        ></Script>
         {/* ORGANIZATION_SCRIPT_DATA */}
         <script
           type='application/ld+json'
@@ -169,7 +167,6 @@ export default async function RootLayout({
             __html: JSON.stringify(ORGANIZATION_SCRIPT_DATA),
           }}
         ></script>
-
         {/* Facebook Pixel Code */}
         <Script
           id='facebook-pixel'

@@ -422,13 +422,13 @@ const OrderFreeCatalog: React.FC = () => {
                                 </div>
                               </div>
                             </div>
-                            <div className='mb-[20px] sm:mb-0'>
+                            {/* <div className='mb-[20px] sm:mb-0'>
                               <CustomLink href={paths.home}>
                                 <button className='btn btn-primary btn-sm uppercase !font-body !rounded-xs'>
                                   Annie's online store
                                 </button>
                               </CustomLink>
-                            </div>
+                            </div> */}
                           </div>
                         </form>
                       </div>

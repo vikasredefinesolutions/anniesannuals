@@ -44,7 +44,6 @@ export type ICategoriesByid = {
 }[];
 
 export const fetchProductList = async (payload: IProductListPayload) => {
-  console.log('==============>', JSON.stringify(payload, null, 2));
   try {
     const url = `/StoreProductFilter/GetFilterByCategoryByCatcheFilter.json`;
     const productList = await SendAsync<IProductListResponse>({
@@ -53,9 +52,7 @@ export const fetchProductList = async (payload: IProductListPayload) => {
       data: payload,
     });
 
-    console.log()
     return productList;
-
   } catch (error) {
     console.log(error, 'error');
   }

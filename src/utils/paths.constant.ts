@@ -44,7 +44,6 @@ export const paths = {
   orderAndShipping: '/ordering-shipping.html',
   findUsdaZones: '/find-your-usda-zone.html',
   orderFreeCatalog: '/order-free-catalog.html',
-  newProducts: '/new.html',
 };
 
 export const imageFolder = {

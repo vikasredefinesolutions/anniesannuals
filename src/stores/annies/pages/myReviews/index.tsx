@@ -7,7 +7,7 @@ import { ICustomerProductReview } from '@/shared/apis/product/fetchCustomerProdu
 import { getUserId } from '@/shared/utils/cookie.helper';
 import { paths } from '@/utils/paths.constant';
 import { useRouter } from 'next/navigation';
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import StarRatings from '../../shared/components/StarRatings';
 import SideLayout from '../../shared/components/myAccountLayout';
 
@@ -15,10 +15,11 @@ const Address: React.FC = () => {
   const userId = getUserId();
   const router = useRouter();
 
-  if (!userId) {
-    router.push('sign-in.html');
-    return;
-  }
+  useEffect(() => {
+    if (!userId) {
+      router.push(paths.login);
+    }
+  }, [userId]);
 
   return (
     <>

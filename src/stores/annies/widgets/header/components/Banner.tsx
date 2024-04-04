@@ -3,17 +3,24 @@ import {
   tHeaderSubMenu,
 } from '@/api/jsonServices/updateHeaderSubmenu';
 import CustomLink from '@/shared/Components/CustomLink';
-import Image from '@/shared/Components/Image';
+import { MEDIA_BASE_URL_CDN } from '@/shared/utils/helper';
 import { SubCategoryList } from '@/types/header';
+import Image from 'next/image';
 import React from 'react';
 
 interface iProps {
   headerSubMenu: SubCategoryList;
   seName: keyof SubCategoryList;
   bannerData: any;
+  staticImage?: boolean;
 }
 
-const Banner: React.FC<iProps> = ({ headerSubMenu, seName, bannerData }) => {
+const Banner: React.FC<iProps> = ({
+  headerSubMenu,
+  seName,
+  bannerData,
+  staticImage = false,
+}) => {
   let items: DynamicSubMenuContent['items'] = [];
   if (seName in headerSubMenu) {
     const subMenu = headerSubMenu[
@@ -30,9 +37,13 @@ const Banner: React.FC<iProps> = ({ headerSubMenu, seName, bannerData }) => {
         <div className='relative w-full pt-[100px] overflow-hidden'>
           <div className='text-center absolute inset-0'>
             <Image
-              src={bannerData?.banner}
+              src={MEDIA_BASE_URL_CDN + bannerData?.banner}
+              height={310}
+              width={1570}
               alt=''
               className='block w-full object-cover min-h-[235px]'
+              priority
+              quality={70}
             />
           </div>
           <div
@@ -45,10 +56,11 @@ const Banner: React.FC<iProps> = ({ headerSubMenu, seName, bannerData }) => {
                 <h1>{bannerData.name}</h1>
                 <div className='absolute top-[-60px] right-[-80px] lg:block hidden'>
                   <Image
-                    isStatic
                     src='/assets/images/butterfly-2.png'
                     className='w-[50%] lg:w-auto ml-auto'
                     alt=''
+                    height={101}
+                    width={82}
                   />
                 </div>
               </div>
@@ -83,15 +95,16 @@ const Banner: React.FC<iProps> = ({ headerSubMenu, seName, bannerData }) => {
                         href={`/${item?.customSEName || item.seName}.html`}
                       >
                         <Image
-                          isStatic={!item?.categoryImagePath && true}
+                          // isStatic={!item?.categoryImagePath && true}
                           height={400}
                           width={300}
                           src={
-                            item?.categoryImagePath ||
+                            MEDIA_BASE_URL_CDN + item?.categoryImagePath ||
                             `/assets/images/products/sub-category-${1}.png`
                           }
                           className='group-hover:scale-125 transition-all duration-700'
                           alt=''
+                          // isCdnUrlAdded={true}
                         />
                       </CustomLink>
                     </div>

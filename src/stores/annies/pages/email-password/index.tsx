@@ -4,18 +4,20 @@ import EmailPasswordController from '@/features/myAccount/emailPassword/controll
 import Image from '@/shared/Components/Image';
 import Loader from '@/shared/Components/Loader';
 import { getUserId } from '@/shared/utils/cookie.helper';
+import { paths } from '@/utils/paths.constant';
 import { useRouter } from 'next/navigation';
-import { ChangeEvent } from 'react';
+import { ChangeEvent, useEffect } from 'react';
 import SideLayout from '../../shared/components/myAccountLayout';
 
 const EmailPassword = () => {
   const userId = getUserId();
   const router = useRouter();
 
-  if (!userId) {
-    router.push('sign-in.html');
-    return;
-  }
+  useEffect(() => {
+    if (!userId) {
+      router.push(paths.login);
+    }
+  }, [userId]);
 
   return (
     <EmailPasswordController

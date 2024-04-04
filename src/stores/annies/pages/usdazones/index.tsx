@@ -2,11 +2,15 @@
 import { openAlertModal } from '@/app/redux/slices/modalSlice';
 import CustomLink from '@/shared/Components/CustomLink';
 import Image from '@/shared/Components/Image';
+import { SubCategoryList } from '@/types/header';
 import { paths } from '@/utils/paths.constant';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import Banner from '../../widgets/header/components/Banner';
 
-const Usdazones = () => {
+const Usdazones: React.FC<{
+  headerSubMenu: any;
+}> = ({ headerSubMenu }) => {
   const [zipcode, setZipcode] = useState('');
   const [error, setError] = useState('');
   const [growingZone, setGrowingZone] = useState<{
@@ -39,51 +43,24 @@ const Usdazones = () => {
 
   return (
     <>
-      <section className='bg-tertiary'>
-        <div className='container-fluid md:container mx-auto'>
-          <div className='relative w-full'>
-            <div className='text-center'>
-              <img
-                src='assets/images/product-listing-banner-new-1.png'
-                alt=''
-                className='block w-full'
-                style={{ minHeight: '235px' }}
-              />
-            </div>
-            <div className='lg:p-[60px] p-[30px] max-w-[1120px] bg-tertiary xl:mx-auto rounded-tl-lg rounded-tr-lg absolute inset-0 mt-[50px] mx-[20px]'>
-              <div className='text-center'>
-                <div className='text-2xl-text mb-[15px] font-sub font-bold relative inline-block'>
-                  <h1>Find your USDA Zone</h1>
-                  <div className='absolute top-[-60px] right-[-80px] lg:block hidden'>
-                    <Image
-                      isStatic
-                      src='assets/images/butterfly-2.png'
-                      className='w-[50%] lg:w-auto ml-auto'
-                      alt=''
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className=''>
-                <div className='font-sub text-center text-default-text font-semibold !leading-6'>
-                  The USDA Plant Hardiness Zone Map divides the United States
-                  into 13 zones based on average winter temperatures. Ranging
-                  from Zone 1 (coldest) to Zone 13 (warmest), it helps gardeners
-                  choose plants suitable for their region. However, it solely
-                  considers winter cold and doesn't account for factors like
-                  summer heat, humidity, soil type, or precipitation. The map is
-                  a valuable resource for outdoor plant selection, with each
-                  zone representing a 10°F difference in minimum winter
-                  temperatures.
-                </div>
-                <div className='text-[#9F2D3C] uppercase text-[16px] font-semibold text-center underline block md:hidden'>
-                  More
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Banner
+        seName={'find-your-usda-zone' as unknown as keyof SubCategoryList}
+        headerSubMenu={headerSubMenu}
+        bannerData={{
+          banner: 'assets/images/product-listing-banner-new-1.png',
+          description: `The USDA Plant Hardiness Zone Map divides the United States
+          into 13 zones based on average winter temperatures. Ranging
+          from Zone 1 (coldest) to Zone 13 (warmest), it helps gardeners
+          choose plants suitable for their region. However, it solely
+          considers winter cold and doesn't account for factors like
+          summer heat, humidity, soil type, or precipitation. The map is
+          a valuable resource for outdoor plant selection, with each
+          zone representing a 10°F difference in minimum winter
+          temperatures.`,
+          name: 'Find your USDA Zone',
+        }}
+        staticImage={true}
+      />
       <section className='bg-tertiary'>
         <div className='container mx-auto relative'>
           <div className='py-[20px]'>

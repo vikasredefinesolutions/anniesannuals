@@ -15,6 +15,7 @@ interface IProps {
   wishListId?: number;
   productPage?: boolean;
   selectedSize?: IProductInventory | null;
+  gardenProducInventory?: number;
 }
 
 const QuantityInput: React.FC<IProps> = ({
@@ -27,17 +28,24 @@ const QuantityInput: React.FC<IProps> = ({
   wishListId,
   productPage,
   selectedSize,
+  gardenProducInventory,
 }) => {
   const [showInfo, setShowInfo] = useState(false);
   const addtocartonfutureInv = product!.isAddToCart;
   const dispatch = useAppDispatch();
+  const todayDate = new Date().toLocaleDateString();
   const isOutOfBox = () => {
     if (product?.isDiscontinue) {
       return true;
     }
-    if (!product?.sizes && product?.quantity === 0) {
+    if (
+      (!product?.sizes && product?.quantity === 0) ||
+      (productPage == false && gardenProducInventory == 0)
+    ) {
       if (
-        product.futureInventoryDate &&
+        product?.futureInventoryDate &&
+        new Date(product.futureInventoryDate).toLocaleDateString() >=
+          todayDate &&
         product.futureInventory !== 0 &&
         addtocartonfutureInv
       ) {
@@ -47,6 +55,8 @@ const QuantityInput: React.FC<IProps> = ({
     } else if (product?.sizes && selectedSize?.inventory == 0) {
       if (
         product.futureInventoryDate &&
+        new Date(product.futureInventoryDate).toLocaleDateString() >=
+          todayDate &&
         product.futureInventory !== 0 &&
         addtocartonfutureInv
       ) {
@@ -58,12 +68,26 @@ const QuantityInput: React.FC<IProps> = ({
   };
   const addtocartText = () => {
     if (
+      productPage == false &&
+      gardenProducInventory == 0 &&
+      product?.futureInventoryDate &&
+      new Date(product.futureInventoryDate).toLocaleDateString() >= todayDate &&
+      product?.futureInventory &&
+      addtocartonfutureInv
+    ) {
+      return 'Pre Order';
+    } else if (productPage == false && gardenProducInventory !== 0) {
+      return 'Add to Cart';
+    }
+
+    if (
       (product?.sizes && selectedSize?.inventory) ||
       (!product?.sizes && product?.quantity)
     ) {
       return 'Add to Cart';
     } else if (
       product?.futureInventoryDate &&
+      new Date(product.futureInventoryDate).toLocaleDateString() >= todayDate &&
       product?.futureInventory &&
       addtocartonfutureInv
     ) {

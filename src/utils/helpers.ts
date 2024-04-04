@@ -209,4 +209,41 @@ export const generateGA4ProductCategories = (filterFacetFileds: IFilterFacetFiel
 
 export const getConcatinatedValue = (payload: string[] | number[] = []) => {
   return payload.join(' ,');
-}
+};
+
+export const updatedKeyName = (key: string) => {
+  switch (key) {
+    case 'firstname':
+      return 'First Name';
+
+    case 'lastName':
+      return 'Last Name';
+
+    case 'countryName':
+      return 'Country';
+
+    case 'address1':
+      return 'Address Line 1';
+
+    case 'city':
+      return 'City';
+
+    case 'state':
+      return 'State';
+
+    case 'email':
+      return 'Email';
+
+    case 'phone':
+      return 'Phone';
+
+    case 'postalCode':
+      return 'Postal Code';
+
+    case 'countryCode':
+      return 'Country Code';
+
+    default:
+      return '';
+  }
+};

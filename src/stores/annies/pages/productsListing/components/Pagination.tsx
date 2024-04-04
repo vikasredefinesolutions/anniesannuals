@@ -20,8 +20,8 @@ const PaginationBar: React.FC<_Props> = ({
   };
 
   return (
-    <div className='mb-[50px] mt-[30px]'>
-      <nav className='flex justify-center gap-2'>
+    <div className='mb-[50px] mt-[30px] grow lg:flex justify-center lg:items-center'>
+      <nav className='flex justify-center gap-2 mt-[10px]'>
         <div className=''>
           <button
             disabled={currentPage === 1}
@@ -78,7 +78,7 @@ const PaginationBar: React.FC<_Props> = ({
 
             if (showSkip) {
               return (
-                <li key={pageNumber} className=''>
+                <li key={pageNumber} className='flex'>
                   <span
                     className={`inline-flex items-center justify-center py-[10px] w-[40px] opacity-50`}
                   >
@@ -91,7 +91,7 @@ const PaginationBar: React.FC<_Props> = ({
             if (showNumber) {
               return (
                 <li
-                  className=''
+                  className='flex'
                   key={pageNumber}
                   onClick={() => pageChangeHandler(pageNumber)}
                 >
@@ -124,29 +124,29 @@ const PaginationBar: React.FC<_Props> = ({
             </svg>
           </button>
         </div>
-        <div className='ml-[15px]'>
-          <input
-            value={input}
-            type='number'
-            min={1}
-            max={totalPages}
-            step='1'
-            onKeyDown={(event) => {
-              if (event.key === '.') event.preventDefault();
-              if (event.key === 'e') event.preventDefault();
-            }}
-            className='h-full inline-flex items-center justify-center rounded py-[10px] px-[5px] text-center w-[70px] bg-transparent border border-gray-border shadow-sm mr-[5px]'
-            placeholder='Page No.'
-            onChange={(event) => setInput(event.target.value.trim())}
-          />
-          <button
-            onClick={() => pageChangeHandler(Math.floor(+input))}
-            className={`h-full inline-flex items-center  bg-primary justify-center  rounded py-[10px] w-[40px] bg-white border border-gray-border shadow-sm cursor-pointer hover:bg-primary hover:text-white`}
-          >
-            GO
-          </button>
-        </div>
       </nav>
+      <div className='ml-[15px] flex justify-center mt-[10px]'>
+        <input
+          value={input}
+          type='number'
+          min={1}
+          max={totalPages}
+          step='1'
+          onKeyDown={(event) => {
+            if (event.key === '.') event.preventDefault();
+            if (event.key === 'e') event.preventDefault();
+          }}
+          className='h-full inline-flex items-center justify-center rounded py-[10px] px-[5px] text-center w-[70px] bg-transparent border border-gray-border shadow-sm mr-[5px]'
+          placeholder='Page No.'
+          onChange={(event) => setInput(event.target.value.trim())}
+        />
+        <button
+          onClick={() => pageChangeHandler(Math.floor(+input))}
+          className={`h-full inline-flex items-center  bg-primary justify-center  rounded py-[10px] w-[40px] bg-white border border-gray-border shadow-sm cursor-pointer hover:bg-primary hover:text-white`}
+        >
+          GO
+        </button>
+      </div>
     </div>
   );
 };

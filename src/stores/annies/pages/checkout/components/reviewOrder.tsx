@@ -110,7 +110,20 @@ const ReviewOrder = () => {
                                           {item.productName}
                                         </CustomLink>
                                       </div>
-
+                                      {(CultivarName || CommonName) && (
+                                        <div className='text-defult-text font-bold font-sub opacity-80'>
+                                          {CultivarName && (
+                                            <h2>
+                                              {`${CultivarName}dfa${
+                                                CommonName ? ',' : ''
+                                              } `}
+                                            </h2>
+                                          )}
+                                          {CommonName && (
+                                            <h2>{`${CommonName}`}</h2>
+                                          )}
+                                        </div>
+                                      )}
                                       {prefferedCommonName ||
                                         (secondaryCommonName && (
                                           <div className='text-sub-text font-sub opacity-80 pt-[10px] mb-[10px] flex flex-wrap'>
@@ -126,6 +139,11 @@ const ReviewOrder = () => {
                                             )}
                                           </div>
                                         ))}
+                                      {item.sku && (
+                                        <div className='text-defult-text font-bold font-sub opacity-80'>
+                                          {item.sku}
+                                        </div>
+                                      )}
 
                                       {checkCommonName(item?.customFields) && (
                                         <div className='text-normal-text italic font-sub opacity-80 mb-[8px]'>

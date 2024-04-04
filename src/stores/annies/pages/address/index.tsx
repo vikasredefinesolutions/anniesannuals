@@ -2,8 +2,9 @@
 import AddressController from '@/features/myAccount/address/controller';
 import Loader from '@/shared/Components/Loader';
 import { getUserId } from '@/shared/utils/cookie.helper';
+import { paths } from '@/utils/paths.constant';
 import { useRouter } from 'next/navigation';
-import React from 'react';
+import React, { useEffect } from 'react';
 import SideLayout from '../../shared/components/myAccountLayout';
 import MyAddress from './components/myAddress';
 
@@ -11,10 +12,11 @@ const Address: React.FC = () => {
   const userId = getUserId();
   const router = useRouter();
 
-  if (!userId) {
-    router.push('sign-in.html');
-    return;
-  }
+  useEffect(() => {
+    if (!userId) {
+      router.push(paths.login);
+    }
+  }, [userId]);
 
   return (
     <>

@@ -2,6 +2,7 @@ import dynamic from 'next/dynamic';
 import { activeStoreName } from '../../shared/configs';
 import React from 'react';
 import { Metadata } from 'next';
+import { getStaticHeaderSubMenu } from '@/helper/staticfile.helper';
 
 const DynamicUsdazonesPage: any = dynamic(
   () => import(`../../${activeStoreName}/pages/usdazones`),
@@ -13,5 +14,7 @@ export const metadata: Metadata = {
 };
 
 export default async function UsdazonesPage() {
-  return <DynamicUsdazonesPage />;
+  const headerSubMenu = await getStaticHeaderSubMenu();
+
+  return <DynamicUsdazonesPage headerSubMenu={headerSubMenu} />;
 }

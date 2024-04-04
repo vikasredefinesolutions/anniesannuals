@@ -39,6 +39,8 @@ interface _LoginHelpers {
   prevRoute: any;
   Controller: any;
   control: any;
+  showPassword: boolean;
+  setShowPassword: React.Dispatch<React.SetStateAction<boolean>>;
   // onChange: any;
 }
 
@@ -56,6 +58,7 @@ const schema = yup.object({
 
 const LoginModelController: React.FC<_Props> = ({ cases, config }) => {
   const [errorMessage, setErrorMessage] = useState<null | string>(null);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
   const router = useRouter();
   const dispatch = useDispatch();
   const searchParams = useSearchParams();
@@ -178,6 +181,8 @@ const LoginModelController: React.FC<_Props> = ({ cases, config }) => {
     prevRoute,
     Controller,
     control,
+    showPassword,
+    setShowPassword,
   });
 };
 

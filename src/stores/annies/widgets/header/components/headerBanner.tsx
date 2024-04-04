@@ -87,12 +87,12 @@ const HeaderBanner: React.FC<iProps> = ({ cmsStoreThemeConfigsViewModel }) => {
       <div className='lg:bg-gradient-to-l lg:from-90% lg:from-[#634B91] lg:via-[#FFEDD1] lg:to-[#FFF3E0] bg-transparent py-[3px] lg:relative lg:top-0 lg:right-0 absolute top-[25px] right-0 z-40'>
         <div className='container mx-auto'>
           <div className='flex items-center justify-end'>
-            <div className='w-full lg:w-1/4 hidden lg:inline-block'></div>
-            <div className='w-full lg:w-3/4 flex items-center justify-between'>
-              <div className='w-full lg:w-auto hidden lg:inline-block '>
+            {/* <div className='w-full lg:w-1/4 hidden lg:inline-block'></div> */}
+            <div className='w-full flex items-center justify-between'>
+              <div className='w-full lg:w-auto hidden lg:inline-block grow'>
                 {annoucement?.announcementRow[0]?.isVisible && (
                   <div
-                    className='font-extrabold xl:text-[12px] text-[10px] uppercase'
+                    className='font-extrabold xl:text-[12px] text-[10px] uppercase flex justify-center items-center'
                     dangerouslySetInnerHTML={{
                       __html: annoucement?.announcementRow[0]?.leftSideText
                         ? annoucement?.announcementRow[0]?.leftSideText

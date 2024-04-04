@@ -215,13 +215,13 @@ const Card = ({
         target={target}
       >
         {image ? (
-          <img
-            src={`${process.env.NEXT_PUBLIC_REDEFINE_MEDIA}${image}`}
+          <Image
+            src={image}
             className='group hover:scale-125 transition-all duration-700 group object-cover w-full'
             alt={imageAltTag}
-            loading='lazy'
             height={426}
             width={370}
+            isCdnUrlAdded={true}
           />
         ) : (
           <div

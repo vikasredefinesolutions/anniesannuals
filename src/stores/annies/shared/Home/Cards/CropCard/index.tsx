@@ -31,7 +31,7 @@ const NewCrops: React.FC = () => {
             </div>
             <div className='pb-[15px]'>
               <CustomLink
-                href={paths.newProducts}
+                href={paths.productListingAtoZ}
                 className='font-sub font-bold text-medium-text underline'
               >
                 Shop All New

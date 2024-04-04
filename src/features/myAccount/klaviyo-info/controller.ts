@@ -46,6 +46,7 @@ export interface _Values {
   isUnSubscribeAllSms: boolean;
   isDoNotShareMyDetailsAnyOne: boolean;
   isEmailLocalEventsHappeningInNursey: boolean;
+  isRemoveFromPhysicalMailing: boolean;
 }
 interface _Props {
   configs: null;
@@ -67,7 +68,19 @@ const KlaviyoInfoController: React.FC<_Props> = (_Props) => {
   const fetchKlaviyoUserData = async () => {
     try {
       dispatch(showLoader(true));
-      const data = await getCustomerPreference(`${storeId}`, userEmail);
+
+      if (!userEmail.trim()) {
+        dispatch(
+          openAlertModal({
+            title: 'Error',
+            description: 'Please enter email to proceed!',
+            isAlertModalOpen: true,
+          }),
+        );
+        return;
+      }
+
+      const data = await getCustomerPreference(`${storeId}`, userEmail.trim());
       if (data && data?.email) {
         setUserData(data);
         setValue('firstName', data?.firstname);
@@ -85,6 +98,10 @@ const KlaviyoInfoController: React.FC<_Props> = (_Props) => {
         setValue(
           'isUnSubscribeMarketingEmail',
           data?.isUnSubscribeMarketingEmail,
+        );
+        setValue(
+          'isRemoveFromPhysicalMailing',
+          data?.isRemoveFromPhysicalMailing,
         );
       } else {
         dispatch(
@@ -126,6 +143,7 @@ const KlaviyoInfoController: React.FC<_Props> = (_Props) => {
         isDoNotShareMyDetailsAnyOne: values?.isDoNotShareMyDetailsAnyOne,
         isEmailLocalEventsHappeningInNursey:
           values?.isEmailLocalEventsHappeningInNursey,
+        isRemoveFromPhysicalMailing: values?.isRemoveFromPhysicalMailing,
       };
 
       const updateData = await updateCustomerKlaviyo(payload);
@@ -175,6 +193,7 @@ const KlaviyoInfoController: React.FC<_Props> = (_Props) => {
     isUnSubscribeAllSms: yup.boolean().default(false),
     isDoNotShareMyDetailsAnyOne: yup.boolean().default(false),
     isEmailLocalEventsHappeningInNursey: yup.boolean().default(false),
+    isRemoveFromPhysicalMailing: yup.boolean().default(false),
   });
 
   const hookForm = useForm({

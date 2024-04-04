@@ -187,7 +187,10 @@ const GiftCardController: React.FC<_Props> = ({ cases, config }) => {
       dispatch(
         openAlertModal({
           title: 'Error',
-          description: errorMsg,
+          description:
+            giftCardValue == ''
+              ? 'Please enter valid Gift Card Number'
+              : errorMsg,
           isAlertModalOpen: true,
         }),
       );

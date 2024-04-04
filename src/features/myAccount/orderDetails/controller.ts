@@ -56,6 +56,7 @@ interface _Helper {
       | 'Refunded'
     >
   >;
+  selectedTenure: number;
   setSelectedTenure: React.Dispatch<React.SetStateAction<number>>;
   setOrdersArray: any;
   isOpen: boolean;
@@ -495,6 +496,7 @@ const OrderDetailsController: React.FC<_Props> = ({ cases }) => {
       isOpen,
       openModel,
       onRequestClose,
+      selectedTenure,
       setSelectedTenure,
       searchOrders,
       setSearchText,

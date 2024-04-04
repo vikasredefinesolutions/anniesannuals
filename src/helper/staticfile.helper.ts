@@ -1,4 +1,5 @@
 import { readFile } from 'fs/promises';
+import path from "path"
 import storeDetails from '@/staticData/storeDetails.json';
 import adminConfigs from '@/staticData/adminConfigs.json';
 import homePageMetaData from '@/staticData/homePage/pageMetaData.json';
@@ -14,8 +15,8 @@ export type tAdminConfigs = typeof adminConfigs;
 export type tHomePageMetaData = typeof homePageMetaData;
 
 export const getStaticHeaderSubMenu = async (): Promise<tHeaderSubMenuFile> => {
-  const headerSubMenuFile = await readFile(
-    process.cwd() + '/src/staticData/headerSubMenu.json',
+  const headerSubMenuFile = await readFile(path.join(
+    process.cwd(), '/src/staticData/headerSubMenu.json'),
     'utf-8',
   );
 

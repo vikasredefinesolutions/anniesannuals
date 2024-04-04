@@ -14,7 +14,8 @@ export type tAdminConfigs = typeof adminConfigs;
 export type tHomePageMetaData = typeof homePageMetaData;
 
 export const getStaticHeaderSubMenu = async (): Promise<tHeaderSubMenuFile> => {
-  const headerSubMenuFile = await readFile('staticData/headerSubMenu.json',
+  const headerSubMenuFile = await readFile(
+    process.cwd() + '/src/staticData/headerSubMenu.json',
     'utf-8',
   );
 

@@ -14,7 +14,7 @@ export type tAdminConfigs = typeof adminConfigs;
 export type tHomePageMetaData = typeof homePageMetaData;
 
 export const getStaticHeaderSubMenu = async (): Promise<tHeaderSubMenuFile> => {
-  const headerSubMenuFile = {
+  const headerSubMenuFile = '{
   "perennials-biennials": {
     "topicId": 97,
     "title": "Perennials & Biennials",
@@ -1562,7 +1562,7 @@ export const getStaticHeaderSubMenu = async (): Promise<tHeaderSubMenuFile> => {
     "customCollectionUrl": "",
     "seName": "sale"
   }
-}
+}'
 ;
 
   if (!headerSubMenuFile) throw new Error('Header sub menu file not found');

@@ -1,6 +1,8 @@
 # Folder Structure
 
+
 ### app (layer):
+
 
 - No static import could be made directly from any store.
 - No store code check should be used.

@@ -27,8 +27,8 @@ export const getStaticHeaderSubMenu = async (): Promise<tHeaderSubMenuFile> => {
 };
 
 export const getStaticStoreDetails = async (): Promise<tStoreDetailsFile> => {
-  const storeDetailsFile = await readFile(
-    process.cwd() + '/src/staticData/storeDetails.json',
+  const storeDetailsFile = await readFile(path.join(
+    process.cwd(), '/src/staticData/storeDetails.json'),
     'utf-8',
   );
 
@@ -44,8 +44,8 @@ export const getStaticStoreDetails = async (): Promise<tStoreDetailsFile> => {
 };
 
 export const getStaticAdminConfigs = async (): Promise<tAdminConfigs> => {
-  const adminConfigsFile = await readFile(
-    process.cwd() + '/src/staticData/adminConfigs.json',
+  const adminConfigsFile = await readFile(path.join(
+    process.cwd(), '/src/staticData/adminConfigs.json'),
     'utf-8',
   );
 

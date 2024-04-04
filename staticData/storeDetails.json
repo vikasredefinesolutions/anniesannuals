@@ -1,0 +1,958 @@
+{
+  "storeId": 5,
+  "storeXPaymetnOptionListViewModels": [
+    {
+      "paymentOptionId": 3,
+      "paymentOptionName": "Credit Card",
+      "rowVersion": "9bRDMtgg3Ag=",
+      "status": "A"
+    },
+    {
+      "paymentOptionId": 11,
+      "paymentOptionName": "Paypal",
+      "rowVersion": "U7VDMtgg3Ag=",
+      "status": "A"
+    }
+  ],
+  "cmsMenuConfigViewModel": [
+    {
+      "id": 1,
+      "topic_Id": 97,
+      "type": "dynamic",
+      "open_In_New_Tab": " ",
+      "menu_Info": "",
+      "store_Id": 5,
+      "created_By": "",
+      "created_Date": null,
+      "modified_By": "",
+      "modified_Date": null,
+      "category": "category",
+      "se_Name": "perennials-biennials",
+      "title": "Perennials & Biennials",
+      "menu_Type": "",
+      "categoryCustomFields": [
+        {
+          "value": "viola-etain",
+          "label": "Image3 link"
+        },
+        {
+          "value": "/annies/1/category/0/mstfldcat_3112024721510.jpg",
+          "label": "Image3"
+        },
+        {
+          "value": "linaria-reticulata-f",
+          "label": "Image2 link"
+        },
+        {
+          "value": "Linaria",
+          "label": "Image2 Title"
+        },
+        {
+          "value": "/annies/1/category/0/mstfldcat_311202465651753.jpg",
+          "label": "Image2"
+        },
+        {
+          "value": "eschscholzia-cal-apricot",
+          "label": "Image1 link"
+        },
+        {
+          "value": "Eschscholzia",
+          "label": "Image1 Title"
+        },
+        {
+          "value": "/annies/1/category/0/mstfldcat_311202464749627.jpg",
+          "label": "Image1"
+        },
+        {
+          "value": "color-[#EDFFFA]",
+          "label": "SUB CATEGORY BACKGROUND COLOR"
+        },
+        {
+          "value": "Viola",
+          "label": "Image3 Title"
+        },
+        {
+          "value": "color-[#295B4C]",
+          "label": "CATEGORY BACKGROUND COLOR"
+        }
+      ],
+      "customCollectionUrl": "",
+      "landingPage": ""
+    },
+    {
+      "id": 2,
+      "topic_Id": 221,
+      "type": "dynamic",
+      "open_In_New_Tab": " ",
+      "menu_Info": "",
+      "store_Id": 5,
+      "created_By": "",
+      "created_Date": null,
+      "modified_By": "",
+      "modified_Date": null,
+      "category": "category",
+      "se_Name": "annual",
+      "title": "Annuals",
+      "menu_Type": "",
+      "categoryCustomFields": [
+        {
+          "value": "nemophila-menziesii-bbe",
+          "label": "Image3 link"
+        },
+        {
+          "value": "/annies/1/category/0/mstfldcat_311202472939313.jpg",
+          "label": "Image3"
+        },
+        {
+          "value": "layia-platyglosa-tt",
+          "label": "Image2 link"
+        },
+        {
+          "value": "Layia",
+          "label": "Image2 Title"
+        },
+        {
+          "value": "/annies/1/category/0/mstfldcat_311202472350882.jpg",
+          "label": "Image2"
+        },
+        {
+          "value": "centaurea-blue-diadem",
+          "label": "Image1 link"
+        },
+        {
+          "value": "Centaurea",
+          "label": "Image1 Title"
+        },
+        {
+          "value": "/annies/1/category/0/mstfldcat_311202472350841.jpg",
+          "label": "Image1"
+        },
+        {
+          "value": "color-[#FFF0ED]",
+          "label": "SUB CATEGORY BACKGROUND COLOR"
+        },
+        {
+          "value": "color-[#9C331C]",
+          "label": "CATEGORY BACKGROUND COLOR"
+        },
+        {
+          "value": "No",
+          "label": "Indestructible"
+        },
+        {
+          "value": "Nemophila",
+          "label": "Image3 Title"
+        },
+        {
+          "value": "Yes",
+          "label": "Indestructible"
+        }
+      ],
+      "customCollectionUrl": "",
+      "landingPage": ""
+    },
+    {
+      "id": 3,
+      "topic_Id": 266,
+      "type": "dynamic",
+      "open_In_New_Tab": " ",
+      "menu_Info": "",
+      "store_Id": 5,
+      "created_By": "",
+      "created_Date": null,
+      "modified_By": "",
+      "modified_Date": null,
+      "category": "category",
+      "se_Name": "groundcovers",
+      "title": "Groundcovers",
+      "menu_Type": "",
+      "categoryCustomFields": [
+        {
+          "value": "lippia-repens",
+          "label": "Image3 link"
+        },
+        {
+          "value": "/annies/1/category/0/mstfldcat_31120247391114.jpg",
+          "label": "Image3"
+        },
+        {
+          "value": "osteospermum-zion-copper-amethyst",
+          "label": "Image2 link"
+        },
+        {
+          "value": "Osteospermum",
+          "label": "Image2 Title"
+        },
+        {
+          "value": "/annies/1/category/0/mstfldcat_311202473727795.jpg",
+          "label": "Image2"
+        },
+        {
+          "value": "achillea-millefolium-cameo",
+          "label": "Image1 link"
+        },
+        {
+          "value": "Achillea",
+          "label": "Image1 Title"
+        },
+        {
+          "value": "/annies/1/category/0/mstfldcat_311202473549652.jpg",
+          "label": "Image1"
+        },
+        {
+          "value": "color-[#F6ECFF]",
+          "label": "SUB CATEGORY BACKGROUND COLOR"
+        },
+        {
+          "value": "Lippia",
+          "label": "Image3 Title"
+        },
+        {
+          "value": "color-[#694D84]",
+          "label": "CATEGORY BACKGROUND COLOR"
+        }
+      ],
+      "customCollectionUrl": "",
+      "landingPage": ""
+    },
+    {
+      "id": 4,
+      "topic_Id": 267,
+      "type": "dynamic",
+      "open_In_New_Tab": " ",
+      "menu_Info": "",
+      "store_Id": 5,
+      "created_By": "",
+      "created_Date": null,
+      "modified_By": "",
+      "modified_Date": null,
+      "category": "category",
+      "se_Name": "shrubs-trees",
+      "title": "Shrubs & Trees",
+      "menu_Type": "",
+      "categoryCustomFields": [
+        {
+          "value": "salvia-mystic-spires",
+          "label": "Image3 link"
+        },
+        {
+          "value": "/annies/1/category/0/mstfldcat_311202474729494.jpg",
+          "label": "Image3"
+        },
+        {
+          "value": "cuphea-hummingbird-lunch",
+          "label": "Image2 link"
+        },
+        {
+          "value": "Cuphea",
+          "label": "Image2 Title"
+        },
+        {
+          "value": "/annies/1/category/0/mstfldcat_311202474453672.jpg",
+          "label": "Image2"
+        },
+        {
+          "value": "ceanothus-julia-phelps",
+          "label": "Image1 link"
+        },
+        {
+          "value": "Ceanothus",
+          "label": "Image1 Title"
+        },
+        {
+          "value": "/annies/1/category/0/mstfldcat_311202474254880.jpg",
+          "label": "Image1"
+        },
+        {
+          "value": "color-[#EDFBFF]",
+          "label": "SUB CATEGORY BACKGROUND COLOR"
+        },
+        {
+          "value": "Salvia",
+          "label": "Image3 Title"
+        },
+        {
+          "value": "color-[#1B6074]",
+          "label": "CATEGORY BACKGROUND COLOR"
+        }
+      ],
+      "customCollectionUrl": "",
+      "landingPage": ""
+    },
+    {
+      "id": 5,
+      "topic_Id": 268,
+      "type": "dynamic",
+      "open_In_New_Tab": " ",
+      "menu_Info": "",
+      "store_Id": 5,
+      "created_By": "",
+      "created_Date": null,
+      "modified_By": "",
+      "modified_Date": null,
+      "category": "category",
+      "se_Name": "grasses-and-foliage",
+      "title": "Grasses & Foliage",
+      "menu_Type": "",
+      "categoryCustomFields": [
+        {
+          "value": "muhlenbergia-capillaris",
+          "label": "Image3 link"
+        },
+        {
+          "value": "/annies/1/category/0/mstfldcat_3112024842204.jpg",
+          "label": "Image3"
+        },
+        {
+          "value": "festuca-glauca-elijah-blue",
+          "label": "Image2 link"
+        },
+        {
+          "value": "Festuca",
+          "label": "Image2 Title"
+        },
+        {
+          "value": "/annies/1/category/0/mstfldcat_31120247554227.jpg",
+          "label": "Image2"
+        },
+        {
+          "value": "aeonium-sunburst",
+          "label": "Image1 link"
+        },
+        {
+          "value": "Aeonium",
+          "label": "Image1 Title"
+        },
+        {
+          "value": "/annies/1/category/0/mstfldcat_31120247554195.jpg",
+          "label": "Image1"
+        },
+        {
+          "value": "color-[#F1FFED]",
+          "label": "SUB CATEGORY BACKGROUND COLOR"
+        },
+        {
+          "value": "Muhlenbergia",
+          "label": "Image3 Title"
+        },
+        {
+          "value": "color-[#2E631D]",
+          "label": "CATEGORY BACKGROUND COLOR"
+        }
+      ],
+      "customCollectionUrl": "",
+      "landingPage": ""
+    },
+    {
+      "id": 6,
+      "topic_Id": 269,
+      "type": "dynamic",
+      "open_In_New_Tab": " ",
+      "menu_Info": "",
+      "store_Id": 5,
+      "created_By": "",
+      "created_Date": null,
+      "modified_By": "",
+      "modified_Date": null,
+      "category": "category",
+      "se_Name": "vines",
+      "title": "Vines",
+      "menu_Type": "",
+      "categoryCustomFields": [
+        {
+          "value": "lathyrus-bluevein",
+          "label": "Image3 link"
+        },
+        {
+          "value": "/annies/1/category/0/mstfldcat_311202484851545.jpg",
+          "label": "Image3"
+        },
+        {
+          "value": "dipogon-lignosus-csp",
+          "label": "Image2 link"
+        },
+        {
+          "value": "Dipogon",
+          "label": "Image2 Title"
+        },
+        {
+          "value": "/annies/1/category/0/mstfldcat_311202484715882.jpg",
+          "label": "Image2"
+        },
+        {
+          "value": "convolvulus-sabatius",
+          "label": "Image1 link"
+        },
+        {
+          "value": "Convolulus",
+          "label": "Image1 Title"
+        },
+        {
+          "value": "/annies/1/category/0/mstfldcat_311202484715847.jpg",
+          "label": "Image1"
+        },
+        {
+          "value": "color-[#FFF4F8]",
+          "label": "SUB CATEGORY BACKGROUND COLOR"
+        },
+        {
+          "value": "Lathyrus",
+          "label": "Image3 Title"
+        },
+        {
+          "value": "color-[#A62152]",
+          "label": "CATEGORY BACKGROUND COLOR"
+        }
+      ],
+      "customCollectionUrl": "",
+      "landingPage": ""
+    },
+    {
+      "id": 7,
+      "topic_Id": 270,
+      "type": "dynamic",
+      "open_In_New_Tab": " ",
+      "menu_Info": "",
+      "store_Id": 5,
+      "created_By": "",
+      "created_Date": null,
+      "modified_By": "",
+      "modified_Date": null,
+      "category": "category",
+      "se_Name": "succulents",
+      "title": "Succulents",
+      "menu_Type": "",
+      "categoryCustomFields": [
+        {
+          "value": "sedum-spurium-voodoo",
+          "label": "Image3 link"
+        },
+        {
+          "value": "/annies/1/category/0/mstfldcat_3112024853443.jpg",
+          "label": "Image3"
+        },
+        {
+          "value": "lewisia-longipetala-little-raspberry",
+          "label": "Image2 link"
+        },
+        {
+          "value": "Lewisia",
+          "label": "Image2 Title"
+        },
+        {
+          "value": "/annies/1/category/0/mstfldcat_31120248533945.jpg",
+          "label": "Image2"
+        },
+        {
+          "value": "echeveria-elegans",
+          "label": "Image1 link"
+        },
+        {
+          "value": "Echeveria",
+          "label": "Image1 Title"
+        },
+        {
+          "value": "/annies/1/category/0/mstfldcat_31120248533915.jpg",
+          "label": "Image1"
+        },
+        {
+          "value": "color-[#EEF3FF]",
+          "label": "SUB CATEGORY BACKGROUND COLOR"
+        },
+        {
+          "value": "Sedum",
+          "label": "Image3 Title"
+        },
+        {
+          "value": "color-[#3B5697]",
+          "label": "CATEGORY BACKGROUND COLOR"
+        }
+      ],
+      "customCollectionUrl": "",
+      "landingPage": ""
+    },
+    {
+      "id": 8,
+      "topic_Id": 257,
+      "type": "none",
+      "open_In_New_Tab": " ",
+      "menu_Info": "",
+      "store_Id": 5,
+      "created_By": "",
+      "created_Date": null,
+      "modified_By": "",
+      "modified_Date": null,
+      "category": "category",
+      "se_Name": "shop-the-garden",
+      "title": "Shop the Garden",
+      "menu_Type": "",
+      "categoryCustomFields": [
+        {
+          "value": "color-[#9F2D3C]",
+          "label": "CATEGORY BACKGROUND COLOR"
+        },
+        {
+          "value": "color-[#FFE8EB]",
+          "label": "SUB CATEGORY BACKGROUND COLOR"
+        }
+      ],
+      "customCollectionUrl": "",
+      "landingPage": ""
+    },
+    {
+      "id": 9,
+      "topic_Id": 272,
+      "type": "custom",
+      "open_In_New_Tab": " ",
+      "menu_Info": "<div class=\"absolute top-full left-0 right-0 sm:text-[14px] z-50 border-t border-t-[#295B4C]\" x-show=\"menu9\">\n<div class=\"relative bg-[#EDFFFA]\">\n<div class=\"container mx-auto\">\n<div class=\"grid grid-cols-1 lg:grid-cols-4 xl:grid-cols-6 pt-[37px] pb-[60px]\">\n<div class=\"col-span-1\">\n<div class=\"text-[18px] font-bold font-sub text-body-color\">Resources</div>\n\n<ul class=\"text-[13px] lg:text-[14px] font-sub font-semibold\">\n\t<li class=\"pt-[20px]\"><a class=\"inline-block text-anchor hover:text-anchor-hover\" href=\"/us-hardiness-zones.html\" title=\"\">US Hardiness Zones</a></li>\n\t<li class=\"pt-[20px]\"><a class=\"inline-block text-anchor hover:text-anchor-hover\" href=\"/planting-guides.html\" title=\"\">Planting Guides</a></li>\n\t<li class=\"pt-[20px]\"><a class=\"inline-block text-anchor hover:text-anchor-hover\" href=\"product-listing.html\" title=\"\">Shop by Uses and Features</a></li>\n\t<li class=\"pt-[20px]\"><a class=\"inline-block text-anchor hover:text-anchor-hover\" href=\"/product-listing-a-z.html\" title=\"\">Shop A-Z</a></li>\n\t<li class=\"pt-[20px]\"><a class=\"inline-block text-anchor hover:text-anchor-hover\" href=\"/videos.html\" title=\"\">Gardening Videos</a></li>\n\t<li class=\"pt-[20px]\"><a class=\"inline-block text-anchor hover:text-anchor-hover\" href=\"/blog.html\" title=\"\">Gardening Blog</a></li>\n\t<li class=\"pt-[20px]\"><a class=\"inline-block text-anchor hover:text-anchor-hover\" href=\"product-listing.html\" title=\"\">Catalogues</a></li>\n\t<li class=\"pt-[20px]\"><a class=\"inline-block text-anchor hover:text-anchor-hover\" href=\"/wishlist.html\" title=\"\">Wish List</a></li>\n</ul>\n</div>\n\n<div class=\"col-span-1 lg:col-span-3 xl:col-span-5\">\n<div class=\"text-[18px] font-bold font-sub text-body-color\">Gardening Tips &amp; Guidance</div>\n\n<div class=\"grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-[27px]\">\n<div class=\"col-span-1 lg:col-span-1\">\n<div class=\"mt-[20px]\"><img alt=\"\" class=\"rounded-tl-xl rounded-br-xl overflow-hidden\" src=\"https://redefinecommerce.blob.core.windows.net/annies/temp/1/category/0/f13330de-5e28-4476-ab88-bfe9271bb57c.png\" /></div>\n\n<div class=\"mt-[15px]\"><a class=\"inline-block text-[16px] font-bold font-sub text-anchor hover:text-anchor-hover\" href=\"/growing-zone-guide.html\" title=\"\">Growing Zone Guide</a></div>\n</div>\n\n<div class=\"col-span-1 lg:col-span-1\">\n<div class=\"mt-[20px]\"><img alt=\"\" class=\"rounded-tl-xl rounded-br-xl overflow-hidden\" src=\"https://redefinecommerce.blob.core.windows.net/annies/temp/1/category/0/a995f8fa-aa2f-44a8-96c2-44b38dfb1cb3.png\" /></div>\n\n<div class=\"mt-[15px]\"><a class=\"inline-block text-[16px] font-bold font-sub text-anchor hover:text-anchor-hover\" href=\"/plant-finder.html\" title=\"\">Find Your Plant</a></div>\n</div>\n\n<div class=\"col-span-1 lg:col-span-1\">\n<div class=\"mt-[20px]\"><img alt=\"\" class=\"rounded-tl-xl rounded-br-xl overflow-hidden\" src=\"https://redefinecommerce.blob.core.windows.net/annies/temp/1/category/0/c1417ad8-2a76-43b6-87fe-8ecb21bf71c0.png\" /></div>\n\n<div class=\"mt-[15px]\"><a class=\"inline-block text-[16px] font-bold font-sub text-anchor hover:text-anchor-hover\" href=\"product-listing.html\" title=\"\">Plant Types</a></div>\n</div>\n\n<div class=\"col-span-1 lg:col-span-1\">\n<div class=\"mt-[20px]\"><img alt=\"\" class=\"rounded-tl-xl rounded-br-xl overflow-hidden\" src=\"https://redefinecommerce.blob.core.windows.net/annies/temp/1/category/0/8cdb3aff-950f-4999-8532-45f43479ea38.png\" /></div>\n\n<div class=\"mt-[15px]\"><a class=\"inline-block text-[16px] font-bold font-sub text-anchor hover:text-anchor-hover\" href=\"product-listing.html\" title=\"\">Planting Guides</a></div>\n</div>\n\n<div class=\"col-span-1 lg:col-span-1\">\n<div class=\"mt-[20px]\"><img alt=\"\" class=\"rounded-tl-xl rounded-br-xl overflow-hidden\" src=\"https://redefinecommerce.blob.core.windows.net/annies/temp/1/category/0/beae791a-c61a-44d5-a9d0-eb35aebc0997.png\" /></div>\n\n<div class=\"mt-[15px]\"><a class=\"inline-block text-[16px] font-bold font-sub text-anchor hover:text-anchor-hover\" href=\"product-listing.html\" title=\"\">Gardening Library</a></div>\n</div>\n</div>\n</div>\n</div>\n</div>\n</div>\n</div>\n",
+      "store_Id": 5,
+      "created_By": "",
+      "created_Date": null,
+      "modified_By": "",
+      "modified_Date": null,
+      "category": "category",
+      "se_Name": "resources",
+      "title": "Resources",
+      "menu_Type": "",
+      "categoryCustomFields": [
+        {
+          "value": "uses/ground-covers/ground-covers",
+          "label": "Image5 link"
+        },
+        {
+          "value": "/annies/1/category/0/mstfldcat_2112202314352573.png",
+          "label": "Image5"
+        },
+        {
+          "value": "life-span/annuals/annual",
+          "label": "Image4 link"
+        },
+        {
+          "value": "Planting Guides",
+          "label": "Image4 Title"
+        },
+        {
+          "value": "/annies/1/category/0/mstfldcat_2112202314352519.png",
+          "label": "Image4"
+        },
+        {
+          "value": "life-span/perennial~biennial/perennials-biennials",
+          "label": "Image3 link"
+        },
+        {
+          "value": "Plant Types",
+          "label": "Image3 Title"
+        },
+        {
+          "value": "/annies/1/category/0/mstfldcat_2112202314352485.png",
+          "label": "Image3"
+        },
+        {
+          "value": "plant-finder",
+          "label": "Image2 link"
+        },
+        {
+          "value": "Find Your Plant",
+          "label": "Image2 Title"
+        },
+        {
+          "value": "/annies/1/category/0/mstfldcat_2112202314352410.png",
+          "label": "Image2"
+        },
+        {
+          "value": "find-your-usda-zone",
+          "label": "Image1 link"
+        },
+        {
+          "value": "Growing Zone Guide",
+          "label": "Image1 Title"
+        },
+        {
+          "value": "/annies/1/category/0/mstfldcat_2112202314352375.png",
+          "label": "Image1"
+        },
+        {
+          "value": "color-[#FCEEFF]",
+          "label": "SUB CATEGORY BACKGROUND COLOR"
+        },
+        {
+          "value": "Gardening Library",
+          "label": "Image5 Title"
+        },
+        {
+          "value": "color-[#8A2C9B]",
+          "label": "CATEGORY BACKGROUND COLOR"
+        }
+      ],
+      "customCollectionUrl": "",
+      "landingPage": ""
+    },
+    {
+      "id": 10,
+      "topic_Id": 273,
+      "type": "custom",
+      "open_In_New_Tab": " ",
+      "menu_Info": "<div class=\"absolute top-full left-0 right-0 sm:text-[14px] z-50 border-t border-t-[#295B4C] bg-black text-white\">\n<div class=\"relative bg-[#EEF3FF]\">\n<div class=\"container mx-auto\">\n<div class=\"pt-[37px] pb-[60px]\">\n<div class=\"text-[18px] font-bold font-sub text-body-color\">Gifts &amp; Supplies</div>\n\n<div class=\"grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-[27px]\">\n<div class=\"col-span-1 lg:col-span-1\">\n<div class=\"mt-[20px]\"><img alt=\"Gift Cards\" class=\"rounded-tl-xl rounded-br-xl overflow-hidden\" src=\"https://redefinecommerce.blob.core.windows.net/annies/temp/1/category/0/bdd014fc-d7d3-4a7c-9b95-194d0a5c253d.png\" /></div>\n\n<div class=\"mt-[15px]\"><a class=\"inline-block text-[16px] font-bold font-sub text-anchor hover:text-anchor-hover\" href=\"/gift-card-listing.html\" target=\"_self\" title=\"\">Gift Cards</a></div>\n</div>\n\n<div class=\"col-span-1 lg:col-span-1\">\n<div class=\"mt-[20px]\"><a href=\"/search/result?q=Apparel\"><img alt=\"Apparel\" class=\"rounded-tl-xl rounded-br-xl overflow-hidden\" src=\"https://redefinecommerce.blob.core.windows.net/annies/temp/1/category/0/a85389e8-2a02-4038-9bbf-8d1766b18e2c.png\" /></a></div>\n\n<div class=\"mt-[15px]\"><a class=\"inline-block text-[16px] font-bold font-sub text-anchor hover:text-anchor-hover\" href=\"/search/result?q=Apparel\" target=\"_self\" title=\"\">Apparel</a></div>\n</div>\n\n<div class=\"col-span-1 lg:col-span-1\">\n<div class=\"mt-[20px]\"><a href=\"/search/result?q=Arts%20%26%20Books\"><img alt=\"Arts &amp; Books\" class=\"rounded-tl-xl rounded-br-xl overflow-hidden\" src=\"https://redefinecommerce.blob.core.windows.net/annies/temp/1/category/0/89940316-5bdf-4536-8fe5-7537a45914fc.png\" /></a></div>\n\n<div class=\"mt-[15px]\"><a class=\"inline-block text-[16px] font-bold font-sub text-anchor hover:text-anchor-hover\" href=\"/search/result?q=Arts%20%26%20Books\" target=\"_self\" title=\"\">Arts &amp; Books</a></div>\n</div>\n\n<div class=\"col-span-1 lg:col-span-1\">\n<div class=\"mt-[20px]\"><a href=\"/search/result?q=Bath%20%26%20Body\"><img alt=\"Bath &amp; Body\" class=\"rounded-tl-xl rounded-br-xl overflow-hidden\" src=\"https://redefinecommerce.blob.core.windows.net/annies/temp/1/category/0/eeb8f500-b8a7-4acd-bb0e-79d32b26faef.png\" /></a></div>\n\n<div class=\"mt-[15px]\"><a class=\"inline-block text-[16px] font-bold font-sub text-anchor hover:text-anchor-hover\" href=\"/search/result?q=Bath%20%26%20Body\" target=\"_self\" title=\"\">Bath &amp; Body</a></div>\n</div>\n\n<div class=\"col-span-1 lg:col-span-1\">\n<div class=\"mt-[20px]\"><a href=\"/search/result?q=Garden%20Supplies\"><img alt=\"Garden Supplies\" class=\"rounded-tl-xl rounded-br-xl overflow-hidden\" src=\"https://redefinecommerce.blob.core.windows.net/annies/temp/1/category/0/b5f82c11-d528-4de1-bb49-f73e44b634b7.png\" /></a></div>\n\n<div class=\"mt-[15px]\"><a class=\"inline-block text-[16px] font-bold font-sub text-anchor hover:text-anchor-hover\" href=\"/search/result?q=Garden%20Supplies\" target=\"_self\" title=\"\">Garden Supplies</a></div>\n</div>\n\n<div class=\"col-span-1 lg:col-span-1\">\n<div class=\"mt-[20px]\"><a href=\"search/result?q=Home%20Goods\"><img alt=\"Home Goods\" class=\"rounded-tl-xl rounded-br-xl overflow-hidden\" src=\"https://redefinecommerce.blob.core.windows.net/annies/temp/1/category/0/405270d3-59a7-458d-b099-a984d14d9656.png\" target=\"_self\" /></a></div>\n\n<div class=\"mt-[15px]\"><a class=\"inline-block text-[16px] font-bold font-sub text-anchor hover:text-anchor-hover\" href=\"search/result?q=Home%20Goods\" target=\"_self\" title=\"\">Home Goods</a></div>\n</div>\n</div>\n</div>\n</div>\n</div>\n</div>\n",
+      "store_Id": 5,
+      "created_By": "",
+      "created_Date": null,
+      "modified_By": "",
+      "modified_Date": null,
+      "category": "category",
+      "se_Name": "gifts-supplies",
+      "title": "Gifts & Supplies",
+      "menu_Type": "",
+      "categoryCustomFields": [
+        {
+          "value": "gifts-supplies/home-goods/gifts-supplies-home-goods",
+          "label": "Image6 link"
+        },
+        {
+          "value": "/annies/1/category/0/mstfldcat_211220237655747.png",
+          "label": "Image6"
+        },
+        {
+          "value": "color-[#EEF3FF]",
+          "label": "SUB CATEGORY BACKGROUND COLOR"
+        },
+        {
+          "value": "/annies/1/category/0/mstfldcat_211220237655427.png",
+          "label": "Image1"
+        },
+        {
+          "value": "Gift Cards",
+          "label": "Image1 Title"
+        },
+        {
+          "value": "gift-card-listing",
+          "label": "Image1 link"
+        },
+        {
+          "value": "/annies/1/category/0/mstfldcat_211220237655547.png",
+          "label": "Image2"
+        },
+        {
+          "value": "Apparel",
+          "label": "Image2 Title"
+        },
+        {
+          "value": "gifts-supplies/apparel/gifts-supplies-apparel",
+          "label": "Image2 link"
+        },
+        {
+          "value": "Home Goods",
+          "label": "Image6 Title"
+        },
+        {
+          "value": "/annies/1/category/0/mstfldcat_211220237655630.png",
+          "label": "Image3"
+        },
+        {
+          "value": "gifts-supplies/arts-books/gifts-supplies-arts-books",
+          "label": "Image3 link"
+        },
+        {
+          "value": "/annies/1/category/0/mstfldcat_211220237655665.png",
+          "label": "Image4"
+        },
+        {
+          "value": "Bath & Body",
+          "label": "Image4 Title"
+        },
+        {
+          "value": "gifts-supplies/garden-supplies/gifts-supplies-bath-body",
+          "label": "Image4 link"
+        },
+        {
+          "value": "/annies/1/category/0/mstfldcat_211220237655718.png",
+          "label": "Image5"
+        },
+        {
+          "value": "Garden Supplies",
+          "label": "Image5 Title"
+        },
+        {
+          "value": "gifts-supplies/garden-supplies/gifts-supplies-garden-supplies",
+          "label": "Image5 link"
+        },
+        {
+          "value": "Arts & Books",
+          "label": "Image3 Title"
+        },
+        {
+          "value": "color-[#3B5697]",
+          "label": "CATEGORY BACKGROUND COLOR"
+        }
+      ],
+      "customCollectionUrl": "",
+      "landingPage": ""
+    },
+    {
+      "id": 11,
+      "topic_Id": 278,
+      "type": "none",
+      "open_In_New_Tab": " ",
+      "menu_Info": "",
+      "store_Id": 5,
+      "created_By": "",
+      "created_Date": null,
+      "modified_By": "",
+      "modified_Date": null,
+      "category": "category",
+      "se_Name": "sale",
+      "title": "Sale",
+      "menu_Type": "",
+      "categoryCustomFields": [
+        {
+          "value": "color-[#9F2D3C]",
+          "label": "CATEGORY BACKGROUND COLOR"
+        },
+        {
+          "value": "color-[#FFE8EB]",
+          "label": "SUB CATEGORY BACKGROUND COLOR"
+        }
+      ],
+      "customCollectionUrl": "",
+      "landingPage": ""
+    }
+  ],
+  "cmsStoreThemeConfigsViewModel": [
+    {
+      "id": 1,
+      "store_id": 5,
+      "config_name": "footer",
+      "config_value": "<!-- ====== Footer Subscribe Section Start -->\n<section class=\"w-full bg-[#EEF3FF]\" style=\"background-image: url('https://redefinecommerce.blob.core.windows.net/annies/1/store/5/images/subscribe-flowers-bg_638360727172065172.png'); background-position: bottom center; background-repeat: no-repeat; background-size: cover;\">\n<div class=\"container mx-auto max-w-3xl\">\n<div class=\"lg:pt-[50px] pb-[300px] pt-[20px] pb- text-center\">\n<div class=\"text-[18px] sm:text-[24px] lg:text-[36px] font-bold text-anchor pb-[20px] font-sub\">Subscribe To Our Newsletter</div>\n\n<div class=\"text-[13px] sm:text-[17px] lg:text-[18px] font-semibold text-anchor pb-[20px] font-sub\">Get the newest product updates and upcoming sales</div>\n\n<div class=\"flex max-w-[480px] mt-0 mx-auto gap-[0px] justify-center font-sub pb-[20px]\"><input autocomplete=\"email\" class=\"w-full bg-transparent border border-anchor rounded-tl-[15px] py-2 px-4 text-[12px] text-anchor italic placeholder-anchor\n\t\t\t\t\t\tsm:max-w-sm outline-none\" id=\"\" name=\"email-address\" placeholder=\"Enter your E-Mail Address\" required=\"\" type=\"email\" /><button class=\"relative bg-primary uppercase text-[12px] lg:text-[14px] z-10 flex items-center font-semibold pt-[11px] pb-[10px] pl-[20px] pr-[20px] font-sub primary-link hover:primary-link-hover outline-none rounded-br-[15px]\" id=\"\" type=\"submit\">subscribe</button></div>\n<!--<div class=\"text-[13px] sm:text-[16px] lg:text-[16px] font-normal text-anchor pb-[20px] max-w-sm mx-auto\"><label class=\"cursor-pointer\"><input class=\"mr-[5px]\" id=\"\" type=\"checkbox\" /> I would like to receive emails about local events happening in our Nursery </label></div>--></div>\n</div>\n</section>\n<!-- ====== Footer Subscribe Section End --><!-- ====== Footer Section Start -->\n\n<footer class=\"relative z-10 overflow-hidden sm:pt-5 lg:pt-[40px]\" style=\"background-color: #FFF3E0;\">\n<div class=\"container mx-auto p-0 sm:px-[15px]\">\n<div class=\"sm:flex flex-wrap relative\">\n<div class=\"sm:flex flex-wrap w-full mx-[0px] sm:mx-[-15px] xl:w-7/12\">\n<div class=\"w-full px-[0px] sm:px-[15px] md:w-1/3\">\n<div class=\"mb-[0px] sm:mb-[15px] w-full ft-menu\">\n<div class=\"font-bold text-primary ft-menu-title cursor-pointer sm:cursor-default flex items-center justify-between px-[10px] sm:px-[0] py-[10px] sm:py-[0]\">\n<h4 class=\"sm:mb-[10px] mb-[0px] text-[16px] font-normal text-anchor font-sub px-[15px] sm:px-[0]\">Shop</h4>\n<span class=\"material-icons-outlined md:hidden text-anchor\">expand_more</span></div>\n\n<div class=\"hidden md:block sub-div px-[25px] sm:px-[0] py-[15px] sm:py-[0] bg-[#ffeccf] sm:bg-tertiary\">\n<ul>\n\t<li><a class=\"mb-[3px] inline-block text-[13px] leading-[25px] text-anchor hover:text-secondary\" href=\"/availability/available-now/plant-finder.html\">Available Now</a></li>\n\t<li><a class=\"mb-[3px] inline-block text-[13px] leading-[25px] text-anchor hover:text-secondary\" href=\"/availability/new-this-week/plant-finder.html\">New This Week</a></li>\n\t<li><a class=\"mb-[3px] inline-block text-[13px] leading-[25px] text-anchor hover:text-secondary\" href=\"/life-span/annuals/annual.html\">Annuals</a></li>\n\t<li><a class=\"mb-[3px] inline-block text-[13px] leading-[25px] text-anchor hover:text-secondary\" href=\"/life-span/perennial/perennials-biennials.html\">Perennials</a></li>\n\t<li><a class=\"mb-[3px] inline-block text-[13px] leading-[25px] text-anchor hover:text-secondary\" href=\"/plant-attributes.html\">Plant Attributes</a></li>\n\t<li><a class=\"mb-[3px] inline-block text-[13px] leading-[25px] text-anchor hover:text-secondary\" href=\"/plant-finder.html\">Plant Finder</a></li>\n\t<li><a class=\"mb-[3px] inline-block text-[13px] leading-[25px] text-anchor hover:text-secondary\" href=\"/product-listing-a-z.html\">Our Plants A to Z</a></li>\n\t<!-- <li><a href=\"plant-attributes.html\" class=\"mb-[3px] inline-block text-[13px] leading-[25px] text-anchor hover:text-secondary\">Plant Types</a></li> -->\n\t<li><a class=\"mb-[3px] inline-block text-[13px] leading-[25px] text-anchor hover:text-secondary\" href=\"/gift-certificates.html\">Gift &amp; Supplies</a></li>\n\t<li><a class=\"mb-[3px] inline-block text-[13px] leading-[25px] text-anchor hover:text-secondary\" href=\"/gift-card-listing\">Gift Cards</a></li>\n\t<li><a class=\"mb-[3px] inline-block text-[13px] leading-[25px] text-anchor hover:text-secondary\" href=\"/product-listing-a-z.html\">Shop All</a></li>\n</ul>\n</div>\n</div>\n</div>\n\n<div class=\"w-full px-[0px] sm:px-[15px] md:w-1/3\">\n<div class=\"mb-[0px] sm:mb-[15px] w-full ft-menu\">\n<div class=\"font-bold text-primary ft-menu-title cursor-pointer sm:cursor-default flex items-center justify-between px-[10px] sm:px-[0] py-[10px] sm:py-[0]\">\n<h4 class=\"sm:mb-[10px] mb-[0px] text-[16px] font-normal text-anchor font-sub px-[15px] sm:px-[0]\">Information</h4>\n<span class=\"material-icons-outlined md:hidden text-anchor\">expand_more</span></div>\n\n<div class=\"hidden md:block sub-div px-[25px] sm:px-[0] py-[15px] sm:py-[0] bg-[#ffeccf] sm:bg-tertiary\">\n<ul>\n\t<li><a class=\"mb-[3px] inline-block text-[13px] leading-[25px] text-anchor hover:text-secondary\" href=\"/about-us.html\">About Us</a></li>\n\t<li><a class=\"mb-[3px] inline-block text-[13px] leading-[25px] text-anchor hover:text-secondary\" href=\"/contact-us.html\">Contact Us</a></li>\n\t<li><a class=\"mb-[3px] inline-block text-[13px] leading-[25px] text-anchor hover:text-secondary\" href=\"/retail-nursery-plant-availability.html\">Retail Nursery Plant Availability</a></li>\n\t<li><a class=\"mb-[3px] inline-block text-[13px] leading-[25px] text-anchor hover:text-secondary\" href=\"/order-free-catalog.html\">Order Free Catalog</a></li>\n\t<li><a class=\"mb-[3px] inline-block text-[13px] leading-[25px] text-anchor hover:text-secondary\" href=\"/account-settings.html\">My Account</a></li>\n\t<li><a class=\"mb-[3px] inline-block text-[13px] leading-[25px] text-anchor hover:text-secondary\" href=\"/gift-cards.html\">Check Gift Card Balance</a></li>\n\t<li><a class=\"mb-[3px] inline-block text-[13px] leading-[25px] text-anchor hover:text-secondary\" href=\"/ordering-shipping.html\">Ordering &amp; Shipping</a></li>\n\t<li><a class=\"mb-[3px] inline-block text-[13px] leading-[25px] text-anchor hover:text-secondary\" href=\"/faq.html\">FAQ</a></li>\n\t<li><a class=\"mb-[3px] inline-block text-[13px] leading-[25px] text-anchor hover:text-secondary\" href=\"https://redefinecommerce.blob.core.windows.net/annies/1/store/5/pdf/annies_landscaper_application_kit_2023.pdf\" target=\"_blank\">Landscapers</a></li>\n\t<li><a class=\"mb-[3px] inline-block text-[13px] leading-[25px] text-anchor hover:text-secondary\" href=\"/our-guarantee.html\">Our Guarantee</a></li>\n\t<li><a class=\"mb-[3px] inline-block text-[13px] leading-[25px] text-anchor hover:text-secondary\" href=\"/find-your-usda-zone.html\">Find Your USDA Zone</a></li>\n\t<li><a class=\"mb-[3px] inline-block text-[13px] leading-[25px] text-anchor hover:text-secondary\" href=\"/careers.html\">Careers</a></li>\n\t<li><a class=\"mb-[3px] inline-block text-[13px] leading-[25px] text-anchor hover:text-secondary\" href=\"/newsletter-archive.html\">Newsletter Archive</a></li>\n\t<li><a class=\"mb-[3px] inline-block text-[13px] leading-[25px] text-anchor hover:text-secondary\" href=\"/accessibility-policy.html\">Accessibility Policy</a></li>\n</ul>\n</div>\n</div>\n</div>\n\n<div class=\"w-full px-[0px] sm:px-[15px] md:w-1/3\">\n<div class=\"mb-[0px] sm:mb-[15px] w-full ft-menu\">\n<div class=\"font-bold text-primary ft-menu-title cursor-pointer sm:cursor-default flex items-center justify-between px-[10px] sm:px-[0] py-[10px] sm:py-[0]\">\n<h4 class=\"sm:mb-[10px] mb-[0px] text-[16px] font-normal text-anchor font-sub px-[15px] sm:px-[0]\">Learn</h4>\n<span class=\"material-icons-outlined md:hidden text-anchor\">expand_more</span></div>\n\n<div class=\"hidden md:block sub-div px-[25px] sm:px-[0] py-[15px] sm:py-[0] bg-[#ffeccf] sm:bg-tertiary\">\n<ul>\n\t<li><a class=\"mb-[3px] inline-block text-[13px] leading-[25px] text-anchor hover:text-secondary\" href=\"/events.html\">Events</a></li>\n\t<li><a class=\"mb-[3px] inline-block text-[13px] leading-[25px] text-anchor hover:text-secondary\" href=\"/blog.html\">Blog</a></li>\n\t<li><a class=\"mb-[3px] inline-block text-[13px] leading-[25px] text-anchor hover:text-secondary\" href=\"/gardening-guides.html\">Gardening Guides</a></li>\n\t<li><a class=\"mb-[3px] inline-block text-[13px] leading-[25px] text-anchor hover:text-secondary\" href=\"/videos.html\">Videos</a></li>\n\t<li><a class=\"mb-[3px] inline-block text-[13px] leading-[25px] text-anchor hover:text-secondary\" href=\"/gardening-slideshows.html\">Slideshows</a></li>\n\t<li><a class=\"mb-[3px] inline-block text-[13px] leading-[25px] text-anchor hover:text-secondary\" href=\"/product-listing-a-z.html\">Random Stuff We Love</a></li>\n\t<li><a class=\"mb-[3px] inline-block text-[13px] leading-[25px] text-anchor hover:text-secondary\" href=\"/discontinued.html\">Discontinued Plants</a></li>\n\t<li><a class=\"mb-[3px] inline-block text-[13px] leading-[25px] text-anchor hover:text-secondary\" href=\"/testimonials.html\">Testimonials</a></li>\n</ul>\n</div>\n</div>\n</div>\n</div>\n\n<div class=\"sm:flex flex-wrap w-full mx-[0px] sm:mx-[-15px] xl:w-5/12\">\n<div class=\"w-full px-[0px] sm:px-[15px] md:w-1/2\">\n<div class=\"mb-[0px] sm:mb-[15px] w-full ft-menu\">\n<div class=\"font-bold text-primary ft-menu-title cursor-pointer sm:cursor-default flex items-center justify-between px-[10px] sm:px-[0] py-[10px] sm:py-[0]\">\n<h4 class=\"sm:mb-[10px] mb-[0px] text-[16px] font-normal text-anchor font-sub px-[15px] sm:px-[0]\">Retail Nursery</h4>\n<span class=\"material-icons-outlined md:hidden text-anchor\">expand_more</span></div>\n\n<div class=\"hidden md:block sub-div px-[25px] sm:px-[0] py-[15px] sm:py-[0] bg-[#ffeccf] sm:bg-tertiary\">\n<p class=\"text-[13px] font-bold text-anchor pt-[10px] mb-[5px]\">Open 7 Days A Week</p>\n\n<p class=\"text-[13px] font-normal text-anchor mb-[5px]\">Winter Hours (Nov. 1 - Jan. 31)<br />\n9am - 4pm PST</p>\n\n<p class=\"text-[13px] font-normal text-anchor mb-[5px]\">Spring/Sum. Hours (Feb. 1 - Oct. 31)<br />\n9am - 5pm PST</p>\n\n<p class=\"text-[13px] font-bold text-anchor pt-[30px] mb-[5px]\">Address</p>\n\n<p class=\"text-[13px] font-normal text-anchor mb-[5px]\">740 Market Ave., Richmond, CA 94801</p>\n\n<p class=\"text-[13px] font-bold text-anchor pt-[30px] mb-[5px]\">Nursery</p>\n\n<p class=\"text-[13px] font-normal text-anchor mb-[5px]\">(510) 215-3301</p>\n\n<p class=\"text-[13px] font-bold text-anchor pt-[30px] mb-[5px]\">Directions</p>\n\n<p class=\"text-[13px] font-normal text-anchor mb-[5px]\">&nbsp;</p>\n</div>\n</div>\n</div>\n\n<div class=\"w-full px-[0px] sm:px-[15px] md:w-1/2\">\n<div class=\"mb-[0px] sm:mb-[15px] w-full ft-menu\">\n<div class=\"font-bold text-primary ft-menu-title cursor-pointer sm:cursor-default flex items-center justify-between px-[10px] sm:px-[0] py-[10px] sm:py-[0]\">\n<h4 class=\"sm:mb-[10px] mb-[0px] text-[16px] font-normal text-anchor font-sub px-[15px] sm:px-[0]\">Mail Order/Shipping</h4>\n<span class=\"material-icons-outlined md:hidden text-anchor\">expand_more</span></div>\n\n<div class=\"hidden md:block sub-div px-[25px] sm:px-[0] py-[15px] sm:py-[0] bg-[#ffeccf] sm:bg-tertiary\">\n<p class=\"text-[13px] font-bold text-anchor pt-[10px] mb-[5px]\">Agents Available</p>\n\n<p class=\"text-[13px] font-normal text-anchor mb-[5px]\">Monday to Friday</p>\n\n<p class=\"text-[13px] font-normal text-anchor mb-[5px]\">8am - 4pm PST</p>\n<!-- <p class=\"text-[13px] font-bold text-anchor pt-[10px] mb-[5px]\">Phone</p>\n\n\t\t\t\t\t\t\t<p class=\"text-[13px] font-normal text-anchor mb-[5px]\">(888) 266-4370</p> -->\n\n<p class=\"text-[13px] font-bold text-anchor pt-[10px] mb-[5px]\">Address</p>\n\n<p class=\"text-[13px] font-normal text-anchor mb-[5px]\">801 Chesley Ave., Richmond, CA 94801</p>\n\n<p class=\"text-[13px] font-bold text-anchor pt-[10px] mb-[5px]\">Email</p>\n\n<p class=\"text-[13px] font-normal text-anchor mb-[5px]\"><a href=\"mailto:contact@anniesannuals.com\">contact@anniesannuals.com</a></p>\n\n<p class=\"text-[13px] font-bold text-anchor pt-[10px] mb-[5px]\">Mail Order/Support</p>\n\n<p class=\"text-[13px] font-normal text-anchor mb-[5px]\">1-888-266-4370 Ext. 1</p>\n\n<p class=\"text-[13px] font-bold text-anchor pt-[10px] mb-[5px]\">Wholesale Inquiries</p>\n\n<p class=\"text-[13px] font-normal text-anchor mb-[5px]\"><a href=\"mailto:annieswholesale@anniesannuals.com\">annieswholesale@anniesannuals.com</a></p>\n</div>\n</div>\n</div>\n</div>\n\n<div class=\"absolute xl:left-[-100px] xl:bottom-[10px] z-[-1] xl:flex hidden\"><span><img alt=\"\" src=\"https://redefinecommerce.blob.core.windows.net/annies/1/store/5/images/footer-butterfly_638360723498291233.png\" title=\"\" /> </span></div>\n</div>\n\n<div class=\"w-full\" style=\"background-image: url(https://redefinecommerce.blob.core.windows.net/annies/1/store/5/images/footer-saprator_638360764226190680.png); background-position: top center; background-repeat: repeat-x;\">\n<div class=\"py-3 flex flex-wrap items-center\">\n<div class=\"w-full xl:w-1/3 text-anchor text-[13px]\">\n<div class=\"-mx-3 flex flex-wrap items-center justify-center xl:justify-start\"><a class=\"px-3 text-anchor hover:text-secondary\" href=\"privacy-policy.html\">Privacy policy </a> <span>|</span> <a class=\"px-3 text-anchor hover:text-secondary\" href=\"terms-and-conditions.html\"> Terms and Conditions </a></div>\n</div>\n\n<div class=\"w-full xl:w-1/3\">\n<div class=\"text-anchor text-[13px] text-center\">&copy; 2023 Annie&rsquo;s Annuals and Perennials. All rights reserved.</div>\n</div>\n\n<div class=\"w-full xl:w-1/3\">\n<div class=\"my-1 flex justify-center xl:justify-end\"><span class=\"text-[13px] text-anchor mr-[10px]\">Follow Us</span>\n\n<div class=\"-mx-2 flex items-center\"><a class=\"px-2 text-[#295D4E] hover:text-secondary\" href=\"https://www.facebook.com/pages/Annies-Annuals-Perennials/139588809386568\" title=\"facebook\" type=\"_blank\"><img alt=\"\" src=\"https://redefinecommerce.blob.core.windows.net/annies/1/store/5/images/facebook_638375297100416217.png\" /> </a> <a class=\"px-2 text-[#295D4E] hover:text-secondary\" href=\"https://instagram.com/anniesannuals\" title=\"instagram\" type=\"_blank\"> <img alt=\"\" src=\"https://redefinecommerce.blob.core.windows.net/annies/1/store/5/images/instagram_638375300478006498.png\" /> </a> <a class=\"px-2 text-[#295D4E] hover:text-secondary\" href=\"https://twitter.com/AnniesAnnuals\" title=\"twitter\" type=\"_blank\"><img alt=\"\" src=\"https://redefinecommerce.blob.core.windows.net/annies/1/store/5/images/twitter_638375301111661197.png\" /> </a> <a class=\"px-2 text-[#295D4E] hover:text-secondary\" href=\"https://www.pinterest.com/anniesannuals\" title=\"pinterest\" type=\"_blank\"> <img alt=\"\" src=\"https://redefinecommerce.blob.core.windows.net/annies/1/store/5/images/pinterest_638375300814453108.png\" /> </a> <a class=\"px-2 text-[#295D4E] hover:text-secondary\" href=\"javascript:void(0)\" title=\"Youtube\" type=\"_blank\"><img alt=\"\" src=\"https://redefinecommerce.blob.core.windows.net/annies/1/store/5/images/youtube_638375301371268650.png\" /></a></div>\n</div>\n</div>\n</div>\n</div>\n</div>\n</footer>\n<script>\n\tdocument.addEventListener('click', function (event) {\n\t\tconst target = event.target;\n\t\tconst header = target.closest('.ft-menu-title');\n\n\t\tif (header) {\n\t\t\tconst subDiv = header.nextElementSibling;\n\n\t\t\tif (subDiv.classList.contains('active')) {\n\t\t\t\tsubDiv.classList.remove('active');\n\t\t\t\tsubDiv.classList.add('hidden');\n\t\t\t} else {\n\t\t\t\tsubDiv.classList.add('active');\n\t\t\t\tsubDiv.classList.remove('hidden');\n\t\t\t}\n\n\t\t\tconst siblings = getSiblingElements(header.parentNode, '.ft-menu');\n\t\t\tsiblings.forEach((sibling) => {\n\t\t\t\tconst siblingSubDiv = sibling.querySelector('.sub-div');\n\t\t\t\tsiblingSubDiv.style.display = 'none';\n\n\t\t\t\tconst siblingIcon = sibling.querySelector('.material-icons-outlined');\n\t\t\t\tsiblingIcon.innerHTML = 'expand_more';\n\t\t\t});\n\n\t\t\tconst icon = header.parentNode.querySelector('.material-icons-outlined');\n\t\t\ticon.innerHTML =\n\t\t\t\ticon.innerHTML === 'expand_more' ? 'expand_less' : 'expand_more';\n\t\t}\n\t});\n\n\tfunction getSiblingElements(element, selector) {\n\t\tconst siblings = [];\n\t\tlet sibling = element.parentNode.firstElementChild;\n\n\t\twhile (sibling) {\n\t\t\tif (sibling !== element && sibling.matches(selector)) {\n\t\t\t\tsiblings.push(sibling);\n\t\t\t}\n\t\t\tsibling = sibling.nextElementSibling;\n\t\t}\n\n\t\treturn siblings;\n\t}\n</script>",
+      "status": "Y",
+      "created_at": null,
+      "updated_at": null
+    },
+    {
+      "id": 2,
+      "store_id": 5,
+      "config_name": "custom_css_config",
+      "config_value": "{\"custom_css_config\":\".accordion-box > ul > li {border-radius: 25px !important;border-top-right-radius: 0 !important; border-bottom-left-radius: 0 !important;}\\n.cms-static-shadow .shadow {--tw-shadow: 0 0 #0000;    --tw-shadow-colored: 0 0 #0000;    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);border-style: none;}\\n.cms-static-shadow .shadow .border {--tw-shadow: 0 0 #0000;    --tw-shadow-colored: 0 0 #0000;    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);border-style: none;}\\n.faq-decimal>li{padding:10px 0; list-style-type: decimal;}\\n.max-h-40 {max-height: 160px;}\\n.min-h-\\\\[235px\\\\] {max-width: 235px;}\\n\\n@media (max-width: 480px) {\\n .featured-slide {flex: 1 0 50% !important;}\\n}\"}",
+      "status": "Y",
+      "created_at": null,
+      "updated_at": null
+    },
+    {
+      "id": 3,
+      "store_id": 5,
+      "config_name": "customScript",
+      "config_value": "{\"googleFonts\":\"\",\"customHeadScript\":\"HeadScript\",\"customGoogleVerification\":\"GTM-5G8GCWZ\",\"customGlobalBodyScript\":\"<iframe src=\\\"\\nhttps://www.googletagmanager.com/ns.html?id=GTM-5G8GCWZ\\\"\\nheight=\\\"0\\\" width=\\\"0\\\" style=\\\"display:none;visibility:hidden\\\"></iframe>\",\"customFooterScript\":\"\"}",
+      "status": "Y",
+      "created_at": null,
+      "updated_at": null
+    },
+    {
+      "id": 4,
+      "store_id": 5,
+      "config_name": "main_theme_config",
+      "config_value": "{\"--tw-theme-body-font\":\"'open_sansregular', sans-serif\",\"--tw-theme-body-font-size\":\"13px\",\"--tw-theme-body-font-weight\":\"400\",\"--tw-theme-body-font-line-height\":\"18px\",\"--tw-theme-body-font-letter-spacing\":\"\",\"--tw-theme-spcing-max-container-width\":\"1600px\",\"--tw-theme-spcing-vertical_spacing\":\"\",\"--tw-theme-bg-gray-color\":null,\"--tw-theme-border-gray-color\":null,\"--tw-theme-extra-large-text-font-size\":\"36px\",\"--tw-theme-extra-large-text-font-weight\":\"700\",\"--tw-theme-extra-large-text-letter-spacing\":\"1px\",\"--tw-theme-extra-large-text-line-height\":\"40px\",\"--tw-theme-extra-large-text-font-color\":\"#273721\",\"--tw-theme-extra-large-text-font-size-tablet\":\"24px\",\"--tw-theme-extra-large-text-font-size-mobile\":\"18px\",\"--tw-theme-extra-large-text-line-height-tablet\":\"30px\",\"--tw-theme-extra-large-text-line-height-mobile\":\"20px\",\"--tw-theme-btn-primary-color\":\"#295b4c\",\"--tw-theme-btn-primary-border-color\":\"#295b4c\",\"--tw-theme-btn-primary-hover-color\":\"#527b6f\",\"--tw-theme-btn-primary-hover-text-color\":\"#ffffff\",\"--tw-theme-btn-primary-text-color\":\"#ffffff\",\"--tw-theme-btn-secondary-color\":\"#8a2c9b\",\"--tw-theme-btn-secondary-text-color\":\"#ffffff\",\"--tw-theme-btn-secondary-border-color\":\"#8a2c9b\",\"--tw-theme-btn-secondary-hover-color\":\"#9e56ab\",\"--tw-theme-btn-secondary-hover-text-color\":\"#ffffff\",\"--tw-theme-btn-tertiary-text-color\":\"#295b4c\",\"--tw-theme-btn-tertiary-color\":\"#fff3e0\",\"--tw-theme-btn-tertiary-border-color\":\"#fff3e0\",\"--tw-theme-btn-tertiary-hover-color\":\"#00a98f\",\"--tw-theme-btn-tertiary-hover-text-color\":\"#ffffff\",\"--tw-theme-btn-quaternary-color\":\"#f0ad42\",\"--tw-theme-btn-quaternary-text-color\":\"#000000\",\"--tw-theme-btn-quaternary-border-color\":\"#f0ad42\",\"--tw-theme-btn-quaternary-hover-color\":\"#4197cb\",\"--tw-theme-btn-quaternary-hover-text-color\":\"#000000\",\"--tw-theme-btn-default-color\":\"#2e631d\",\"--tw-theme-btn-default-text-color\":\"#ffffff\",\"--tw-theme-btn-default-border-color\":\"#2e631d\",\"--tw-theme-btn-default-hover-text-color\":\"#ffffff\",\"--tw-theme-btn-default-hover-color\":\"#003a70\",\"--tw-theme-link-default-color\":\"#273721\",\"--tw-theme-link-default-hover-color\":\"#8a2c9b\",\"--tw-theme-font-color\":null,\"--tw-theme-extra-large-text-font-family\":\"'Noto Serif', sans-serif\",\"--tw-theme-large-text-font-family\":\"'Noto Serif', sans-serif\",\"--tw-theme-large-text-font-size\":\"28px\",\"--tw-theme-large-text-letter-spacing\":\"\",\"--tw-theme-large-text-line-height\":\"32px\",\"--tw-theme-large-text-font-color\":\"#273721\",\"--tw-theme-large-text-font-size-tablet\":\"20px\",\"--tw-theme-large-text-font-size-mobile\":\"14px\",\"--tw-theme-large-text-line-height-tablet\":\"26px\",\"--tw-theme-large-text-line-height-mobile\":\"20px\",\"--tw-theme-title-text-font-family\":\"'Noto Serif', sans-serif\",\"--tw-theme-title-text-font-size\":\"26px\",\"--tw-theme-title-text-line-height\":\"30px\",\"--tw-theme-title-text-font-color\":null,\"--tw-theme-title-text-font-size-tablet\":\"19px\",\"--tw-theme-title-text-font-size-mobile\":\"14px\",\"--tw-theme-title-text-line-height-tablet\":\"24px\",\"--tw-theme-title-text-line-height-mobile\":\"20px\",\"--tw-theme-sub-text-font-family\":\"\",\"--tw-theme-sub-text-font-size\":\"24px\",\"--tw-theme-sub-text-line-height\":\"28px\",\"--tw-theme-sub-text-font-color\":null,\"--tw-theme-sub-text-font-size-tablet\":\"19px\",\"--tw-theme-sub-text-font-size-mobile\":\"14px\",\"--tw-theme-sub-text-line-height-tablet\":\"23px\",\"--tw-theme-sub-text-line-height-mobile\":\"19px\",\"--tw-theme-medium-text-font-family\":\"\",\"--tw-theme-medium-text-font-size\":\"22px\",\"--tw-theme-medium-text-font-weight\":\"400\",\"--tw-theme-medium-text-line-height\":\"26px\",\"--tw-theme-medium-text-font-color\":null,\"--tw-theme-medium-text-font-size-tablet\":\"18px\",\"--tw-theme-medium-text-font-size-mobile\":\"14px\",\"--tw-theme-medium-text-line-height-tablet\":\"22px\",\"--tw-theme-medium-text-line-height-mobile\":\"19px\",\"--tw-theme-normal-text-font-family\":\"\",\"--tw-theme-normal-text-font-size\":\"18px\",\"--tw-theme-normal-text-line-height\":\"24px\",\"--tw-theme-normal-text-font-weight\":\"400\",\"--tw-theme-normal-text-font-size-tablet\":\"17px\",\"--tw-theme-normal-text-font-size-mobile\":\"14px\",\"--tw-theme-normal-text-line-height-tablet\":\"21px\",\"--tw-theme-normal-text-line-height-mobile\":\"19px\",\"--tw-theme-normal-text-font-color\":null,\"--tw-theme-default-text-font-family\":\"\",\"--tw-theme-default-text-font-size\":\"16px\",\"--tw-theme-default-text-font-weight\":\"400\",\"--tw-theme-default-text-line-height\":\"26px\",\"--tw-theme-default-text-font-color\":null,\"--tw-theme-default-text-font-size-tablet\":\"16px\",\"--tw-theme-default-text-font-size-mobile\":\"14px\",\"--tw-theme-default-text-line-height-tablet\":\"22px\",\"--tw-theme-default-text-line-height-mobile\":\"19px\",\"--tw-theme-small-text-font-family\":\"\",\"--tw-theme-small-text-font-size\":\"14px\",\"--tw-theme-small-text-font-weight\":\"400\",\"--tw-theme-small-text-line-height\":\"18px\",\"--tw-theme-small-text-font-color\":null,\"--tw-theme-small-text-font-size-tablet\":\"14px\",\"--tw-theme-small-text-font-size-mobile\":\"14px\",\"--tw-theme-small-text-line-height-tablet\":\"18px\",\"--tw-theme-small-text-line-height-mobile\":\"17px\",\"--tw-theme-extra-small-text-font-family\":\"\",\"--tw-theme-extra-small-text-font-size\":\"13px\",\"--tw-theme-extra-small-text-font-weight\":\"400\",\"--tw-theme-extra-small-text-line-height\":\"18px\",\"--tw-theme-extra-small-text-font-color\":null,\"--tw-theme-extra-small-text-font-size-tablet\":\"13px\",\"--tw-theme-extra-small-text-font-size-mobile\":\"13px\",\"--tw-theme-extra-small-text-line-height-tablet\":\"18px\",\"--tw-theme-extra-small-text-line-height-mobile\":\"17px\",\"--tw-theme-title-text-font-weight\":\"600\",\"--tw-theme-sub-text-font-weight\":\"400\",\"--tw-theme-large-text-font-weight\":\"400\"}",
+      "status": "Y",
+      "created_at": null,
+      "updated_at": null
+    },
+    {
+      "id": 5,
+      "store_id": 5,
+      "config_name": "cartPage",
+      "config_value": "{\"cartPageTemplateId\":1,\"buy_it_with\":[\"achillea_millefolium_rosa_maria\",\"abutilon_souvenir_de_bonn\",\"abutilon_savitzii\",\"abutilon_victorian_lady\",\"abutilon_talinis_pink\"]}",
+      "status": "Y",
+      "created_at": null,
+      "updated_at": null
+    },
+    {
+      "id": 6,
+      "store_id": 5,
+      "config_name": "header_config",
+      "config_value": "{\"id\":6,\"template_Id\":1,\"header_bg_color\":\"#FFFFFF\",\"header_text_color\":\"#000000\",\"first_icon\":false,\"second_icon\":false,\"third_icon\":false,\"forth_icon\":false,\"fifth_icon\":false,\"announcementRow\":[{\"isVisible\":true,\"leftsideText\":\"\",\"rightSideText\":\"\",\"textColor\":\"text-white\",\"backgroundColor\":\"\",\"leftSideText\":\"<p><span style=\\\"color: rgb(39, 55, 33); font-family: open_sansregular, sans-serif; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 800; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: uppercase; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;\\\">ONLINE PLANT-ONLY | SALE! DEC 25TH - 31ST | 20% OFF ALL PLANTS</span></p>\\n\"},{\"isVisible\":true,\"leftsideText\":\"\",\"rightSideText\":\"\",\"textColor\":\"#ff0000\",\"backgroundColor\":\"bg-green-400\",\"leftSideText\":\"\"}]}",
+      "status": "Y",
+      "created_at": null,
+      "updated_at": null
+    },
+    {
+      "id": 7,
+      "store_id": 5,
+      "config_name": "productListing",
+      "config_value": "{\"buy_it_with\":[],\"productDetailTemplateId\":1}",
+      "status": "Y",
+      "created_at": null,
+      "updated_at": null
+    },
+    {
+      "id": 8,
+      "store_id": 5,
+      "config_name": "contactInfo",
+      "config_value": "{\"email_address\":\"\",\"phone_number\":\"\",\"company_address\":\"\"}",
+      "status": "Y",
+      "created_at": null,
+      "updated_at": null
+    },
+    {
+      "id": 9,
+      "store_id": 5,
+      "config_name": "googleTags",
+      "config_value": "{\"twitterTags\":{\"twitterTagRadio\":false,\"twitterTagTextArea\":\"\"},\"dcTags\":{\"dcTagRadio\":false,\"dcTagTextArea\":\"\"}}",
+      "status": "Y",
+      "created_at": null,
+      "updated_at": null
+    }
+  ],
+  "thirdPartyCredentialsViewModels": [
+    {
+      "id": 1,
+      "thirdPartyServiceId": 5,
+      "storeId": 5,
+      "name": "Klaviyo",
+      "description": "",
+      "url": "",
+      "username": "vipul.redefine@gmail.com",
+      "password": "",
+      "key": "RvCSZF-test",
+      "secretkey": "pk_0dfdebf6970f8654cfce0d73daa878a825-test",
+      "redirectUrlToSite": "https://a.klaviyo.com/api/",
+      "thankYouPageUrl": "",
+      "certificate": "",
+      "url1": null,
+      "url2": null,
+      "url3": null,
+      "recStatus": "A",
+      "createdName": null,
+      "modifiedName": null,
+      "createdDate": "2023-05-27T06:16:20.71",
+      "createdBy": 1,
+      "modifiedDate": "2023-10-05T07:23:13.9211078",
+      "modifiedBy": 85,
+      "location": "RI",
+      "ipAddress": "120.72.90.155",
+      "macAddress": "00-00-00-00-00-00",
+      "storeName": "Annies Annuals",
+      "thirdPartyServiceName": "Klaviyo",
+      "rowVersion": "MV04ktEF3Ag="
+    },
+    {
+      "id": 5,
+      "thirdPartyServiceId": 7,
+      "storeId": 5,
+      "name": "Customer Lead",
+      "description": "",
+      "url": "https://parsonskellogg.api.crm.dynamics.com/api/data/v9.2/leads",
+      "username": "",
+      "password": "",
+      "key": "89e8472c-cc45-45e3-99dc-e976123783f0-Test",
+      "secretkey": "0YZ8Q~D4m~VsR6Ur5P6_~umBvBXxWGNDgZKmUb9D-Test",
+      "redirectUrlToSite": "https://parsonskellogg.api.crm.dynamics.com//.default",
+      "thankYouPageUrl": "https://login.microsoftonline.com/c93df08a-282d-4d69-b189-3b021ad6218e/oauth2/v2.0/token",
+      "certificate": "",
+      "url1": null,
+      "url2": null,
+      "url3": null,
+      "recStatus": "A",
+      "createdName": null,
+      "modifiedName": null,
+      "createdDate": "2023-07-12T05:43:54.8493741",
+      "createdBy": 85,
+      "modifiedDate": "2023-07-27T01:52:56.0530928",
+      "modifiedBy": 85,
+      "location": "RI",
+      "ipAddress": "127.0.0.0",
+      "macAddress": "00-00-00-00-00-00",
+      "storeName": "Annies Annuals",
+      "thirdPartyServiceName": "Customer Lead",
+      "rowVersion": "isInP48h3Ag="
+    }
+  ],
+  "topHeadScriptForGA4CGDataLayer": "",
+  "bottomHeadScriptForGA4CGDataLayer": "",
+  "topBodySnippetForGA4CGDataLayer": "",
+  "id": 5,
+  "storeTypeId": 2,
+  "storeType": {
+    "id": 2,
+    "name": "eCommerce Store",
+    "recStatus": "A",
+    "createdDate": "2023-05-27T06:16:20.5933333",
+    "createdBy": 1,
+    "modifiedDate": "2023-05-27T06:16:36.1833333",
+    "modifiedBy": 1,
+    "rowVersion": "cmFzbFNEK1AyZ2c9",
+    "location": "Ahmedabad Gujarat India 380006",
+    "ipAddress": "192.168.1.1",
+    "macAddress": "00-00-00-00-00-00"
+  },
+  "name": "Annies Annuals",
+  "code": "AA",
+  "url": "https://beta-anniesannuals.redefineapp.io",
+  "navCode": "AA",
+  "prefix": "AA",
+  "logoUrl": "/annies/1/store/logo_5.png",
+  "isLandingPage": true,
+  "isBlogPage": true,
+  "isReviewMaster": true,
+  "isSeoMarketing": true,
+  "isAttributeSaparateProduct": true,
+  "attributeid": 2,
+  "isQuantityDiscount": false,
+  "isFirstLogoFree": false,
+  "isLinepersonalization": false,
+  "firstLineCharges": 0,
+  "secondLineCharges": 0,
+  "isSmallRun": false,
+  "smallRunLimit": 0,
+  "smallRunFeesCharges": 0,
+  "isLogoSetupCharges": false,
+  "logoSetupCharges": 0,
+  "isProductReadinessAllow": true,
+  "isSeoReadinessAllow": true,
+  "shippingChargeType": 3,
+  "isFreeShipping": false,
+  "generalAmount": 0,
+  "punchoutMessage": "",
+  "checkOutRequiredThirdPartyLogin": false,
+  "domainBasedLogin": false,
+  "domainBasedLoginDesc": "",
+  "generalLogin": false,
+  "thirdPartyLogin": true,
+  "bothLogin": false,
+  "onlyGuestLogin": false,
+  "isBrandStore": false,
+  "storeBrandId": 0,
+  "parentstoreid": 0,
+  "billToCustomer": "",
+  "favicon": "/annies/1/store/favicon/favicon_5.png",
+  "isCustomerRegistrationApprovalRequired": false,
+  "isAllowToReuseApprovedLogo": false,
+  "isLoginRequiredForStore": false,
+  "isSewOutEnable": false,
+  "sewOutCharges": 0,
+  "isCustomerLogoApproval": false,
+  "isOrganizationName": false,
+  "codeName": "AN",
+  "navLocationCode": null,
+  "storeDisplayOrder": 0,
+  "isGA4": false,
+  "isPriceSync": false,
+  "emailLogo": "/annies/temp/1/store/1a59f3d5-c531-48f1-88de-293c5161b5ef.png",
+  "isAddToCartRequiredForStore": false,
+  "isAllowEmployeeLogin": true,
+  "firstLogoCharge": 0,
+  "secondLogoCharge": 10,
+  "isBrandDiscount": false,
+  "isLogoCustomization": false,
+  "isPersonalization": false,
+  "isGiftCardValidatebyEmail": true,
+  "isStoreLive": false,
+  "isAllowZeroPriceProduct": false,
+  "adminApiUrl": "https://beta-anniesadminapi.redefineapp.io/",
+  "frontApiUrl": "https://beta-anniesfrontapi.redefineapp.io/",
+  "recStatus": "A",
+  "createdDate": "2023-05-27T06:16:22.8533333",
+  "createdBy": 1,
+  "modifiedDate": "2024-01-29T14:40:10.0549906",
+  "modifiedBy": 176,
+  "rowVersion": "WWafG5Mh3Ag=",
+  "location": "RI",
+  "ipAddress": "120.72.90.155",
+  "macAddress": "00-00-00-00-00-00"
+}
